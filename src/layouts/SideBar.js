@@ -25,8 +25,6 @@ export default function SideBar() {
             <Icon name="paw" />
             Job Position
           </Menu.Item>
-          
-  
         </Menu>
       </div>
     );

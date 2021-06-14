@@ -14,13 +14,13 @@ export default function JobAdvertList() {
 
   return (
     <div>
-      <Header as="h2">
-        <Icon name="list alternate outline" />
-        <Header.Content>Job Advert List</Header.Content>
+      <Header as="h2" textAlign='center'>
+        <Icon name="angellist" color='brown'/>
+        Job Advert List
       </Header>
       <Table color="blue" key="blue">
         <Table.Header>
-          <Table.Row>
+          <Table.Row textAlign='center'>
             <Table.HeaderCell>Job Title</Table.HeaderCell>
             <Table.HeaderCell>Company Name</Table.HeaderCell>
             <Table.HeaderCell>City</Table.HeaderCell>
@@ -33,7 +33,7 @@ export default function JobAdvertList() {
 
         <Table.Body>
           {adverts.map((advert) => (
-            <Table.Row key={advert.id}>
+            <Table.Row textAlign='center' key={advert.id}>
               <Table.Cell>{advert.jobPosition.jobTitle}</Table.Cell>
               <Table.Cell>{advert.employer.companyName}</Table.Cell>
               <Table.Cell>{advert.city.name}</Table.Cell>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Table, Header, Icon, Button } from "semantic-ui-react";
 import EmployerService from "../../../services/employerService";
 
@@ -9,36 +10,40 @@ export default function EmployerList() {
     let employerService = new EmployerService();
     employerService
       .getEmployers()
-      .then((result) => setEmployers(result.data.data));
+      .then((result) => setEmployers(result.data.data))
+      .catch((err) => console.log(err));
   }, []);
 
   return (
     <div>
-      <Header as="h2">
-        <Icon name="list alternate outline" />
-        <Header.Content>Employer List</Header.Content>
+      <Header as="h2" textAlign='center'>
+        <Icon name="earlybirds"  />
+        Employer List
       </Header>
       <Table color="blue" key="blue">
-        <Table.Header>
-          <Table.Row>
+        <Table.Header >
+          <Table.Row textAlign='center'>
             <Table.HeaderCell>Company Name</Table.HeaderCell>
             <Table.HeaderCell>Website</Table.HeaderCell>
             <Table.HeaderCell>Email</Table.HeaderCell>
             <Table.HeaderCell>Phone Number</Table.HeaderCell>
             <Table.HeaderCell>Detail</Table.HeaderCell>
+            <Table.HeaderCell>Confirmation</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
 
-        <Table.Body>
+        <Table.Body >
           {employers.map((employer) => (
-            <Table.Row key = {employer.id}>
-              <Table.Cell>{employer.companyName}</Table.Cell>
+            <Table.Row textAlign='center' key = {employer.id}>
+              <Table.Cell><Link to={`/employers/${employer.id}`}>{employer.companyName}</Link></Table.Cell>
               <Table.Cell>{employer.website}</Table.Cell>
               <Table.Cell>{employer.email}</Table.Cell>
               <Table.Cell>{employer.phoneNumber}</Table.Cell>
+              
               <Table.Cell>
                 <Button>View</Button>
               </Table.Cell>
+              <Table.Cell>{employer.registrationVerification===true?"Yes":"No"}</Table.Cell>
             </Table.Row>
           ))}
         </Table.Body>

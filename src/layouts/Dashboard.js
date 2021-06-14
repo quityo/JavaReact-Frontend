@@ -3,6 +3,7 @@ import { Grid } from "semantic-ui-react";
 import Section from "./Section";
 import SideBar from "./SideBar";
 
+
 export default function Dashboard() {
   return (
     <div>
@@ -11,7 +12,8 @@ export default function Dashboard() {
           <Grid.Column width={2}>
             <SideBar/>
           </Grid.Column>
-          <Grid.Column width={14}>
+          <Grid.Column  width={14}>
+              
               <Section/>
           </Grid.Column>
         </Grid.Row>

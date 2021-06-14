@@ -1,0 +1,20 @@
+
+.home h1{
+   font-size: 50px;
+   font-family: Star Jedi;
+	}
+   .home p1{
+      font-size: 20px;
+   }
+   .home p{
+
+     text-indent: 30px;
+     text-align: justify;
+     letter-spacing:1px;
+     font-size: 23px;
+   }
+
+     .home {
+      max-width: 700px;
+      margin: auto;
+     }

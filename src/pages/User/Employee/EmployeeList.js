@@ -14,13 +14,13 @@ export default function EmployeeList() {
 
   return (
     <div>
-      <Header as="h2">
-        <Icon name="list alternate outline" />
-        <Header.Content>Employee List</Header.Content>
+      <Header as="h2" textAlign='center'>
+        <Icon name="sticker mule" color='teal' />
+        Employee List
       </Header>
       <Table color="blue" key="blue">
         <Table.Header>
-          <Table.Row>
+          <Table.Row textAlign='center'>
             <Table.HeaderCell>First Name</Table.HeaderCell>
             <Table.HeaderCell>Last Name</Table.HeaderCell>
             <Table.HeaderCell>Email</Table.HeaderCell>
@@ -30,7 +30,7 @@ export default function EmployeeList() {
 
         <Table.Body>
           {employees.map((employee) => (
-            <Table.Row key={employee.id}>
+            <Table.Row textAlign='center' key={employee.id}>
               <Table.Cell>{employee.firstName}</Table.Cell>
               <Table.Cell>{employee.lastName}</Table.Cell>
               <Table.Cell>{employee.email}</Table.Cell>

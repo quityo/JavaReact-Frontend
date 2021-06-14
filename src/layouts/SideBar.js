@@ -1,31 +1,58 @@
 import React from 'react';
-import { Icon, Menu } from 'semantic-ui-react'
-
+import { Link } from 'react-router-dom';
+import { Icon, List, Container,Divider } from 'semantic-ui-react';
 export default function SideBar() {
     return (
       <div>
-        <Menu inverted icon="labeled" vertical>
-        
-          <Menu.Item
+        <Container textAlign='left'>
+
+         <List link aling= "right" size='big'>
+          <List.Item as={Link} to="/jobseekers" 
             name="hand spock"
           >
-            <Icon name="hand spock" />
+             <Icon name="hand spock" />
             Job-Seeker
-          </Menu.Item>
+          </List.Item>
+
+          <Divider />
   
-          <Menu.Item
+          <List.Item 
+            as={Link} to="/employers" 
             name="earlybirds"
           >
             <Icon name="earlybirds" />
-            Employer
-          </Menu.Item>
-          <Menu.Item
+          Employer
+          </List.Item>
+          <Divider />
+          <List.Item as={Link} to="/jobpositions" 
             name="paw"
           >
             <Icon name="paw" />
-            Job Position
-          </Menu.Item>
-        </Menu>
+            J.Position
+          </List.Item>
+          <Divider />
+          <List.Item as={Link} to="/jobadverts" 
+            name="angellist"
+          >
+            <Icon name="angellist" />
+            Job Advert
+          </List.Item>
+          <Divider />
+          <List.Item as={Link} to="/employees" 
+            name="sticker mule"
+          >
+            <Icon name="sticker mule" />
+            Employee
+          </List.Item>
+          <Divider />
+          <List.Item as={Link} to="/employerRegister" 
+            name="paw"
+          >
+            <Icon name="paw" />
+            J.Position
+          </List.Item>
+        </List>
+        </Container>
       </div>
     );
   }

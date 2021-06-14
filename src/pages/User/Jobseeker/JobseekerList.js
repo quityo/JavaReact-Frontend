@@ -7,19 +7,19 @@ export default function JobseekerList() {
   useEffect(() => {
     let jobseekerService = new JobseekerService();
     jobseekerService
-      .getJobseekers()
+      .getByAsc()
       .then((result) => setJobseekers(result.data.data));
   }, []);
 
   return (
     <div>
-      <Header as="h2">
-        <Icon name="list alternate outline" />
-        <Header.Content>Jobseeker List</Header.Content>
+      <Header as="h2" textAlign='center'>
+        <Icon name="hand spock" color='teal'></Icon>
+        Jobseeker List
       </Header>
       <Table color="blue" key="blue">
         <Table.Header>
-          <Table.Row>
+          <Table.Row textAlign='center'>
             <Table.HeaderCell>First Name</Table.HeaderCell>
             <Table.HeaderCell>Last Name</Table.HeaderCell>
             <Table.HeaderCell>Email</Table.HeaderCell>
@@ -29,7 +29,7 @@ export default function JobseekerList() {
 
         <Table.Body>
           {jobseekers.map((jobseeker) => (
-            <Table.Row key = {jobseeker.id}>
+            <Table.Row textAlign='center' key = {jobseeker.id}>
               <Table.Cell>{jobseeker.firstName}</Table.Cell>
               <Table.Cell>{jobseeker.lastName}</Table.Cell>
               <Table.Cell>{jobseeker.email}</Table.Cell>

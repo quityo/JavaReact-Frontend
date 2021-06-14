@@ -1,6 +1,10 @@
 .App {
-  text-align: center;
+  text-align: center; 
 }
 .ui.main.container{
   margin-top: 8em;
+}
+.p{
+  color: blue;
+  text-indent:50px; 
 }

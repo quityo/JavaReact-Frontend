@@ -1,40 +1,167 @@
-import React from 'react'
-import CityService from "../services/cityService";
-import JobPositionService from "../services/jobPositionService";
-import JobAdvertService from "../services/jobAdvertService";
+import React, { useState, useEffect } from "react";
+import { Table,   Icon, Image,Segment } from "semantic-ui-react";
+import JobAdvertService from "../../services/jobAdvertService";
 
- function JobAdvertDetail() {
-    
-    const [cities, setCities] = React.useState([]);
-    const [position, setPosition] = React.useState([]);
-    const [jobadverts, setJobAdverts] = React.useState([]);
+import { useParams } from "react-router-dom";
 
-    React.useEffect(()=>{
-    let cityService = new CityService();
-    let positionService = new JobPositionService(); 
-    let jobAdvertService = new JobAdvertService()
-
-    cityService.getAll().then((data) => {
-        setCities(data.data.data);
-    });
-    positionService.getAll().then((data) => {
-        setPosition(data.data.data);
-    });
-    jobAdvertService.getAll().then((data) => {
-        setJobAdverts(data.data.data);
-    });
-    
-},[]);
-
+export default function JobAdvertDetail() {
+    let { jobAdvertId } = useParams();
+    const [jobAdverts, setJobAdverts] = useState([]);
+  
+    useEffect(() => {
+      let jobAdvertService = new JobAdvertService();
+      jobAdvertService.getByJobAdvertId(jobAdvertId)
+        .then((result) => setJobAdverts([result.data.data]));
+    }, []);
+  
     return (
-        <div>
-           <select>
-                  {cities.map((data) => (
-                    <option value="">{data.cityName}</option>
-                  ))}
-                </select> 
-        </div>
-        
+      <div className="card">
+        {jobAdverts.map((jobAdvert) => (
+          <div>
+            <Segment color="green" textAlign="center">
+              İLAN DETAYI
+            </Segment>
+            <Table color="red" celled striped>
+              <Table.Header>
+                <Table.Row>
+                  <Table.HeaderCell colSpan="2">
+                    {!jobAdvert.employer.image ? (
+                      <Image
+                        circular
+                        floated="left"
+                        size="mini"
+                        src="https://aday-spage.mncdn.com/Knet_img_bag-with-gray-bg.832c700.svg?v=p0611211353224"
+                      ></Image>
+                    ) : (
+                      <Image
+                        circular
+                        floated="left"
+                        size="mini"
+                        src={jobAdvert.employer.image.imageUrl}
+                      ></Image>
+                    )}{" "}
+                    ŞİRKET
+                    <br />
+                    BİLGİLERİ
+                  </Table.HeaderCell>
+                </Table.Row>
+              </Table.Header>
+              <Table.Body>
+                <Table.Row>
+                  <Table.Cell>
+                    <Icon name="warehouse" /> Şirket
+                  </Table.Cell>
+                  <Table.Cell>{jobAdvert.employer.companyName}</Table.Cell>
+                </Table.Row>
+                <Table.Row>
+                  <Table.Cell>
+                    <Icon name="world" />
+                    Web Sitesi
+                  </Table.Cell>
+                  <Table.Cell>
+                    <a
+                      target="_blank"
+                      href={"https://" + jobAdvert.employer.website}
+                    >
+                      {jobAdvert.employer.website}
+                    </a>
+                  </Table.Cell>
+                </Table.Row>
+                <Table.Row>
+                  <Table.Cell collapsing>
+                    <Icon name="phone" />
+                    Telefon Numarası
+                  </Table.Cell>
+                  <Table.Cell>{jobAdvert.employer.phoneNumber}</Table.Cell>
+                </Table.Row>
+                <Table.Row>
+                  <Table.Cell>
+                    <Icon name="map marker alternate" />
+                    Şehir
+                  </Table.Cell>
+                  <Table.Cell>{jobAdvert.city.name}</Table.Cell>
+                </Table.Row>
+              </Table.Body>
+            </Table>
+            <Table color="yellow" celled striped>
+              <Table.Header>
+                <Table.Row>
+                  <Table.HeaderCell colSpan="2">
+                    <Icon name="users" />
+                    İŞ
+                  </Table.HeaderCell>
+                </Table.Row>
+              </Table.Header>
+              <Table.Body>
+                <Table.Row>
+                  <Table.Cell>Pozisyon</Table.Cell>
+                  <Table.Cell>{jobAdvert.jobPosition.jobtitle}</Table.Cell>
+                </Table.Row>
+                <Table.Row>
+                  <Table.Cell collapsing>Açık Pozisyon Sayısı</Table.Cell>
+                  <Table.Cell>{jobAdvert.openPositionCount}</Table.Cell>
+                </Table.Row>
+                <Table.Row>
+                  <Table.Cell>Çalışma Türü</Table.Cell>
+                  <Table.Cell>{jobAdvert.workType.type}</Table.Cell>
+                </Table.Row>
+                <Table.Row>
+                  <Table.Cell>Çalışma Zamanı</Table.Cell>
+                  <Table.Cell>{jobAdvert.workTime.title}</Table.Cell>
+                </Table.Row>
+              </Table.Body>
+            </Table>
+            <Table color="green" celled striped>
+              <Table.Header>
+                <Table.Row>
+                  <Table.HeaderCell colSpan="4">
+                    <Icon name="money" />
+                    MAAŞ
+                  </Table.HeaderCell>
+                </Table.Row>
+              </Table.Header>
+              <Table.Body>
+                <Table.Row>
+                  <Table.Cell>Minimum Maaş Skalası</Table.Cell>
+                  <Table.Cell positive>{jobAdvert.salaryMin} TL</Table.Cell>
+                  <Table.Cell>Maksimum Maaş Skalası</Table.Cell>
+                  <Table.Cell positive>{jobAdvert.salaryMax} TL</Table.Cell>
+                </Table.Row>
+              </Table.Body>
+            </Table>
+            <Table color="blue">
+              <Table.Header>
+                <Table.Row>
+                  <Table.HeaderCell colSpan="4">
+                    <Icon name="paperclip" />
+                    AÇIKLAMA
+                  </Table.HeaderCell>
+                </Table.Row>
+              </Table.Header>
+              <Table.Body>
+                <Table.Row>
+                  <Table.Cell>{jobAdvert.description}</Table.Cell>
+                </Table.Row>
+              </Table.Body>
+            </Table>
+            <Table color="black">
+              <Table.Header>
+                <Table.Row>
+                  <Table.HeaderCell colSpan="4">
+                    <Icon name="time" />
+                    Son Başvuru Tarihi
+                  </Table.HeaderCell>
+                </Table.Row>
+              </Table.Header>
+              <Table.Body>
+                <Table.Row>
+                  <Table.Cell negative>{jobAdvert.deadline}</Table.Cell>
+                </Table.Row>
+              </Table.Body>
+            </Table>
+          </div>
+        ))}
+       
+      </div>
     );
-     
-}
+  }

@@ -1,20 +1,21 @@
 import React from 'react'
 import { Button, Card, Image} from 'semantic-ui-react'
-import EmployerService from "../../../services/employerService"
+import EmployerService from "../../../services/employer/employerService"
 import { useEffect, useState} from 'react'
 import { useParams } from "react-router";
+import { Link } from 'react-router-dom';
 
 
 export default function EmployerDetail() {
 
-  let { id } = useParams();
+  let { userId } = useParams();
   
   const [employer, setEmployer] = useState({});
 
   useEffect(()=>{
     let employerService = new EmployerService()
-    employerService.getEmployerId(id).then(result=>setEmployer(result.data.data))
-  },[id])
+    employerService.getEmployerId(userId).then(result=>setEmployer(result.data.data))
+  },[userId])
 
  
 
@@ -24,7 +25,7 @@ export default function EmployerDetail() {
             
     <Card fluid>
       <Card.Content >
-      <Image floated="right" size="medium" src="{image.url}"/>
+      <Image floated="right" size="medium" src="http://res.cloudinary.com/fufufu/image/upload/v1624321880/fotr8baxpemwa2kqfcxi.jpg"/>
         <Card.Header>{employer.companyName}</Card.Header>
         <Card.Meta>{employer.website}</Card.Meta>
         <Card.Description>
@@ -33,7 +34,7 @@ export default function EmployerDetail() {
       </Card.Content>
       <Card.Content extra>
         <div className='ui two buttons'>
-          <Button basic color='green'>
+          <Button as={Link} to='/jobadverts/:jobAdvertId' basic color='green'>
             İş İlanları
           </Button>
           <Button basic color='red'>

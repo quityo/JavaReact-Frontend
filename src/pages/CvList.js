@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function CityList() {
+export default function CvList() {
     return (
         <div>
             

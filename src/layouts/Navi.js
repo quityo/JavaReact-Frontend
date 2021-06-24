@@ -1,12 +1,12 @@
 import React, {useState} from "react";
-import { useHistory } from "react-router";
-import { Link } from "react-router-dom";
+import { NavLink,useHistory } from "react-router-dom";
 import { Container, Menu, Dropdown} from "semantic-ui-react";
 import SignedIn from "./SignedIn";
 import SignedOut from "./SignedOut";
 
 export default function Navi() {
-  const [isAuthenticated, setIsAuthenticated] = useState(true)
+  const [state, setState] = useState({})
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
 
   const history = useHistory()
   function handleSignOut(params) {
@@ -17,25 +17,58 @@ export default function Navi() {
   function handleSignIn(params) {
     setIsAuthenticated(true)
    }
+   
 
-  return (
-    <div>
+const font = {
+   fontFamily:"New Times Roman",
+   fontWeight:100,
+   fontSize:"1.1rem",
+   color:"white"
+
+
+
+}
+
+   const handleItemClick = (e, { name }) => setState({ activeItem: name })
+   const { activeItem } = state
+   return (
+
       <Menu inverted fixed="top">
         <Container>
         <Menu.Menu position="left"/>
-        <Menu.Item name="Spiral Sun" />
+        <Menu.Item>
+        <h1 style={font} >Spiral Sun</h1>
+
+        </Menu.Item> 
+        <Menu.Item as={NavLink} to="/jobadverts">
+            İş İlanları
+          </Menu.Item>
+          <Menu.Item as={NavLink} to="/confirmjobadvert">
+            Bildirimler
+          </Menu.Item>
+        <Menu.Item active={activeItem === "jobadvert/add"} onClick={handleItemClick} as={NavLink} to="/jobadverts/add" name="İlan Ver" />
        
         <Menu.Menu position="right">
-          <Menu.Item as={Link} to="/" name="Home" />
-          <Menu.Item name="News" />
-          <Menu.Item name="Contacts" />          
+          <Menu.Item active={activeItem === "/"} onClick={handleItemClick} as={NavLink} to="/" name="Home" />
+          {/* <Menu.Item active={activeItem === "CvList"} onClick={handleItemClick} as={NavLink} to="/cvList">
+                <h1 style={font} >Cv Listesi</h1>
+            </Menu.Item> */}
+          
+            <Menu.Item style={{ marginRight: 20 }} active={activeItem === "confirmjobadvert"} onClick={handleItemClick} as={NavLink} to="/confirmjobadvert">
+                    
+                    <h1 style={font}>İlan Onayı</h1>
+                    </Menu.Item>       
 
           
-             <Dropdown item text="Language">
+             <Dropdown item style={font} text="İş Veren">
               <Dropdown.Menu>
-                <Dropdown.Item>Turkish</Dropdown.Item>
-                <Dropdown.Item>French</Dropdown.Item>
-                <Dropdown.Item>Spanish</Dropdown.Item>
+                <Dropdown.Item as={NavLink} to="/loginemployer">
+                  Giriş
+                </Dropdown.Item>
+                <Dropdown.Item as={NavLink} to="/registeremployer">
+                  Kayıt
+                  </Dropdown.Item>
+                <Dropdown.Item>Sizi Arayalım</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown> 
             {isAuthenticated?<SignedIn signOut={handleSignOut} biseu="1" />
@@ -45,6 +78,6 @@ export default function Navi() {
           </Menu.Menu>
         </Container>
       </Menu>
-    </div>
+    
   );
 }

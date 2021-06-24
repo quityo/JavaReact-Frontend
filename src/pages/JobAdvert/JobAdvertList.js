@@ -1,52 +1,46 @@
-import React, { useState, useEffect } from "react";
-import { Table, Button, Header, Icon } from "semantic-ui-react";
+import React, { useEffect, useState } from 'react'
+import { Card, Header} from 'semantic-ui-react';
 import JobAdvertService from "../../services/jobAdvertService";
+import {NavLink} from "react-router-dom"
 
 export default function JobAdvertList() {
-  const [adverts, setAdverts] = useState([]);
+  const [jobAdverts, setJobAdverts] = useState([]);
 
-  useEffect(() => {
-    let jobAdvertService = new JobAdvertService();
-    jobAdvertService
-      .getJobAdverts()
-      .then((result) => setAdverts(result.data.data));
-  }, []);
+useEffect(() => {
+  let jobAdvertService = new JobAdvertService();
+  jobAdvertService
+    .getByConfirmAndActiveTrue()
+    .then((result) => setJobAdverts(result.data.data));
+}, []);
 
-  return (
-    <div>
-      <Header as="h2" textAlign='center'>
-        <Icon name="angellist" color='brown'/>
-        Job Advert List
-      </Header>
-      <Table color="blue" key="blue">
-        <Table.Header>
-          <Table.Row textAlign='center'>
-            <Table.HeaderCell>Job Title</Table.HeaderCell>
-            <Table.HeaderCell>Company Name</Table.HeaderCell>
-            <Table.HeaderCell>City</Table.HeaderCell>
-            <Table.HeaderCell>Open Position Count</Table.HeaderCell>
-            <Table.HeaderCell>Deadline</Table.HeaderCell>
-            <Table.HeaderCell>Is Open</Table.HeaderCell>
-            <Table.HeaderCell>Detail</Table.HeaderCell>
-          </Table.Row>
-        </Table.Header>
-
-        <Table.Body>
-          {adverts.map((advert) => (
-            <Table.Row textAlign='center' key={advert.id}>
-              <Table.Cell>{advert.jobPosition.jobTitle}</Table.Cell>
-              <Table.Cell>{advert.employer.companyName}</Table.Cell>
-              <Table.Cell>{advert.city.name}</Table.Cell>
-              <Table.Cell>{advert.openPositionCount}</Table.Cell>
-              <Table.Cell>{advert.deadline}</Table.Cell>
-              <Table.Cell>{advert.open.toString()}</Table.Cell>
-              <Table.Cell>
-                <Button>View</Button>
-              </Table.Cell>
-            </Table.Row>
-          ))}
-        </Table.Body>
-      </Table>
-    </div>
-  );
+return (
+  <div>
+    <Header className="app" as="h2" icon textAlign="center">
+      <Header.Content>
+        İş İlanları
+      </Header.Content>
+    </Header>
+    <Card.Group>
+      {jobAdverts.map((jobAdvert) => (
+        <Card
+          color="yellow"
+          fluid
+          as={NavLink}
+          to={`/jobadverts/${jobAdvert.jobAdvertId}`}
+        >
+          <Card.Content>
+         
+            <Card.Header>{jobAdvert.jobPosition.jobTitle}</Card.Header>
+            <Card.Meta>{jobAdvert.employerCompanyName}</Card.Meta>
+            <Card.Meta>{jobAdvert.workType.type}</Card.Meta>
+            <Card.Description>
+              
+              {jobAdvert.city.name}
+            </Card.Description>
+          </Card.Content>
+        </Card>
+      ))}
+    </Card.Group>
+  </div>
+);
 }

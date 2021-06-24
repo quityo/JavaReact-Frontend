@@ -8,8 +8,7 @@ export default function SideBar() {
 
          <List link aling= "right" size='big'>
           <List.Item as={Link} to="/jobseekers" 
-            name="hand spock"
-          >
+            name="hand spock"          >
              <Icon name="hand spock" />
             Job-Seeker
           </List.Item>
@@ -18,39 +17,53 @@ export default function SideBar() {
   
           <List.Item 
             as={Link} to="/employers" 
-            name="earlybirds"
-          >
+            name="earlybirds"          >
             <Icon name="earlybirds" />
           Employer
           </List.Item>
+
           <Divider />
+
           <List.Item as={Link} to="/jobpositions" 
             name="paw"
           >
             <Icon name="paw" />
             J.Position
           </List.Item>
+
           <Divider />
+
           <List.Item as={Link} to="/jobadverts" 
-            name="angellist"
-          >
+            name="angellist"          >
             <Icon name="angellist" />
             Job Advert
           </List.Item>
+
           <Divider />
+
           <List.Item as={Link} to="/employees" 
-            name="sticker mule"
-          >
+            name="sticker mule"          >
             <Icon name="sticker mule" />
             Employee
           </List.Item>
+
           <Divider />
-          <List.Item as={Link} to="/employerRegister" 
-            name="paw"
-          >
+
+          <List.Item as={Link} to="/users" 
+            name="paw"          >
             <Icon name="paw" />
-            J.Position
+            Users
           </List.Item>
+
+
+          <Divider />
+
+          <List.Item as={Link} to="/jobAdvertConfirm" 
+            name="paw"          >
+            <Icon name="paw" />
+            Confirm
+          </List.Item>
+
         </List>
         </Container>
       </div>

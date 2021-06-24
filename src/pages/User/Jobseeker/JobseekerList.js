@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Table, Header, Icon, Button } from "semantic-ui-react";
-import JobseekerService from "../../../services/jobseekerService";
+import JobseekerService from "../../../services/jobseeker/jobseekerService";
 
 export default function JobseekerList() {
   const [jobseekers, setJobseekers] = useState([]);
   useEffect(() => {
     let jobseekerService = new JobseekerService();
     jobseekerService
-      .getByAsc()
+      .getJobseekers()
       .then((result) => setJobseekers(result.data.data));
   }, []);
 

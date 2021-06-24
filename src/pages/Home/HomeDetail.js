@@ -1,15 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import { Icon, List, Container,Divider } from 'semantic-ui-react';
+import { Icon, List, Container,Divider,Button } from 'semantic-ui-react';
 import './HomeDetail.css';
 export default function HomeDetail() {
     return (
-        <div class="home">
+        <div className="home">
            <Container>
             <List link horizontal size='big'>
             <List.Item as={Link} to="/jobpositions" 
             name="paw"
           >
+
             <Icon name="paw" />
             J.Position
           </List.Item>
@@ -26,12 +27,27 @@ export default function HomeDetail() {
             <Icon name="earlybirds" />
           Employer
           </List.Item>
+          <List.Item as={Link} to="/jobseekers" 
+            name="hand spock" >
+              <Icon name="hand spock" />
+          Jobseekers
+          </List.Item>
+          <List.Item as={Link} to="/employees" 
+            name="sticker mule" >
+              <Icon name="sticker mule" />
+          Employees
+          </List.Item>
+          <List.Item as={Link} to="/users" 
+            name="paw" >
+              <Icon name="paw" />
+          Users
+          </List.Item>
           </List>
           </Container>
           <Container>
             <Divider/>
             
-            <h1>Spiral Sun</h1>
+            <h1>Funky Sun</h1>
             <p1><i>Human Resource Management</i></p1>
             <Divider/>
             <p2><i>Wellcome The Chosen One!</i></p2>
@@ -42,9 +58,13 @@ export default function HomeDetail() {
             <p>For Emoloyers! They can easily identify their teammates, advertise them and communicate one-on-one without any intermediaries.</p>
             <p>To start your career, continue and achieve your goals, you can search by the city you want to live in. If you wish, you can see all the jobs that have been advertised and you can reach the details of the advertisements that you think are suitable for you.</p>
             <Divider/>
+            
+            
+            <Button fluid  size='huge' color='green'>
             <p2>We wish you a happy trip</p2>
-            <Divider/>
-            </Container>
+          <Icon name='right arrow' />
+        </Button>
+       </Container>
 
            
         </div>

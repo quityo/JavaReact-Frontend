@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { NavLink } from "react-router-dom";
 import {
   Button,
@@ -10,6 +10,9 @@ import {
 } from "semantic-ui-react";
 
 export default function LoginEmployer() {
+  const [state, setState] = useState({})
+  const handleItemClick = (e, { name }) => setState({ activeItem: name })
+   const { activeItem } = state
     return (
         <div>
         <Grid textAlign="center" verticalAlign="middle">
@@ -37,7 +40,8 @@ export default function LoginEmployer() {
             placeholder="Şifre"
             type="password"
           />
-          <Button primary fluid size="large">
+          <Button active={activeItem === "homedetail"} onClick={handleItemClick} as={NavLink} to="/" name="Giriş" primary fluid size="large" >
+          
             İŞVEREN GİRİŞİ YAP
           </Button>
         </Segment>

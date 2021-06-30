@@ -19,7 +19,7 @@ export default function WorkType() {
             </div>
                 {
                     workType.map(workType => (
-                        <Checkbox style={{marginTop:10}} key={workType.id} label={workType.type}  value={workType.type} />
+                        <Checkbox style={{marginTop:10}} key={workType.workTypeId} label={workType.type}  value={workType.type} />
                     ))
                 }
             </Item.Group>

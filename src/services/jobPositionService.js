@@ -5,6 +5,6 @@ export default class JobPositionService{
         return axios.get("http://localhost:8080/api/jobpositions/getall")
     }
     getByAsc(){
-        return axios.get("http://localhost:8080/api/jobpositions/getAllAsc")
+        return axios.get("http://localhost:8080/api/jobpositions/getallasc")
     }
 }

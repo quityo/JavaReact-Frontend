@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { NavLink } from "react-router-dom";
 import {
   Button,
@@ -8,7 +8,16 @@ import {
   Message,
   Segment,
 } from "semantic-ui-react";
+import EmployerService from '../../services/employer/employerService';
+
 export default function RegisterEmployer() {
+  const [employer, setEmployer] = useState([])
+
+  useEffect(() => {
+    let employerService = new EmployerService();
+    
+    employerService.getEmployersAdd().then(result => setEmployer(result.data.data))
+  }, [])
     return (
             <div>
               <Grid
@@ -86,4 +95,4 @@ export default function RegisterEmployer() {
               </Grid>
             </div>
           );
-        }
+    }

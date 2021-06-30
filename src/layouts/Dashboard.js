@@ -1,35 +1,64 @@
 import React from "react";
-import { Grid,Divider } from "semantic-ui-react";
-import Cities from "./Filter/Cities";
+import { Link} from 'react-router-dom';
+import { Grid,Divider, Icon, List, Container} from "semantic-ui-react";
+import Filter from "./Filter";
 import Footer from "./Footer";
-import JobPositions from "./Filter/JobPositions";
 import Section from "./Section";
-import SideBar from "./SideBar";
-import WorkTypes from "./Filter/WorkTypes";
-import WorkTimes from "./Filter/WorkTimes";
 
 export default function Dashboard() {
   return (
     <div>
       <Grid>
         <Grid.Row>
-          <Grid.Column width={2}>
-            <SideBar/>
+          <Grid.Column width={3}>
+            <Filter/>
           </Grid.Column>
-          <Grid.Column  width={11}>
+          <Grid.Column  width={12}>
             <Section/>
           </Grid.Column>
-          <Grid.Column  width={3}>
-           <Cities/>
-           <Divider />
-           <JobPositions/>
-           <Divider />
-           <WorkTypes/>
-           <Divider />
-           <WorkTimes/>
-           <Divider />
-                </Grid.Column>
+          
         </Grid.Row>
+        <Divider />
+        <Container>
+            <List link horizontal size='big'>
+            <List.Item as={Link} to="/jobpositions" 
+            name="paw"
+          >
+
+            <Icon name="paw" />
+            J.Position
+          </List.Item>
+          <List.Item as={Link} to="/jobadverts" 
+            name="angellist"
+          >
+            <Icon name="angellist" />
+            Job Advert
+          </List.Item>
+          <List.Item 
+            as={Link} to="/employers" 
+            name="earlybirds"
+          >
+            <Icon name="earlybirds" />
+          Employer
+          </List.Item>
+          <List.Item as={Link} to="/jobseekers" 
+            name="hand spock" >
+              <Icon name="hand spock" />
+          Jobseekers
+          </List.Item>
+          <List.Item as={Link} to="/employees" 
+            name="sticker mule" >
+              <Icon name="sticker mule" />
+          Employees
+          </List.Item>
+          <List.Item as={Link} to="/users" 
+            name="paw" >
+              <Icon name="paw" />
+          Users
+          </List.Item>
+          </List>
+          <Divider />
+          </Container>
         <Grid.Column fluid width={16}>
         <Footer/>
         </Grid.Column>

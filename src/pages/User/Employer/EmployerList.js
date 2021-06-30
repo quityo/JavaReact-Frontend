@@ -25,8 +25,6 @@ export default function EmployerList() {
           <Table.Row textAlign='center'>
             <Table.HeaderCell>Company Name</Table.HeaderCell>
             <Table.HeaderCell>Website</Table.HeaderCell>
-            <Table.HeaderCell>Email</Table.HeaderCell>
-            <Table.HeaderCell>Phone Number</Table.HeaderCell>
             <Table.HeaderCell>Detail</Table.HeaderCell>
             <Table.HeaderCell>Confirmation</Table.HeaderCell>
           </Table.Row>
@@ -35,13 +33,12 @@ export default function EmployerList() {
         <Table.Body >
           {employers.map((employer) => (
             <Table.Row textAlign='center' key = {employer.userId}>
-              <Table.Cell><Link to={`/employers/${employer.userId}`}>{employer.companyName}</Link></Table.Cell>
+              <Table.Cell>{employer.companyName}</Table.Cell>
               <Table.Cell>{employer.website}</Table.Cell>
-              <Table.Cell>{employer.email}</Table.Cell>
-              <Table.Cell>{employer.phoneNumber}</Table.Cell>
+              
               
               <Table.Cell>
-                <Button>View</Button>
+              <Button fluid  size='small' color='green'as={Link} to={`/employers/${employer.userId}`}>View</Button>
               </Table.Cell>
               <Table.Cell>{employer.registrationVerification===true?"Yes":"No"}</Table.Cell>
             </Table.Row>

@@ -15,8 +15,8 @@ getByJobAdvertIdAndConfirmFalse(jobAdvertId){
     return axios.get("http://localhost:8080/api/jobadverts/getbyisconfirmandjobadvertid?isConfirm=false&jobAdvertId="+jobAdvertId)
 }
 
-getByJobAdvertId(jobAdvertId){
-    return axios.get("http://localhost:8080/api/jobadverts/getbyid?jobAdvertId="+jobAdvertId)
+getById(jobAdvertId){
+    return axios.get("http://localhost:8080/api/jobadverts/getbyid?id="+jobAdvertId)
 }
 
 add(values){
@@ -25,5 +25,9 @@ add(values){
 
 confirm(jobAdvertId){
     return axios.post("http://localhost:8080/api/jobadverts/updateisconfirm?isConfirm=true&jobAdvertId="+jobAdvertId)
+}
+
+getAll(){
+    return axios.get("http://localhost:8080/api/jobadverts/getall")
 }
 }

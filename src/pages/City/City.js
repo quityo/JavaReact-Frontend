@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import CityService from "../services/cityService"
+import CityService from "../../services/cityService"
 import { Select } from 'evergreen-ui'
 export default function City() {
     const [city, setCities] = useState([])

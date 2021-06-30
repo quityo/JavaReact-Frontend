@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function CvList() {
+export default function EmployeeUpdate() {
     return (
         <div>
             

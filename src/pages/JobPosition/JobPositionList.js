@@ -3,16 +3,18 @@ import JobPositionService from "../../services/jobPositionService";
 import { Table, Header, Icon } from "semantic-ui-react";
 
 export default function JobPositionList() {
-    const [positions, setPositions] = useState([]);
+    const [jobPositions, setJobPositions] = useState([]);
     useEffect(() => {
       let jobPositionService = new JobPositionService();
       jobPositionService
-        .getJobPositions()
-        .then((result) => setPositions(result.data.data));
+        .getByAsc()
+        .then((result) => setJobPositions(result.data.data));
     }, []);
   
     return (
+      
       <div>
+        
         <Header as="h2" textAlign='center' >
           <Icon name="paw" color='orange'/>
           Job Position List
@@ -26,8 +28,8 @@ export default function JobPositionList() {
           </Table.Header>
   
           <Table.Body>
-          {positions.map((position) => (
-            <Table.Row textAlign='center' key={position.id}>
+          {jobPositions.map((position) => (
+            <Table.Row textAlign='center' key={position.jobPositionId}>
               <Table.Cell>{position.jobTitle}</Table.Cell>
             </Table.Row>
           ))}

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { Card, Header} from 'semantic-ui-react';
-import JobAdvertService from "../../services/jobAdvertService";
-import {NavLink} from "react-router-dom"
+import { Card, Header,Divider} from 'semantic-ui-react';
+import JobAdvertService from "../../services/jobAdvertService"
+import {NavLink,Link} from "react-router-dom"
 
 export default function JobAdvertList() {
   const [jobAdverts, setJobAdverts] = useState([]);
@@ -23,7 +23,7 @@ return (
     <Card.Group>
       {jobAdverts.map((jobAdvert) => (
         <Card
-          color="yellow"
+          color="violet"
           fluid
           as={NavLink}
           to={`/jobadverts/${jobAdvert.jobAdvertId}`}
@@ -31,8 +31,13 @@ return (
           <Card.Content>
          
             <Card.Header>{jobAdvert.jobPosition.jobTitle}</Card.Header>
-            <Card.Meta>{jobAdvert.employerCompanyName}</Card.Meta>
+            <hr></hr>
             <Card.Meta>{jobAdvert.workType.type}</Card.Meta>
+            <Divider/>
+            <Card.Meta><Link color='green' to={`/employers/${jobAdvert.employer?.userId}`}>{jobAdvert.employer?.companyName}</Link></Card.Meta>
+            
+            
+            <Divider/>
             <Card.Description>
               
               {jobAdvert.city.name}

@@ -28,13 +28,15 @@ export default function EmployerDetail() {
       <Image floated="right" size="medium" src="http://res.cloudinary.com/fufufu/image/upload/v1624321880/fotr8baxpemwa2kqfcxi.jpg"/>
         <Card.Header>{employer.companyName}</Card.Header>
         <Card.Meta>{employer.website}</Card.Meta>
+        <Card.Meta>{employer.email}</Card.Meta>
+        <Card.Meta>{employer.phoneNumber}</Card.Meta>
         <Card.Description>
           <strong>"{employer.companyName}" </strong>  is a unified team of performance marketing, design, and video production experts that delivers customized digital experiences and strategies.
         </Card.Description>
       </Card.Content>
       <Card.Content extra>
         <div className='ui two buttons'>
-          <Button as={Link} to='/jobadverts/:jobAdvertId' basic color='green'>
+          <Button as={Link} to='/jobadverts' basic color='green'>
             İş İlanları
           </Button>
           <Button basic color='red'>

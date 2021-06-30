@@ -39,7 +39,7 @@ export default function JobAdvertAdd() {
       let employerService = new EmployerService();
       employerService.getEmployers().then(result => setEmployer(result.data.data))
       let cityService = new CityService();
-      cityService. getCities().then(result => setCity(result.data.data))
+      cityService.getCities().then(result => setCity(result.data.data))
       let jobPositionService = new JobPositionService();
       jobPositionService.getJobPositions().then(result => setPosition(result.data.data))
       let workTypeService = new WorkTypeService();
@@ -47,6 +47,8 @@ export default function JobAdvertAdd() {
       let workTimeService = new WorkTimeService();
       workTimeService.getWorkTimes().then(result => setWorkTimes(result.data.data))
   }, [])
+
+  
   return (
       <Container>
           <Formik
@@ -70,7 +72,7 @@ export default function JobAdvertAdd() {
                   let jobAdvertService = new JobAdvertService();
                   jobAdvertService.add(values).then();
                   console.log(values);
-                  swal("Ekleme Başarılı!", `${values.cityId}`, "success");
+                  swal("Ekleme Başarılı!", `${values.companyName}`, "success");
 
 
               }}
@@ -81,6 +83,34 @@ export default function JobAdvertAdd() {
                           <Grid.Row>
                               <Grid.Column stretched>
                                   <Segment basic>
+                                   <Form.Field>
+                                          <Select
+                                              name="companyName"
+                                              onChange={handleChange}
+                                              value={values.companyName || ''}
+                                              onBlur={handleBlur}
+                                              touched={values.companyName}
+
+                                              style={{ display: 'block' }}
+                                          >
+                                              <option placeholder="Şirket Seçiniz" defaultValue>Şirket Seçiniz</option>
+                                              {
+
+                                                  employer.map(e => (
+                                                      <option key={e.employerId} value={e.employerId}   >
+                                                          {e.companyName}
+                                                      </option>
+
+                                                  ))
+                                              }
+                                               </Select>
+                                          {
+                                              errors.employerId &&
+                                              <Label basic color='red' pointing >
+                                                  {errors.employerId}
+                                              </Label>
+                                          }
+                                      </Form.Field>
                                       <Form.Field>
                                           <TextArea rows={2} type="text"
                                               name="description"
@@ -169,35 +199,7 @@ export default function JobAdvertAdd() {
                               </Grid.Column>
                               <Grid.Column>
                                   <Segment basic>
-                                  <Form.Field>
-                                          <Select
-                                              name="companyName"
-                                              onChange={handleChange}
-                                              value={values.companyName || ''}
-                                              onBlur={handleBlur}
-                                              touched={values.companyName}
-
-                                              style={{ display: 'block' }}
-                                          >
-                                              <option placeholder="Şirket Seçiniz" defaultValue>Şirket Seçiniz</option>
-                                              {
-
-                                                  employer.map(e => (
-                                                      <option key={e.employerId} value={e.employerId}   >
-                                                          {e.companyName}
-                                                      </option>
-
-                                                  ))
-                                              }
-                                               </Select>
-                                          {
-                                              errors.employerId &&
-                                              <Label basic color='red' pointing >
-                                                  {errors.employerId}
-                                              </Label>
-                                          }
-                                      </Form.Field>
-                                     
+                                  
                                       <Form.Field>
                                           <Select
                                               name="cityId"

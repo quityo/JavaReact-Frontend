@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Table, Header, Icon, Button } from "semantic-ui-react";
 import EmployeeService from "../../../services/employeeService";
-
+import { Link } from "react-router-dom";
 export default function EmployeeList() {
   const [employees, setEmployees] = useState([]);
 
@@ -24,18 +24,25 @@ export default function EmployeeList() {
             <Table.HeaderCell>First Name</Table.HeaderCell>
             <Table.HeaderCell>Last Name</Table.HeaderCell>
             <Table.HeaderCell>Email</Table.HeaderCell>
-            <Table.HeaderCell>Detail</Table.HeaderCell>
+            <Table.HeaderCell/>
           </Table.Row>
         </Table.Header>
 
         <Table.Body>
           {employees.map((employee) => (
-            <Table.Row textAlign='center' key={employee.id}>
+            <Table.Row textAlign='center' key={employee.employeeId}>
               <Table.Cell>{employee.firstName}</Table.Cell>
               <Table.Cell>{employee.lastName}</Table.Cell>
               <Table.Cell>{employee.email}</Table.Cell>
               <Table.Cell>
-                <Button>View</Button>
+              <Button
+              color={"green"}
+                  animated="fade"
+                  as={Link}
+                  to={`/employeeUpdate/${employee.employeeId}`}
+                >
+                  <Button.Content visible>Güncelle</Button.Content>
+                  </Button>
               </Table.Cell>
             </Table.Row>
           ))}

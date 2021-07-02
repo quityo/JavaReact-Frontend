@@ -20,7 +20,7 @@ export default function JobPositionDetail() {
             </div>
                 {
                     position.map(position => (
-                        <Checkbox style={{marginTop:10}} key={position.id} label={position.jobTitle}  value={position.jobTitle} />
+                        <Checkbox style={{marginTop:10}} key={position.jobPositionId} label={position.jobTitle}  value={position.jobTitle} />
                     ))
                 }
 

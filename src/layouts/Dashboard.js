@@ -11,9 +11,8 @@ export default function Dashboard() {
       <Grid>
         <Grid.Row>
           <Grid.Column width={3}>
-            <Filter/>
           </Grid.Column>
-          <Grid.Column  width={12}>
+          <Grid.Column  width={10}>
             <Section/>
           </Grid.Column>
           

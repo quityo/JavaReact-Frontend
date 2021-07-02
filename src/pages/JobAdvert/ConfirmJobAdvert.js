@@ -27,9 +27,9 @@ return(
         <Card fluid key={j.jobAdvertId} >
       
 
-<Card.Content >
-<Image floated="right" size="medium" src=""/>
+<Card.Content style={{backgroundColor:"#F2F4F4"}}>
   <Card.Header>{j.jobPosition.jobTitle}</Card.Header>
+  <Image floated="left" size="tiny" circular src={j.employer?.image?.imageUrl}></Image>
   <Card.Meta>{j.employer?.companyName}</Card.Meta>
   <Card.Meta>{j.city?.name}</Card.Meta>
   <Card.Meta>{j.description}</Card.Meta>

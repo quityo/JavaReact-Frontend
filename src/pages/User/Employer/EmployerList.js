@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Table, Header, Icon, Button } from "semantic-ui-react";
+import { Table, Header, Icon, Button, Image } from "semantic-ui-react";
 import EmployerService from "../../../services/employer/employerService";
 
 export default function EmployerList() {
@@ -23,6 +23,7 @@ export default function EmployerList() {
       <Table color="blue" key="blue">
         <Table.Header >
           <Table.Row textAlign='center'>
+          <Table.HeaderCell></Table.HeaderCell>
             <Table.HeaderCell>Company Name</Table.HeaderCell>
             <Table.HeaderCell>Website</Table.HeaderCell>
             <Table.HeaderCell>Detail</Table.HeaderCell>
@@ -33,6 +34,7 @@ export default function EmployerList() {
         <Table.Body >
           {employers.map((employer) => (
             <Table.Row textAlign='center' key = {employer.userId}>
+              <Table.Cell><Image floated="left" size="tiny" src={employer.image?.imageUrl}></Image></Table.Cell>
               <Table.Cell>{employer.companyName}</Table.Cell>
               <Table.Cell>{employer.website}</Table.Cell>
               

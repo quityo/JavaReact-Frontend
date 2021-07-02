@@ -20,7 +20,7 @@ export default function JobAdvertAdd() {
       openPositionCount: Yup.number().min(1, 'En az 1 olabilir').max(10, 'En fazla 10 olabilir').required('Zorunlu Alan'),
       salaryMax: Yup.number().min(1, 'En az 1 olabilir').max(100000, 'En fazla 100000 olabilir'),
       salaryMin: Yup.number().min(1, 'En az 1 olabilir').max(100000, 'En fazla 100000 olabilir'),
-      companyName: Yup.string().required('Zorunlu Alan').nullable(),
+    
       cityId: Yup.string().required("Zorunlu Alan").nullable(),
       deadline: Yup.date().required("Zorunlu Alan").nullable(),
       jobPositionId: Yup.string().required("Zorunlu Alan").nullable(),
@@ -62,17 +62,18 @@ export default function JobAdvertAdd() {
                   jobPositionId: "",
                   workTypeId: "",
                   workTimeId: "",
-                  companyName: ""
+              
 
               }}
 
 
               validationSchema={validationSchema}
               onSubmit={async (values, { setSubmitting, setErrors, setFieldError, setStatus, resetForm }) => {
+                  values.employerId=1
                   let jobAdvertService = new JobAdvertService();
                   jobAdvertService.add(values).then();
                   console.log(values);
-                  swal("Ekleme Başarılı!", `${values.companyName}`, "success");
+                  swal("Ekleme Başarılı!", `${values.cityId}`, "success");
 
 
               }}
@@ -83,34 +84,7 @@ export default function JobAdvertAdd() {
                           <Grid.Row>
                               <Grid.Column stretched>
                                   <Segment basic>
-                                   <Form.Field>
-                                          <Select
-                                              name="companyName"
-                                              onChange={handleChange}
-                                              value={values.companyName || ''}
-                                              onBlur={handleBlur}
-                                              touched={values.companyName}
-
-                                              style={{ display: 'block' }}
-                                          >
-                                              <option placeholder="Şirket Seçiniz" defaultValue>Şirket Seçiniz</option>
-                                              {
-
-                                                  employer.map(e => (
-                                                      <option key={e.employerId} value={e.employerId}   >
-                                                          {e.companyName}
-                                                      </option>
-
-                                                  ))
-                                              }
-                                               </Select>
-                                          {
-                                              errors.employerId &&
-                                              <Label basic color='red' pointing >
-                                                  {errors.employerId}
-                                              </Label>
-                                          }
-                                      </Form.Field>
+                                   
                                       <Form.Field>
                                           <TextArea rows={2} type="text"
                                               name="description"

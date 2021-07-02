@@ -38,7 +38,7 @@ const font = {
         <Container>
         <Menu.Menu position="center"/>
         <Menu.Item>
-        <h1 style={font} >Spiral Sun</h1>
+        <h1 style={font} >Funky Sun</h1>
 
         </Menu.Item> 
         <Menu.Item as={NavLink} to="/jobadverts">İş İlanları</Menu.Item>

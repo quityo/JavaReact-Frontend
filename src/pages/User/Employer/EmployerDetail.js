@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Card, Image} from 'semantic-ui-react'
+import { Button, Card, Image, Header,} from 'semantic-ui-react'
 import EmployerService from "../../../services/employer/employerService"
 import { useEffect, useState} from 'react'
 import { useParams } from "react-router";
@@ -21,27 +21,33 @@ export default function EmployerDetail() {
 
   return(
         <div>
+           <Header as="h2" textAlign='center'>
+        Employer Detail
+      </Header>
+      <br />
             <Card.Group>
             
-    <Card fluid>
-      <Card.Content >
-      <Image floated="right" size="medium" src="http://res.cloudinary.com/fufufu/image/upload/v1624321880/fotr8baxpemwa2kqfcxi.jpg"/>
-        <Card.Header>{employer.companyName}</Card.Header>
+    <Card fluid >
+      <Card.Content style={{backgroundColor:"#F2F4F4"}} >
+      
+      <Image size="tiny" src={employer.image?.imageUrl}></Image>
+      
+        <Card.Header><br/>{employer.companyName}</Card.Header>
+        <br />
         <Card.Meta>{employer.website}</Card.Meta>
-        <Card.Meta>{employer.email}</Card.Meta>
-        <Card.Meta>{employer.phoneNumber}</Card.Meta>
+        
         <Card.Description>
-          <strong>"{employer.companyName}" </strong>  is a unified team of performance marketing, design, and video production experts that delivers customized digital experiences and strategies.
+          <strong>"{employer.companyName}" </strong>  is a unified team of performance marketing, design, and video production<br /> experts that delivers customized digital experiences and strategies.
         </Card.Description>
+        <br />
+        <Card.Meta>E-mail:  {employer.email} <br /> Tel:  {employer.phoneNumber} </Card.Meta>
       </Card.Content>
       <Card.Content extra>
         <div className='ui two buttons'>
-          <Button as={Link} to='/jobadverts' basic color='green'>
+          <Button as={Link} to={`/employers/${employer.jobAdvert?.jobAdvertId}`} basic color='green'>
             İş İlanları
           </Button>
-          <Button basic color='red'>
-            Şirket Bilgileri
-          </Button>
+          
         </div>
       </Card.Content>
     </Card>

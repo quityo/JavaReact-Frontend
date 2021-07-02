@@ -1,0 +1,20 @@
+.card h1{
+    font-size: 50px;
+    font-family: Star Jedi;
+     }
+    .card p1{
+       font-size: 18px;
+    }
+    .card p{
+ 
+      text-indent: 30px;
+      text-align: justify;
+      
+      font-size: 23px;
+    }
+ 
+    .card {
+        margin: 0 0 0 26%;
+  align-items: center;
+  width:60%;
+      }

@@ -43,7 +43,7 @@ import {  Container, Grid, Header, List,Segment,} from 'semantic-ui-react'
             </Grid.Column>
             
             
-            <Grid.Column  inverted as='h4' width={9}>
+            <Grid.Column  inverted as='h4' width={10}>
             <div  className="col">
               <p style={{fontSize: 14, textAlign:'left', flex:1}}>
               <b><u>"funkysun.com"</u></b>   HRMS - Project şahsıma ait bir iş ve eleman bulma sitesidir.<br/>

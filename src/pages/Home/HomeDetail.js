@@ -8,10 +8,6 @@ export default function HomeDetail() {
         <div className="home">
            
           <Container>
-            
-            <h1>Funky Sun</h1>
-            <p1><i>Human Resource Management</i></p1>
-            <Divider/>
             <p>Human resource managers are the overseers of the H.R. department and insurers of the functions and tasks being carried out by the H.R. team.</p>
             <p>They are often seen as the link between an organization’s management and its employees, as their work runs the gamut from providing consultation on strategic planning with top executives to recruiting, interviewing, and hiring new staff.</p>
             <p>Serving to bring together employerd and job seekers, our company is an easy-to-use and goal-oriented website to help you find the job you're looking for and not waste more time advancing your career.</p>

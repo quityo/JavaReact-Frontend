@@ -1,13 +1,13 @@
 import React from "react";
 import { Link} from 'react-router-dom';
 import { Grid,Divider, Icon, List, Container} from "semantic-ui-react";
-import Filter from "./Filter";
 import Footer from "./Footer";
 import Section from "./Section";
-
+import { ToastContainer } from "react-toastify";
 export default function Dashboard() {
   return (
     <div>
+      <ToastContainer position="bottom-right" />
       <Grid>
         <Grid.Row>
           <Grid.Column width={3}>

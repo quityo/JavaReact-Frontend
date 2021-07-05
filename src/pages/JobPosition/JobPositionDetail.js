@@ -1,34 +1,43 @@
 import React, { useEffect, useState } from 'react'
-import { Checkbox,Item } from 'semantic-ui-react'
-import { SearchInput } from 'evergreen-ui';
 import JobPositionService from '../../services/jobPositionService';
+import {  Card, Header,} from 'semantic-ui-react'
 
+import { useParams } from "react-router";
 export default function JobPositionDetail() {
+
+    let { jobPositionId } = useParams();
     const [position, setPosition] = useState([])
 
     useEffect(() => { 
         let jobPositionService = new JobPositionService();
-        jobPositionService.getJobPositions().then(result => setPosition(result.data.data))
-    }, [])
+        jobPositionService.getById(jobPositionId).then(result => setPosition(result.data.data))
+    }, [jobPositionId])
 
     return (
-          <div style={{position:"relative", overflowX:"hidden",overflowY:"auto",maxWidth:"250px", alignContent: "center", justifyContent: "center", marginTop: 10,fontFamily:"Poppins",fontWeight:"500",fontSize:"2",maxHeight:"200px"}}>
+        <div>
+        <Header as="h2" textAlign='center'>
+     Job Position Details
+   </Header>
+   <br />
+   <Card.Group>
+            
+            <Card fluid>
+            <Card.Content style={{backgroundColor:"#F2F4F4"}} >
+   
+     <Card.Header><br/>{position.jobTitle}</Card.Header>
+     <br />
+     
+     
+     <Card.Description>
+       <strong>{position.jobDescription} </strong> </Card.Description>
+     <br />
+     
+   </Card.Content>
+   
+ </Card>
+  
+</Card.Group>
+     </div>
+ );
 
-            <Item.Group >
-                <div style={{display:"flex",alignItems:"center",alignContent:"center",marginTop:10,marginBottom:10,maxWidth:"250px"}}>
-            <SearchInput  placeholder="Pozisyon Ara..." />
-            </div>
-                {
-                    position.map(position => (
-                        <Checkbox style={{marginTop:10}} key={position.jobPositionId} label={position.jobTitle}  value={position.jobTitle} />
-                    ))
-                }
-
-
-
-
-            </Item.Group>
-
-        </div>
-    )
-} 
+}

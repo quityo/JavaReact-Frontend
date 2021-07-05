@@ -1,21 +1,23 @@
 import React, {useState} from "react";
 import { NavLink,useHistory } from "react-router-dom";
-import { Container, Input,Button,Menu, Dropdown} from "semantic-ui-react";
+import { Container, Menu, Dropdown, Image} from "semantic-ui-react";
 import SignedIn from "./SignedIn";
 import SignedOut from "./SignedOut";
-import City from "../pages/City/City"
+import FavSummary from "./FavSummary";
+import { useSelector } from "react-redux";
 
 export default function Navi() {
+  const {favItems} = useSelector(state => state.favSummary)
   const [state, setState] = useState({})
   const [isAuthenticated, setIsAuthenticated] = useState(false)
 
   const history = useHistory()
-  function handleSignOut(params) {
+  function handleSignOut() {
    setIsAuthenticated(false)
    history.push("/")
   }
 
-  function handleSignIn(params) {
+  function handleSignIn() {
     setIsAuthenticated(true)
    }
    
@@ -24,20 +26,23 @@ const font = {
    fontFamily:"New Times Roman",
    fontWeight:100,
    fontSize:"1.1rem",
-   color:"white"
-
-
-
+   color:"white",
+   margin: "auto",
 }
+
+
 
    const handleItemClick = (e, { name }) => setState({ activeItem: name })
    const { activeItem } = state
    return (
 <div>
       <Menu inverted fixed="top">
-        <Container>
+        <Container margin="auto">
         <Menu.Menu position="center"/>
         <Menu.Item>
+        <Image style={{width:"35px" ,
+         height:" 40px",
+         margin:"0 15px 0 0"}} src={"https://res.cloudinary.com/fufufu/image/upload/v1625168938/yqkd4vauoa5tvmif7gq2.png"}></Image>
         <h1 style={font} >Funky Sun</h1>
 
         </Menu.Item> 
@@ -76,20 +81,18 @@ const font = {
                 <Dropdown.Item>Sizi Arayalım</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown> 
+
+            
+            <Menu.Item>{favItems.length>0&&<FavSummary/>}</Menu.Item>
             {isAuthenticated?<SignedIn signOut={handleSignOut} biseu="1" />
             :<SignedOut  signIn={handleSignIn}/>}
             
             
           </Menu.Menu>
+         
         </Container>
       </Menu>
-     <Input type='text' placeholder='Position/CompanyName...' action>
-     <input />
-
-     <City />
-
-     <Button color='teal' type='submit'>Search</Button>
- </Input>
+     
  
   </div>
    );

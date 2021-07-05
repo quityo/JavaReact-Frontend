@@ -11,10 +11,12 @@ getByConfirmFalse(){
     return axios.get("http://localhost:8080/api/jobadverts/getbyisconfirm?isConfirm=false")
 }
 
-getByJobAdvertIdAndConfirmFalse(jobAdvertId){
-    return axios.get("http://localhost:8080/api/jobadverts/getbyisconfirmandjobadvertid?isConfirm=false&jobAdvertId="+jobAdvertId)
+getByJobAdvertIdAndConfirmFalse(jobAdvertId) {
+    return axios.get(
+      "http://localhost:8080/api/jobadverts/getbyisconfirmandjobadvertid?isConfirm=false&jobAdvertId=" +
+        jobAdvertId
+    );
 }
-
 getById(jobAdvertId){
     return axios.get("http://localhost:8080/api/jobadverts/getbyid?id="+jobAdvertId)
 }

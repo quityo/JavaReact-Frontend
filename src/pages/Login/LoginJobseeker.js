@@ -4,7 +4,7 @@ import {  Button,
     Grid,
     Header,
     Message,
-    Segment } from 'semantic-ui-react'
+    Segment} from 'semantic-ui-react'
 import { NavLink } from "react-router-dom";
 
 export default function LoginJobseeker({signIn}) {

@@ -7,7 +7,7 @@ import JobPositionService from "../../services/jobPositionService";
 import JobAdvertService from "../../services/jobAdvertService";
 import * as Yup from "yup";
 import { Formik } from 'formik';
-import EmployerService from "../../services/employer/employerService";
+import EmployerService from "../../services/employerService";
 import swal from 'sweetalert';
 import { Select, Button } from 'evergreen-ui';
 import { Form,  Label, Container, TextArea, Grid, Segment } from "semantic-ui-react";

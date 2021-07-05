@@ -1,4 +1,5 @@
 import React from 'react'
+import {NavLink} from 'react-router-dom';
 import {  Container, Grid, Header, List,Segment,} from 'semantic-ui-react'
 
  function Footer() {
@@ -17,7 +18,7 @@ import {  Container, Grid, Header, List,Segment,} from 'semantic-ui-react'
             <div className="col">
               <Header inverted  as='h4' content='Kurumsal' />
               <List link inverted >
-                <List.Item as='a'>Hakkımızda</List.Item>
+                <List.Item as={NavLink} to="/">Hakkımızda</List.Item>
                 <List.Item as='a'>Basında "Funky Sun"</List.Item>
                 <List.Item as='a'>Yayınlarımız</List.Item>
                 <List.Item as='a'>Gizlilik ve Kullanım</List.Item>
@@ -46,12 +47,13 @@ import {  Container, Grid, Header, List,Segment,} from 'semantic-ui-react'
             <Grid.Column  inverted as='h4' width={10}>
             <div  className="col">
               <p style={{fontSize: 14, textAlign:'left', flex:1}}>
-              <b><u>"funkysun.com"</u></b>   HRMS - Project şahsıma ait bir iş ve eleman bulma sitesidir.<br/>
+              <b>FUNKY SUN - HRMS & Project</b>, şahsıma ait bir iş ve eleman bulma sitesidir.<br/>
               05.05.2021 tarih ve <b><u>ENGİN DEMİROĞ</u></b> izin belgesi ile faaliyetlerini local olarak sürdürmektedir.<br/>
               4904 sayılı Türkiye İş Kurumu Kanunu gereğince iş arayanlardan ücret alınması maalesef yasaktır.<br/>
               Şikayetleriniz için bana ya da Engin Hocamıza başvurabilirsiniz! <br/>
               Adres: YouTube olur Discord olur kafanıza göre.<br/>
                Telefon: 0555 555 55 55<br/>
+               Bir Cv'ye, bir iş başvurusuna yenileceksiniz. Vallahi de yenileceksiniz.<br/>
                Selametle 40 yaş altı ve üstü kardeşlerim!
               </p>
               </div>

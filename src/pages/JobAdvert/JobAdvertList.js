@@ -34,7 +34,7 @@ return (
             <hr></hr>
             <Card.Meta>{jobAdvert.workType.type}</Card.Meta>
             <Divider/>
-            <Card.Meta><Link color='green' to={`/employers/${jobAdvert.employer?.userId}`}>{jobAdvert.employer?.companyName}</Link></Card.Meta>
+            <Card.Meta><Link to={`/employers/${jobAdvert.employer?.userId}`}>{jobAdvert.employer?.companyName}</Link></Card.Meta>
             
             
             <Divider/>

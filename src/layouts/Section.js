@@ -10,13 +10,12 @@ import EmployerList from "../pages/User/Employer/EmployerList";
 import JobAdvertList from "../pages/JobAdvert/JobAdvertList";
 import EmployeeList from "../pages/User/Employee/EmployeeList";
 import UserList from "../pages/User/UserList";
-import CvList from "../pages/Cv/CvList/CvList";
 
 import EmployerDetail from "../pages/User/Employer/EmployerDetail";
 import HomeDetail from "../pages/Home/HomeDetail";
 import ExamineJobAdvertDetail from"../pages/JobAdvert/ExamineJobAdvertDetail";
 import JobAdvertDetail from "../pages/JobAdvert/JobAdvertDetail";
-import CvDetail from "../pages/Cv/CvDetail/CvDetail";
+import JobPositionDetail from "../pages/JobPosition/JobPositionDetail";
 
 import JobAdvertAdd from "../pages/JobAdvert/JobAdvertAdd";
 import ConfirmJobAdvert from "../pages/JobAdvert/ConfirmJobAdvert";
@@ -27,6 +26,7 @@ import RegisterEmployer from "../pages/Register/RegisterEmployer";
 import RegisterJobseeker from "../pages/Register/RegisterJobseeker";
 
 import AboutUs from "./Corporate/AboutUs";
+import FavDetail from "../pages/FavDetail"
 export default function Section() {
 
  
@@ -42,8 +42,7 @@ export default function Section() {
             
             <Route exact path="/aboutus" component={AboutUs} />
             <Route exact path="/employees" component={EmployeeList} />
-            <Route exact path="/users" component={UserList} /> 
-            <Route exact path="/cvDetail" component={CvDetail}/>
+            <Route exact path="/users" component={UserList} />
             <Route exact path ="/filter" component={Filter}/>
             </GridColumn>
           
@@ -63,7 +62,9 @@ export default function Section() {
             <Route exact path="/examinejobadvert/:jobAdvertId" component={ExamineJobAdvertDetail}/>
 
             <Route exact path="/jobpositions" component={JobPositionList} />
-            <Route exact path="/cvList" component={CvList}/>
+            <Route exact path="/jobpositions/:jobPositionId" component={JobPositionDetail} />
+
+            <Route path="/fav" component={FavDetail} />
            
           
         </Grid.Row>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, Card, Image, Header,} from 'semantic-ui-react'
-import EmployerService from "../../../services/employer/employerService"
+import EmployerService from "../../../services/employerService"
 import { useEffect, useState} from 'react'
 import { useParams } from "react-router";
 import { Link } from 'react-router-dom';

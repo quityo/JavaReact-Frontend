@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Table, Header, Icon } from "semantic-ui-react";
 import JobseekerService from '../../services//jobseeker/jobseekerService';
 import EmployeeService from '../../services/employeeService';
-import EmployerService from '../../services/employer/employerService';
+import EmployerService from '../../services/employerService';
 
 export default function UserList() {
     

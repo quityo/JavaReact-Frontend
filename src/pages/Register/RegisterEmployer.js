@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { NavLink } from "react-router-dom";
 import {
   Button,
@@ -8,16 +8,8 @@ import {
   Message,
   Segment,
 } from "semantic-ui-react";
-import EmployerService from '../../services/employer/employerService';
 
 export default function RegisterEmployer() {
-  const [employer, setEmployer] = useState([])
-
-  useEffect(() => {
-    let employerService = new EmployerService();
-    
-    employerService.getEmployersAdd().then(result => setEmployer(result.data.data))
-  }, [])
     return (
             <div>
               <Grid
@@ -40,6 +32,7 @@ export default function RegisterEmployer() {
                         iconPosition="left"
                         label="Şirket Adı"
                         placeholder="Şirket adı"
+                        type="companyName"
                       />
                       <Form.Input
                         fluid
@@ -47,6 +40,7 @@ export default function RegisterEmployer() {
                         iconPosition="left"
                         label="Telefon Numarası"
                         placeholder="Telefon numarası"
+                        type="phoneNumber"
                       />
         
                       <Form.Input
@@ -55,6 +49,7 @@ export default function RegisterEmployer() {
                         iconPosition="left"
                         label="Web Sitesi"
                         placeholder="Web Sitesi"
+                        type="website"
                       />
                       <Form.Input
                         fluid
@@ -62,6 +57,7 @@ export default function RegisterEmployer() {
                         iconPosition="left"
                         label="E-posta Adresi"
                         placeholder="E-posta adresi"
+                        type="email"
                       />
                       <Form.Input
                         fluid
@@ -77,7 +73,7 @@ export default function RegisterEmployer() {
                         iconPosition="left"
                         label="Şifre Tekrar"
                         placeholder="Şifre tekrar"
-                        type="password"
+                        type="password_again"
                       />
         
                       <Button primary fluid size="large">

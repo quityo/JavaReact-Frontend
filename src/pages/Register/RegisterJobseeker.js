@@ -10,6 +10,8 @@ import {
 } from "semantic-ui-react";
 import "react-toastify/dist/ReactToastify.css";
 export default function RegisterJobseeker({signIn}) {
+
+  
   return (
     <div>
       <Grid

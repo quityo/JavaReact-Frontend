@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import {NavLink, Link } from 'react-router-dom';
 import {  List, Container,Divider} from 'semantic-ui-react';
 
 export default function SideCorporate() {
@@ -8,7 +8,7 @@ export default function SideCorporate() {
     <Container textAlign='left'>
 
      <List link aling= "right" size='big'>
-      <List.Item as={Link} to="/aboutus" 
+      <List.Item as={NavLink} to="/" 
         name="hand spock"          >
          
         Hakkımıza

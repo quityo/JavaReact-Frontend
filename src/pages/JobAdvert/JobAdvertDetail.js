@@ -1,20 +1,56 @@
 import React, { useState, useEffect } from "react";
-import { Table, Image,  Icon, Segment, Divider } from "semantic-ui-react";
+import { Table, Image,  Icon, Segment, Divider, Button, Popup, } from "semantic-ui-react";
 import JobAdvertService from "../../services/jobAdvertService";
+import JobPositionService from "../../services/jobPositionService";
+import EmployerService from "../../services/employerService";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { toast } from 'react-toastify';
+import { useDispatch } from "react-redux";
+import { addToFav } from "../../Store/action/favAction";
+
 export default function JobAdvertDetail() {
-  let { jobAdvertId } = useParams();
-    const [jobAdverts, setJobAdverts] = useState([]);
   
+
+  let { jobAdvertId } = useParams();
+
+  const dispatch = useDispatch();
+  const [jobAdverts, setJobAdverts] = useState([]);
+  const [jobPosition, setPosition] = useState([])
+  const [employer, setEmployers] = useState([]);
+
+
     useEffect(() => {
       let jobAdvertService = new JobAdvertService();
       jobAdvertService.getById(jobAdvertId)
         .then((result) => setJobAdverts([result.data.data]));
     }, []);
+
+    useEffect(() => { 
+        let jobPositionService = new JobPositionService();
+        jobPositionService.getJobPositions().then(result => setPosition(result.data.data))
+    }, [])
+
+    useEffect(() => {
+      let employerService = new EmployerService();
+      employerService
+        .getEmployers()
+        .then((result) => setEmployers(result.data.data))
+        .catch((err) => console.log(err));
+    }, []);
+
+    const handleAddToFav = (jobAdvert) => {
+      dispatch(addToFav(jobAdvert))
+      toast.success(`${jobAdvert.jobPosition.jobTitle} added to system!`)
+  }
   
     return (
       
-      <div className="card" >
+      <div style={{
+        margin: "auto",
+        alignItems: "center",
+        width:"60%"
+      }} >
         
         {jobAdverts.map((jobAdvert) => (
          
@@ -31,7 +67,6 @@ export default function JobAdvertDetail() {
                   <Table.HeaderCell textAlign="center" colSpan="2">
                   
                     ŞİRKET
-                    <br />
                     BİLGİLERİ
                   </Table.HeaderCell>
                 </Table.Row>
@@ -41,7 +76,10 @@ export default function JobAdvertDetail() {
                   <Table.Cell >
                     <Icon name="warehouse" /> Şirket
                   </Table.Cell>
-                  <Table.Cell textAlign="center">{jobAdvert.employer?.companyName}</Table.Cell>
+                  <Table.Cell textAlign="center" key={employer.userId}
+                  >
+                  
+                   <Link to={`/employers/${jobAdvert.employer?.userId}`}>{jobAdvert.employer?.companyName}</Link></Table.Cell>
                 </Table.Row>
                 <Table.Row>
                   <Table.Cell>
@@ -77,7 +115,7 @@ export default function JobAdvertDetail() {
               <Table.Header>
                 <Table.Row>
                   <Table.HeaderCell textAlign="center" colSpan="2">
-                    <Icon name="users" />
+                    
                     İŞ BİLGİLERİ
                   </Table.HeaderCell>
                 </Table.Row>
@@ -85,7 +123,8 @@ export default function JobAdvertDetail() {
               <Table.Body>
                 <Table.Row>
                   <Table.Cell>Pozisyon</Table.Cell>
-                  <Table.Cell  textAlign="center">{jobAdvert.jobPosition?.jobTitle}</Table.Cell>
+                  <Table.Cell  textAlign="center" key={jobPosition.jobPositionId}>
+                    <Link to={`/jobpositions/${jobAdvert.jobPosition?.jobPositionId}`}>{jobAdvert.jobPosition?.jobTitle}</Link></Table.Cell>
                 </Table.Row>
                 <Table.Row>
                   <Table.Cell collapsing>Açık Pozisyon Sayısı</Table.Cell>
@@ -105,16 +144,16 @@ export default function JobAdvertDetail() {
               <Table.Header>
                 <Table.Row>
                   <Table.HeaderCell textAlign="center" colSpan="4">
-                    <Icon name="money" />
+                    
                     ÜCRET BİLGİLERİ
                   </Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
               <Table.Body>
                 <Table.Row>
-                  <Table.Cell>Minimum Ücret</Table.Cell>
+                  <Table.Cell>Min Ücret</Table.Cell>
                   <Table.Cell positive>{jobAdvert.salaryMin} TL</Table.Cell>
-                  <Table.Cell>MaksimumÜcret</Table.Cell>
+                  <Table.Cell>Max Ücret</Table.Cell>
                   <Table.Cell positive>{jobAdvert.salaryMax} TL</Table.Cell>
                 </Table.Row>
               </Table.Body>
@@ -123,7 +162,7 @@ export default function JobAdvertDetail() {
               <Table.Header>
                 <Table.Row>
                   <Table.HeaderCell textAlign="center" colSpan="4">
-                    <Icon name="paperclip" />
+                 
                     AÇIKLAMA
                   </Table.HeaderCell>
                 </Table.Row>
@@ -138,7 +177,7 @@ export default function JobAdvertDetail() {
               <Table.Header>
                 <Table.Row>
                   <Table.HeaderCell textAlign="center" colSpan="4">
-                    <Icon name="time" />
+                    
                     Son Başvuru Tarihi
                   </Table.HeaderCell>
                 </Table.Row>
@@ -146,12 +185,30 @@ export default function JobAdvertDetail() {
               <Table.Body>
                 <Table.Row>
                   <Table.Cell  textAlign="center" negative>{jobAdvert.deadline}</Table.Cell>
+                                
                 </Table.Row>
+               
               </Table.Body>
+              </Table>
+              <Table color="black">
+              <Table.Header>
+                <Table.Row>
+                  <Table.HeaderCell textAlign="center" colSpan="4">
+                  Add to Favorites
+                  </Table.HeaderCell>
+                  </Table.Row>
+              </Table.Header>
+              <Table.Cell textAlign="center"><Button  style={{background:`transparent`}} onClick={() => handleAddToFav(jobAdvert)} > <Popup
+                                    trigger={<Icon name='star' color='red'  />}
+                                    content='Add to Favorites'
+                                    
+                                /></Button></Table.Cell>
+              
             </Table>
+            
           </div>
         ))}
-       
+    
       </div>
     );
   }

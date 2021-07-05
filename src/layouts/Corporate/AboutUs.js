@@ -16,7 +16,7 @@ import {  Container, Grid, Header} from 'semantic-ui-react'
                 <Header inverted  as='h4' content='Hakkımızda' />
                
                 <p style={{fontSize: 14, textAlign:'left', flex:1}}>
-                <b><u>"funkysun.com"</u></b>   HRMS - Project şahsıma ait bir iş ve eleman bulma sitesidir.<br/>
+                <b><u>"Funky Sun HRMS & Project</u></b> şahsıma ait bir iş ve eleman bulma sitesidir.<br/>
                 05.05.2021 tarih ve <b><u>ENGİN DEMİROĞ</u></b> izin belgesi ile faaliyetlerini local olarak sürdürmektedir.<br/>
                 4904 sayılı Türkiye İş Kurumu Kanunu gereğince iş arayanlardan ücret alınması maalesef yasaktır.<br/>
                 Şikayetleriniz için bana ya da Engin Hocamıza başvurabilirsiniz! <br/>

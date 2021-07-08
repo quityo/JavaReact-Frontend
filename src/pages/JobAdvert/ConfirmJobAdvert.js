@@ -12,7 +12,7 @@ export default function ConfirmJobAdvert() {
   useEffect(() => {
     let jobAdvertService = new JobAdvertService();
     jobAdvertService.getByConfirmFalse().then(result => setJobAdverts(result.data.data))
-  }, [jobAdverts])
+  }, [])
 
 
 
@@ -27,7 +27,7 @@ return(
     
       <Card.Group>
       {jobAdverts.map((j) => ( 
-        <Card key={j.jobAdvertId} >
+        <Card fluid key={j.jobAdvertId} >
       
 
 <Card.Content style={{backgroundColor:"#F2F4F4"}}>

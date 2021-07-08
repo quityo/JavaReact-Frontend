@@ -1,20 +1,18 @@
 import axios from "axios";
 
-export default class FavoriteService {
-  add(values) {
-    return axios.post("http://localhost:8080/api/favorites/add", values);
-  }
+export default class FavoriteService{
 
-  delete(favoriteId) {
-    return axios.delete(
-      "http://localhost:8080/api/favorites/delete?favoriteId=" + favoriteId
-    );
-  }
+    getByJobseekerId(userId){
 
-  getByJobseekerId(jobseekerId) {
-    return axios.get(
-      "http://localhost:8080/api/favorites/getbyjobseekerid?jobseekerId=" +
-        jobseekerId
-    );
-  }
+    return axios.get("http://localhost:8080/favorites/getByJobseekerId?userId="+userId)
+        }
+
+        addFavorite(userId,jobAdvertId){
+            return axios.post(`http://localhost:8080/favorites/addFavorite?jobAdvertId=${jobAdvertId}&userId=${userId}`)
+        }
+    
+        removeFavorite(favoriteId){
+            return axios.delete("http://localhost:8080/favorites/removeFavorite?favoriteId="+favoriteId)
+        }
 }
+

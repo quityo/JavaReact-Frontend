@@ -1,7 +1,7 @@
-import favReducer from "./reducers/favReducer";
+import authReducer from "./reducers/authReducer";
 import { combineReducers } from "redux";
 const rootReducer = combineReducers({
-    favSummary :favReducer
+    auth : authReducer
 })
 
 export default rootReducer;

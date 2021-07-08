@@ -7,7 +7,10 @@ export default class JobseekerService{
     getJobseekerUserId(userId){
         return axios.get("http://localhost:8080/api/jobseekers/getbyid?id="+userId)
     }
-    getJobseekerAdd(){
-        return axios.get("http://localhost:8080/api/jobseekers/add")
+    jobseekerAdd(values){
+        return axios.post("http://localhost:8080/api/jobseekers/add",values)
+    }
+    getMailVerifyedJobseekers(){
+        return axios.get("http://localhost:8080/api/jobseekers/getMailVerifyTrue")
     }
 }

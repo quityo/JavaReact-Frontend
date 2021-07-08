@@ -7,13 +7,16 @@ export default class ImageService {
         return axios.post("http://localhost:8080/api/images/upload", data, { headers: { 'Content-Type': 'multipart/form-data' }, params: { userId } });
     }
     getByUserId(userId) {
-        return axios.get(" http://localhost:8080/api/images/getByUserId?userId=" + userId);
+        return axios.get("http://localhost:8080/api/images/getbyid?id=" + userId);
     }
-    getById(id) {
-        return axios.get("http://localhost:8080/api/images/getById?id=" + id);
+    getById(imageId) {
+        return axios.get("http://localhost:8080/api/images/getbyid?imageId=" + imageId);
     }
     getJobImages(){
-        return axios.get("http://localhost:8080/api/images/getAll")
+        return axios.get("http://localhost:8080/api/images/getall")
+    }
+    getAll(){
+        return axios.get("http://localhost:8080/api/images/getall")
     }
 
 }

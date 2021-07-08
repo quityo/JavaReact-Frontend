@@ -1,0 +1,1 @@
+export const authItem=[{loggedIn:false, user:{userId:0, userType:0}}]

@@ -1,30 +1,37 @@
 import React, { useState, useEffect } from "react";
-import { Table, Image,  Icon, Segment, Divider, Button, Popup, } from "semantic-ui-react";
+import { Table, Image,  Icon, Segment, Divider,Button} from "semantic-ui-react";
 import JobAdvertService from "../../services/jobAdvertService";
 import JobPositionService from "../../services/jobPositionService";
 import EmployerService from "../../services/employerService";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { toast } from 'react-toastify';
-import { useDispatch } from "react-redux";
-import { addToFav } from "../../Store/action/favAction";
-
+import FavoriteService from "../../services/FavoriteService"
+import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
 export default function JobAdvertDetail() {
   
 
   let { jobAdvertId } = useParams();
-
-  const dispatch = useDispatch();
+  let { userId } = useParams();
+  let [favorite, setFavorites] = useState([]);
   const [jobAdverts, setJobAdverts] = useState([]);
   const [jobPosition, setPosition] = useState([])
   const [employer, setEmployers] = useState([]);
-
-
+  const {authItem} = useSelector(state => state.auth)
+  
     useEffect(() => {
       let jobAdvertService = new JobAdvertService();
+      let favoriteService = new FavoriteService();
       jobAdvertService.getById(jobAdvertId)
         .then((result) => setJobAdverts([result.data.data]));
-    }, []);
+        if(authItem[0].loggedIn===true && authItem[0].user.userType===1){
+          favoriteService.getByJobseekerId(authItem[0].user.userId).then((result) => {
+            setFavorites(result.data.data.map((fav) => (
+              fav.jobAdvert.jobAdvertId
+            )))
+          })
+        }
+      }, [userId,authItem]);
 
     useEffect(() => { 
         let jobPositionService = new JobPositionService();
@@ -39,11 +46,14 @@ export default function JobAdvertDetail() {
         .catch((err) => console.log(err));
     }, []);
 
-    const handleAddToFav = (jobAdvert) => {
-      dispatch(addToFav(jobAdvert))
-      toast.success(`${jobAdvert.jobPosition.jobTitle} added to system!`)
-  }
-  
+    const handleAddFavorites = (jobAdvertId) => {
+      let favoriteService = new FavoriteService();
+      favoriteService.addFavorite(authItem[0].user.userId,jobAdvertId).then((result) => {
+        toast.success(result.data.message)
+        favorite.push(jobAdvertId)
+        setFavorites([...favorite])
+      })
+    }
     return (
       
       <div style={{
@@ -198,17 +208,16 @@ export default function JobAdvertDetail() {
                   </Table.HeaderCell>
                   </Table.Row>
               </Table.Header>
-              <Table.Cell textAlign="center"><Button  style={{background:`transparent`}} onClick={() => handleAddToFav(jobAdvert)} > <Popup
-                                    trigger={<Icon name='star' color='red'  />}
-                                    content='Add to Favorites'
-                                    
-                                /></Button></Table.Cell>
-              
+              <Table.Cell>{authItem[0].loggedIn && authItem[0].user.userType===1 && 
+              <Button fluid color={favorite.includes(jobAdvert.jobAdvertId)?"red":"green"} onClick={() => handleAddFavorites(jobAdvert.jobAdvertId)}>
+                <Icon name={favorite.includes(jobAdvert.jobAdvertId)?"heart":"heart outline"} />{favorite.includes(jobAdvert.jobAdvertId)?"İlan Favorilerinizde":"İlanı Favorilerine Ekle"}
+              </Button>
+            }</Table.Cell>
             </Table>
             
           </div>
-        ))}
-    
+       
+     ))}
       </div>
     );
   }

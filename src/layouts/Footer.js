@@ -48,7 +48,7 @@ import {  Container, Grid, Header, List,Segment,} from 'semantic-ui-react'
             <div  className="col">
               <p style={{fontSize: 14, textAlign:'left', flex:1}}>
               <b>FUNKY SUN - HRMS & Project</b>, şahsıma ait bir iş ve eleman bulma sitesidir.<br/>
-              05.05.2021 tarih ve <b><u>ENGİN DEMİROĞ</u></b> izin belgesi ile faaliyetlerini local olarak sürdürmektedir.<br/>
+              05.05.2021 tarih ve <b><u>ENGİN DEMİROĞ</u></b> yönlendirmeleri ile faaliyetlerini local olarak sürdürmektedir.<br/>
               4904 sayılı Türkiye İş Kurumu Kanunu gereğince iş arayanlardan ücret alınması maalesef yasaktır.<br/>
               Şikayetleriniz için bana ya da Engin Hocamıza başvurabilirsiniz! <br/>
               Adres: YouTube olur Discord olur kafanıza göre.<br/>

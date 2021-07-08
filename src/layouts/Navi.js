@@ -1,25 +1,16 @@
 import React, {useState} from "react";
-import { NavLink,useHistory } from "react-router-dom";
-import { Container, Menu, Dropdown, Image} from "semantic-ui-react";
+import { NavLink, Link } from "react-router-dom";
+import { Container, Menu, Dropdown, Image, Button, Icon} from "semantic-ui-react";
 import SignedIn from "./SignedIn";
 import SignedOut from "./SignedOut";
-import FavSummary from "./FavSummary";
 import { useSelector } from "react-redux";
 
 export default function Navi() {
-  const {favItems} = useSelector(state => state.favSummary)
+
+  const {authItem} = useSelector(state => state.auth)
   const [state, setState] = useState({})
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
 
-  const history = useHistory()
-  function handleSignOut() {
-   setIsAuthenticated(false)
-   history.push("/")
-  }
-
-  function handleSignIn() {
-    setIsAuthenticated(true)
-   }
+ 
    
 
 const font = {
@@ -82,10 +73,12 @@ const font = {
               </Dropdown.Menu>
             </Dropdown> 
 
-            
-            <Menu.Item>{favItems.length>0&&<FavSummary/>}</Menu.Item>
-            {isAuthenticated?<SignedIn signOut={handleSignOut} biseu="1" />
-            :<SignedOut  signIn={handleSignIn}/>}
+            {authItem[0].loggedIn && authItem[0].user.userType===1 &&  <Button color="red" as={Link} to={`/favorites`}>
+              <Icon name='heart' />
+              Favori İlanlar
+            </Button>}
+            {authItem[0].loggedIn?<SignedIn/>
+            :<SignedOut/>}
             
             
           </Menu.Menu>

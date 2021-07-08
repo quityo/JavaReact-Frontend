@@ -11,7 +11,6 @@ export default function EmployerList() {
     employerService
       .getEmployers()
       .then((result) => setEmployers(result.data.data))
-      .catch((err) => console.log(err));
   }, []);
 
   return (
@@ -34,7 +33,7 @@ export default function EmployerList() {
         <Table.Body >
           {employers.map((employer) => (
             <Table.Row textAlign='center' key = {employer.userId}>
-              <Table.Cell><Image floated="left" size="tiny" src={employer.image?.imageUrl}></Image></Table.Cell>
+              <Table.Cell><Image floated="left" size="tiny" src={employer.image?.imageUrl} circular></Image></Table.Cell>
               <Table.Cell>{employer.companyName}</Table.Cell>
               <Table.Cell>{employer.website}</Table.Cell>
               

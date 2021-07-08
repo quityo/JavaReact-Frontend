@@ -20,13 +20,12 @@ import JobPositionDetail from "../pages/JobPosition/JobPositionDetail";
 import JobAdvertAdd from "../pages/JobAdvert/JobAdvertAdd";
 import ConfirmJobAdvert from "../pages/JobAdvert/ConfirmJobAdvert";
 
-import LoginEmployer from "../pages/Login/LoginEmployer";
-import LoginJobseeker from "../pages/Login/LoginJobseeker";
 import RegisterEmployer from "../pages/Register/RegisterEmployer";
-import RegisterJobseeker from "../pages/Register/RegisterJobseeker";
+import Login from "../pages/Login/Login"
+import Register from "../pages/Register/Register"
 
 import AboutUs from "./Corporate/AboutUs";
-import FavDetail from "../pages/FavDetail"
+import Favorite from "../pages/Favorite";
 export default function Section() {
 
  
@@ -45,13 +44,10 @@ export default function Section() {
             <Route exact path="/users" component={UserList} />
             <Route exact path ="/filter" component={Filter}/>
             </GridColumn>
-          
-            <Route exact path="/loginemployer" component={LoginEmployer}></Route>
             
             <Route exact path="/registeremployer" component={RegisterEmployer}></Route>
-                        
-            <Route exact path="/loginjobseeker" component={LoginJobseeker}/>
-            <Route exact path="/registerjobseeker" component={RegisterJobseeker}/>
+            <Route exact path="/register" component={Register}></Route>         
+            <Route exact path="/login" component={Login}/>
 
             <Route exact path="/jobadverts" component={JobAdvertList} />
             
@@ -64,7 +60,8 @@ export default function Section() {
             <Route exact path="/jobpositions" component={JobPositionList} />
             <Route exact path="/jobpositions/:jobPositionId" component={JobPositionDetail} />
 
-            <Route path="/fav" component={FavDetail} />
+            
+            <Route exact path="/favorites" component={Favorite}/>
            
           
         </Grid.Row>

@@ -30,7 +30,7 @@ export default function EmployerDetail() {
     <Card fluid >
       <Card.Content style={{backgroundColor:"#F2F4F4"}} >
       
-      <Image size="tiny" src={employer.image?.imageUrl}></Image>
+      <Image size="tiny" src={employer.image?.imageUrl} circular></Image>
       
         <Card.Header><br/>{employer.companyName}</Card.Header>
         <br />

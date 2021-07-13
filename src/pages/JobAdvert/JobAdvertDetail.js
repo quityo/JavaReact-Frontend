@@ -31,7 +31,7 @@ export default function JobAdvertDetail() {
             )))
           })
         }
-      }, [userId,authItem]);
+      }, [userId,authItem,jobAdvertId]);
 
     useEffect(() => { 
         let jobPositionService = new JobPositionService();
@@ -64,7 +64,7 @@ export default function JobAdvertDetail() {
         
         {jobAdverts.map((jobAdvert) => (
          
-          <div>
+          <div >
             <Segment color="green" textAlign="center">
               İLAN DETAYI
             </Segment>

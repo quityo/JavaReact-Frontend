@@ -101,7 +101,7 @@ export default function RegisterEmployer() {
   const employerRegisterSchema = Yup.object().shape({
     companyName: Yup.string().required("Şirket adı zorunludur").min(2,"Şirket adı en az iki uzunlukta olmalıdır"),
     phoneNumber: Yup.string().required("Telefon numarası zorunludur").length(10,"Telefon numarası hatalı '0' olmadan yazınız").matches(/^[0-9]+$/, "Sadece rakam girilmelidir"),
-    password: Yup.string().required("Şifre zorunludur").min(8,"Şifre en az 8 karakter uzunluğunda olmalıdır"),
+    password: Yup.string().required("Şifre zorunludur").min(6,"Şifre en az 6 karakter uzunluğunda olmalıdır"),
     passwordAgain: Yup.string().required("Şifre tekrar zorunludur").oneOf([Yup.ref("password"),null], "Şifreler eşleşmiyor"),
     website: Yup.string().required("Web sitesi zorunludur").test("Http olmadan yazınız",function() {
       let site = this.parent["website"];
@@ -110,7 +110,7 @@ export default function RegisterEmployer() {
       }
     }),
     email: Yup.string().required("Email zorunludur").email("Geçerli bir email değil").test("Email domaini ile web sitesi domaini aynı olmalıdır",function() {
-      let site = this.parent["webSite"];
+      let site = this.parent["website"];
       let email = this.parent["email"];
       if(site && email) {
         return email.endsWith(site) ? true : false;
@@ -132,7 +132,7 @@ export default function RegisterEmployer() {
     },
     validationSchema: employerRegisterSchema,
     onSubmit:(values) => {
-      employerService.getEmployersAdd(values).then((result) => {
+      employerService.add(values).then((result) => {
         toast.success(result.data.message)
         history.push("/login")
       }).catch((result) => {
@@ -144,15 +144,16 @@ export default function RegisterEmployer() {
   return (
     <div>
       <Header as="h2" color="teal" textAlign="center">
-        İşveren Olarak Kayıt Ol
+        Register For Company
       </Header>
       <Form size="large" onSubmit={formik.handleSubmit}>
         <Segment stacked>
-        <div style={{marginTop:"1em"}}>
-              <label><b>Şirket Adı</b></label>
+        <div style={{marginTop:"1.5em"}}>
+              <label margin="auto"><b>Company</b></label>
               <Form.Input
+              
                 fluid
-                placeholder="Şirket Adı"
+                placeholder="Company name.."
                 type="text"
                 value={formik.values.companyName}
                 name="companyName"
@@ -170,10 +171,10 @@ export default function RegisterEmployer() {
           <Grid stackable>            
             <Grid.Column width={8}>
               <div style={{marginTop:"1em"}}>
-                <label><b>Telefon Numarası</b> (Sıfır olmadan yazınız)</label>
+                <label><b>Telephone</b></label>
                 <Form.Input
                   fluid
-                  placeholder="Telefon Numarası"
+                  placeholder="Tel no.."
                   type="text"
                   value={formik.values.phoneNumber}
                   name="phoneNumber"
@@ -190,7 +191,7 @@ export default function RegisterEmployer() {
               </div>
               
               <div style={{marginTop:"1em"}}>
-              <label><b>Email</b> (Web sitesi domaini ile aynı domaine sahip olmalıdır)</label>
+              <label><b>Email</b> (domain)</label>
               <Form.Input
                 fluid
                 placeholder="Email"
@@ -212,8 +213,8 @@ export default function RegisterEmployer() {
               <label><b>Şifre</b></label>
               <Form.Input
                 fluid
-                placeholder="Şifre"
-                type="password"
+                placeholder="Password"
+                type="text"
                 name="password"
                 value={formik.values.password}
                 onChange={formik.handleChange}
@@ -231,10 +232,10 @@ export default function RegisterEmployer() {
 
             <Grid.Column width={8}>
               <div style={{marginTop:"1em"}}>
-              <label><b>Web Sitesi</b> (http:// olmadan yazınız)</label>
+              <label><b>Website</b></label>
               <Form.Input
                 fluid
-                placeholder="Web Sitesi"
+                placeholder="www."
                 type="text"
                 name="website"
                 value={formik.values.website}
@@ -250,10 +251,10 @@ export default function RegisterEmployer() {
               }
               </div>
               <div style={{marginTop:"1em"}}>
-              <label><b>Email Tekrar</b></label>
+              <label><b>Email Again</b></label>
               <Form.Input
                 fluid
-                placeholder="E-mail adresi tekrar"
+                placeholder="Email again.."
                 type="email"
                 name="reEmail"
                 onChange={formik.handleChange}
@@ -266,11 +267,11 @@ export default function RegisterEmployer() {
                 )}
               </div>
               <div style={{marginTop:"1em"}}>
-              <label><b>Şifre Tekrar</b></label>
+              <label><b>Password Again</b></label>
               <Form.Input
                 fluid
-                placeholder="Şifre Tekrar"
-                type="password"
+                placeholder="Password again"
+                type="text"
                 name="passwordAgain"
                 value={formik.values.passwordAgain}
                 onChange={formik.handleChange}
@@ -287,7 +288,7 @@ export default function RegisterEmployer() {
 
           <br />
           <Button color="teal" fluid size="large" type="submit">
-            Kayıt Ol
+            Register
           </Button>
         </Segment>
       </Form>

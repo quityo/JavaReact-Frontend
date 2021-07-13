@@ -14,7 +14,7 @@ export default function JobPositionDetail() {
     }, [jobPositionId])
 
     return (
-        <div>
+        <div style={{margin: "auto"}}>
         <Header as="h2" textAlign='center'>
      Job Position Details
    </Header>

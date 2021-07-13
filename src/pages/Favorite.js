@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { Card, Table, Button } from 'semantic-ui-react'
+import { Table, Button, Segment } from 'semantic-ui-react'
 import FavoriteService from "../services/FavoriteService"
 
 export default function Favorite() {
@@ -28,21 +28,25 @@ export default function Favorite() {
     }
 
     return (
-        <div>
-            <Card fluid color={"black"}>
-                <Card.Content header="Favori İş İlanların"/>
-                    <Table celled color={"black"}>
-                        <Table.Header>
-                            <Table.Row>
-                                <Table.HeaderCell>Şirket Adı</Table.HeaderCell>
-                                <Table.HeaderCell>İş Pozisyonu</Table.HeaderCell>
-                                <Table.HeaderCell>Şehir</Table.HeaderCell>
-                                <Table.HeaderCell>Maaş Aralığı</Table.HeaderCell>
-                                <Table.HeaderCell>Çalışma Zamanı</Table.HeaderCell>
-                                <Table.HeaderCell>Çalışma Yeri</Table.HeaderCell>
-                                <Table.HeaderCell>Son Tarih</Table.HeaderCell>
-                                <Table.HeaderCell>Detaylar</Table.HeaderCell>
-                                <Table.HeaderCell>Sil</Table.HeaderCell>
+        <div style={{
+            margin: "auto",
+            width:"85%",
+          }} >
+        
+             <Segment color="green" textAlign="center">
+              FAVORİTES
+            </Segment>
+                 
+               
+                    <Table  color={"black"}>
+                        <Table.Header >
+                            <Table.Row textAlign="center">
+                                
+                                <Table.HeaderCell >Company</Table.HeaderCell>
+                                <Table.HeaderCell>Position</Table.HeaderCell>
+                                <Table.HeaderCell>City</Table.HeaderCell>
+                                <Table.HeaderCell>Details</Table.HeaderCell>
+                                <Table.HeaderCell>Delete</Table.HeaderCell>
                             </Table.Row>
                         </Table.Header>
                         <Table.Body>
@@ -51,10 +55,7 @@ export default function Favorite() {
                                     <Table.Cell>{f.jobAdvert.employer.companyName}</Table.Cell>
                                     <Table.Cell>{f.jobAdvert?.jobPosition?.jobTitle}</Table.Cell>
                                     <Table.Cell>{f.jobAdvert?.city?.name}</Table.Cell>
-                                    <Table.Cell>{f.jobAdvert?.salaryMax}₺ - {f.jobAdvert?.salaryMin}₺</Table.Cell>
-                                    <Table.Cell>{f.jobAdvert?.workTime?.title}</Table.Cell>
-                                    <Table.Cell>{f.jobAdvert?.workType?.type}</Table.Cell>
-                                    <Table.Cell>
+                                    {/* <Table.Cell>
                                         {(
                                         (new Date(f.jobAdvert?.deadline).getTime() -
                                             new Date(Date.now()).getTime()) /
@@ -63,16 +64,13 @@ export default function Favorite() {
                                         .toString()
                                         .split(".", 1)}{" "}
                                         gün
-                                    </Table.Cell>
+                                    </Table.Cell> */}
                                     <Table.Cell>
                                         <Button as={Link} to={`/jobadverts/${f.jobAdvert.jobAdvertId}`}
-                                            content="Detayları Gör"
-                                            icon="right arrow"
-                                            labelPosition="right"
-                                        />
+                                          fluid  size='small' color='green'>View</Button>
                                     </Table.Cell>
                                     <Table.Cell>
-                                        <Button
+                                        <Button fluid size='small'
                                             icon="x"
                                             color={"red"}
                                             onClick={() => handleRemoveFavorite(f.favoriteId)}
@@ -82,7 +80,7 @@ export default function Favorite() {
                             ))}
                         </Table.Body>
                     </Table>
-            </Card>
+           
         </div>
     )
 }

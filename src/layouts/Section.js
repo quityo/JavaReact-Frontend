@@ -11,7 +11,7 @@ import JobAdvertList from "../pages/JobAdvert/JobAdvertList";
 import EmployeeList from "../pages/User/Employee/EmployeeList";
 import UserList from "../pages/User/UserList";
 
-import EmployerDetail from "../pages/User/Employer/EmployerDetail";
+
 import HomeDetail from "../pages/Home/HomeDetail";
 import ExamineJobAdvertDetail from"../pages/JobAdvert/ExamineJobAdvertDetail";
 import JobAdvertDetail from "../pages/JobAdvert/JobAdvertDetail";
@@ -21,11 +21,19 @@ import JobAdvertAdd from "../pages/JobAdvert/JobAdvertAdd";
 import ConfirmJobAdvert from "../pages/JobAdvert/ConfirmJobAdvert";
 
 import RegisterEmployer from "../pages/Register/RegisterEmployer";
+import RegisterEmployee from "../pages/Register/RegisterEmployee";
 import Login from "../pages/Login/Login"
 import Register from "../pages/Register/Register"
 
 import AboutUs from "./Corporate/AboutUs";
 import Favorite from "../pages/Favorite";
+
+import EmployeeUpdate from "../pages/User/Employee/EmployeeUpdate";
+import EmployerUpdate from "../pages/User/Employer/EmployerUpdate";
+import EmployerDetail from "../pages/User/Employer/EmployerDetail";
+import EmployeeDetail from "../pages/User/Employee/EmployeeDetail";
+import EmployerUpdateConfirm from "../pages/User/Employer/EmployerUpdateConfirm";
+
 export default function Section() {
 
  
@@ -46,6 +54,7 @@ export default function Section() {
             </GridColumn>
             
             <Route exact path="/registeremployer" component={RegisterEmployer}></Route>
+            <Route exact path="/registeremployee" component={RegisterEmployee}></Route>
             <Route exact path="/register" component={Register}></Route>         
             <Route exact path="/login" component={Login}/>
 
@@ -60,9 +69,12 @@ export default function Section() {
             <Route exact path="/jobpositions" component={JobPositionList} />
             <Route exact path="/jobpositions/:jobPositionId" component={JobPositionDetail} />
 
-            
+            <Route exact path="/employeeUpdate/:userId" component={EmployeeUpdate} />
+            <Route exact path="/employees/:employeeId" component={EmployeeDetail} />
+            <Route exact path="/employerupdateconfirm" component={EmployerUpdateConfirm} />
             <Route exact path="/favorites" component={Favorite}/>
-           
+
+            <Route exact path="/list" component={EmployerUpdate}/>
           
         </Grid.Row>
       </Grid>

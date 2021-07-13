@@ -38,7 +38,7 @@ export default function Login() {
         }
       })
       return (
-        <div>
+        <div style={{margin: "auto"}}>
           <Header as="h2" color="teal" textAlign="center"> Giriş Yap
           </Header>
           <Form size="large" onSubmit={formik.handleSubmit}>

@@ -10,7 +10,7 @@ function App() {
     <div className="App">
      <Navi/>
      <br/><br/><br/>
-     <h1 style={{fontSize:"50px",marginLeft:"3%", fontFamily:"Star Jedi"}}>Funky Sun</h1>
+     <h2 style={{fontSize:"50px",marginLeft:"3%", fontFamily:"Star Jedi"}}>Funky Sun</h2>
        <p2 style={{fontSize:"18px",marginLeft:"3%"}}><i>Human Resource Management</i></p2>
       <Divider/>
       <Container className="main">

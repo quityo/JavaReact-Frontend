@@ -39,7 +39,7 @@ export default function EmployeeList() {
               color={"green"}
                   animated="fade"
                   as={Link}
-                  to={`/employeeUpdate/${employee.employeeId}`}
+                  to={`/employeeupdate/${employee.userId}`}
                 >
                   <Button.Content visible>Güncelle</Button.Content>
                   </Button>

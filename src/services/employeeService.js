@@ -5,15 +5,15 @@ export default class EmployeeService{
         return axios.get("http://localhost:8080/api/employees/getAll");
     }
 
-    getEmployeeId(values){
-        return axios.get("http://localhost:8080/api/employees/getById?userId="+values)
+    getEmployeeId(userId){
+        return axios.get("http://localhost:8080/api/employees/getById?userId="+userId)
     }
 
     add(values){
         return axios.post("http://localhost:8080/api/employees/add",values)
     }
 
-    update(employee){
-        return axios.put("http://localhost:8080/api/employees/update",employee)
+    update(userId){
+        return axios.put("http://localhost:8080/api/employees/update",userId)
     }
 }

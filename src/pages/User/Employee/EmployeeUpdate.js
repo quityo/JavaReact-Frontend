@@ -1,22 +1,22 @@
 import { useFormik } from "formik";
 import React, { useEffect, useState } from "react";
-import * as Yup from 'yup'
+import EmployeeService from "../../../services/employeeService";
 import { Button, Card, Input, Form, Message } from "semantic-ui-react";
-import EmployeeService from '../../../services/employeeService'
-import HrmsLabel from "../../../utilities/formControls/HrmsLabel"
-import { useParams } from "react-router-dom";
+import HrmsLabel from "../../../utilities/formControls/HrmsLabel";
+import * as Yup from "yup";
 
+import { useParams } from 'react-router-dom'
 export default function EmployeeUpdate() {
 
-  let { userId } = useParams();
+  let {userId} = useParams()
   const [employee, setEmployee] = useState({});
 
   useEffect(() => {
     let employeeService = new EmployeeService();
-    employeeService.getEmployeeId(userId).then((result) => {
+    employeeService. getEmployeeId(userId).then((result) => {
       setEmployee(result.data.data);
     });
-  }, [userId]);
+  }, []);
 
   const formik = useFormik({
     initialValues: {
@@ -32,24 +32,23 @@ export default function EmployeeUpdate() {
       email: Yup.string().required("Email is not null"),
       password: Yup.string().required("Password is not null"),
     }),
-    onSubmit: (values) => {
+    onSubmit: (userId) => {
         let employeeService = new EmployeeService();
-       employeeService.update(values).then((result)=>{window.location.reload()})
+       employeeService.update(userId).then((result)=>{window.location.reload()})
     },
     enableReinitialize: true,
   });
   return (
-    <div>
+    <div  >
       <Card fluid>
-        <Card.Header textAlign="center">
-          <strong>Employee Update Form</strong>
-        </Card.Header>
+        
         <Form
           style={{
             marginLeft: "15px",
             marginRight: "15px",
             marginTop: "15px",
             marginBottom: "15px",
+            
           }}
         >
           <HrmsLabel name="First Name" /> <br />
@@ -111,11 +110,11 @@ export default function EmployeeUpdate() {
               {formik.errors.password}
             </Message>
           ) : null}
-          <br />
-          <Button positive onClick={formik.handleSubmit} type="submit">
-            Update
+          <br /></Form>
+          <Button textAlign="center"   positive onClick={formik.handleSubmit} type="submit">
+            Update 
           </Button>
-        </Form>
+        
       </Card>
     </div>
   );

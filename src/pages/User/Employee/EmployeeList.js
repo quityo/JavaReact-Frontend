@@ -13,7 +13,7 @@ export default function EmployeeList() {
   }, []);
 
   return (
-    <div>
+    <div  >
       <Header as="h2" textAlign='center'>
         <Icon name="sticker mule" color='teal' />
         Employee List
@@ -23,7 +23,6 @@ export default function EmployeeList() {
           <Table.Row textAlign='center'>
             <Table.HeaderCell>First Name</Table.HeaderCell>
             <Table.HeaderCell>Last Name</Table.HeaderCell>
-            <Table.HeaderCell>Email</Table.HeaderCell>
             <Table.HeaderCell/>
           </Table.Row>
         </Table.Header>
@@ -33,15 +32,14 @@ export default function EmployeeList() {
             <Table.Row textAlign='center' key={employee.employeeId}>
               <Table.Cell>{employee.firstName}</Table.Cell>
               <Table.Cell>{employee.lastName}</Table.Cell>
-              <Table.Cell>{employee.email}</Table.Cell>
               <Table.Cell>
               <Button
               color={"green"}
                   animated="fade"
                   as={Link}
-                  to={`/employeeupdate/${employee.userId}`}
+                  to={`/employees/${employee.userId}`}
                 >
-                  <Button.Content visible>Güncelle</Button.Content>
+                  <Button.Content visible>Wiew</Button.Content>
                   </Button>
               </Table.Cell>
             </Table.Row>

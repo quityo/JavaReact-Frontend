@@ -16,10 +16,14 @@ export default function EmployeeDetail() {
     }, [userId])
    
     return (
-        <div>
+        <div style={{
+          margin: "auto",
+          alignItems: "center",
+          
+        }}>
             <Table celled>
     <Table.Header>
-    <Table.HeaderCell colSpan='3'>Employee</Table.HeaderCell>
+    <Table.HeaderCell textAlign="center" colSpan='3'>Employee Detail</Table.HeaderCell>
       <Table.Row>
         <Table.HeaderCell>Email</Table.HeaderCell>
         <Table.Cell>{employee.email}</Table.Cell>
@@ -39,11 +43,11 @@ export default function EmployeeDetail() {
     </Table.Header>
   </Table>
 
-  <Modal
+  <Modal 
       trigger={<Button color = "green" icon = 'edit'></Button>}
-      header='Reminder!'
+      header='Employee Update Form' 
       content={<EmployeeUpdate employee={employee}></EmployeeUpdate>}
-    />
+      ></Modal>
         </div>
     )
 }

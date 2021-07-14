@@ -70,7 +70,8 @@ export default function Section() {
             <Route exact path="/jobpositions/:jobPositionId" component={JobPositionDetail} />
 
             <Route exact path="/employeeUpdate/:userId" component={EmployeeUpdate} />
-            <Route exact path="/employees/:employeeId" component={EmployeeDetail} />
+            <Route exact path="/employeeUpdate" component={EmployeeUpdate} />
+            <Route exact path="/employees/:userId" component={EmployeeDetail} />
             <Route exact path="/employerupdateconfirm" component={EmployerUpdateConfirm} />
             <Route exact path="/favorites" component={Favorite}/>
 

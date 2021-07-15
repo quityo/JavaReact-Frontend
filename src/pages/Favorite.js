@@ -38,7 +38,7 @@ export default function Favorite() {
             </Segment>
                  
                
-                    <Table  color={"black"}>
+                    <Table textAlign="center" color={"black"}>
                         <Table.Header >
                             <Table.Row textAlign="center">
                                 
@@ -49,11 +49,11 @@ export default function Favorite() {
                                 <Table.HeaderCell>Delete</Table.HeaderCell>
                             </Table.Row>
                         </Table.Header>
-                        <Table.Body>
+                        <Table.Body >
                             {favorites?.map((f) => (
                                 <Table.Row key={f.favoriteId}>
-                                    <Table.Cell>{f.jobAdvert.employer.companyName}</Table.Cell>
-                                    <Table.Cell>{f.jobAdvert?.jobPosition?.jobTitle}</Table.Cell>
+                                    <Table.Cell><Link to={`/employers/${f.jobAdvert?.employer?.userId}`}>{f.jobAdvert.employer.companyName}</Link></Table.Cell>
+                                    <Table.Cell><Link to={`/jobpositions/${f.jobAdvert.jobPosition?.jobPositionId}`}>{f.jobAdvert?.jobPosition?.jobTitle}</Link></Table.Cell>
                                     <Table.Cell>{f.jobAdvert?.city?.name}</Table.Cell>
                                     {/* <Table.Cell>
                                         {(
@@ -67,7 +67,7 @@ export default function Favorite() {
                                     </Table.Cell> */}
                                     <Table.Cell>
                                         <Button as={Link} to={`/jobadverts/${f.jobAdvert.jobAdvertId}`}
-                                          fluid  size='small' color='green'>View</Button>
+                                            size='small' color='green'>View</Button>
                                     </Table.Cell>
                                     <Table.Cell>
                                         <Button fluid size='small'

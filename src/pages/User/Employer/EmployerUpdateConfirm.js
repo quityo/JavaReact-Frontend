@@ -1,102 +1,107 @@
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
-import { Button,  Popup, Table, Header, Modal,Icon } from "semantic-ui-react";
-import EmployerUpdateService from "../../../services/EmployerUpdateService";
+
+import React,{ useState, useEffect } from "react";
+import {
+  Table,
+  Segment,
+  Container,
+  Icon,
+  Card,
+  Button
+} from "semantic-ui-react";
+import swal from "sweetalert";
+import EmployerService from "../../../services/employerService";
+
 export default function EmployerUpdateConfirm() {
     
-    const [open, setOpen] = useState(false);
-    const [id, setId] = useState(0);
-    const [updateContents, setUpdateContents] = useState([]);
+    const [employers, setEmployers] = useState([]);
 
-    useEffect(()=>{
-        let employerUpdateService = new EmployerUpdateService();
-        employerUpdateService.getAllByStatusFalse().then((result)=>{setUpdateContents(result.data.data)});
-        
-    },[])
-    const confirmContent=(id)=>{
-        let employerUpdateService = new EmployerUpdateService();
-        employerUpdateService.confirmContent(id).then((result)=>{window.location.reload()});
-    }
-    return (
-      <div>
-        <Modal
-          basic
-          onClose={() => setOpen(false)}
-          onOpen={() => setOpen(true)}
-          open={open}
-          size="small"
+useEffect(() => {
+  let employerService = new EmployerService();
+  employerService.getByConfirmStatusFalse().then((result) => setEmployers(result.data.data));
+}, []);
+
+const confirmStatusTrue = (userId) => {
+    let employerService = new EmployerService();
+    employerService.updateConfirmStatus(userId).then((result) => console.log(result.data.data));
+    
+      swal({
+        title: "Başarılı!",
+        text: "Şirket bilgileri onaylandı!",
+        icon: "success",
+        button: "OK",
+      });
+  };
+
+return (
+    <div style={{
+        margin: "auto",
+        alignItems: "center",
+      }} >
+         <Segment vertical>
+    <Container>
+      <Card fluid color="black">
+        {" "}
+        <Card.Header
+          as="h2"
+          textAlign="center"
+          style={{ fontSize: "2em", marginBottom: "1em", marginTop: "1em" }}
         >
-          <Header Icon>
-            <Icon name="check" />
-            Are you sure ?
-          </Header>
-          <Modal.Content>
-            <p>Are you sure you want to approve this update request?</p>
-          </Modal.Content>
-          <Modal.Actions>
-            <Button basic color="red" inverted onClick={() => setOpen(false)}>
-              <Icon name="remove" /> No
-            </Button>
-            <Button
-              color="green"
-              inverted
-              onClick={() => {
-                setOpen(false);
-                confirmContent(id)
-              }}
-            >
-              <Icon name="checkmark" /> Yes
-            </Button>
-          </Modal.Actions>
-        </Modal>
-        {
-          <Table striped size="small" textAlign="center">
+          
+          Onay Bekleyen Şirketler
+        </Card.Header>
+        <Card.Content>
+          <Table color="black">
             <Table.Header>
               <Table.Row>
-                <Table.HeaderCell>Employer</Table.HeaderCell>
-                <Table.HeaderCell>Content</Table.HeaderCell>
-                <Table.HeaderCell>Confirm</Table.HeaderCell>
-                <Table.HeaderCell>Delete</Table.HeaderCell>
+                <Table.HeaderCell>Firma Adı</Table.HeaderCell>
+                <Table.HeaderCell>Telefon Numarası</Table.HeaderCell>
+                <Table.HeaderCell>Web Adresi</Table.HeaderCell>
+                <Table.HeaderCell>Mail Adresi</Table.HeaderCell>
+                <Table.HeaderCell>Şifre</Table.HeaderCell>
+                <Table.HeaderCell>Onay Durumu</Table.HeaderCell>
+                <Table.HeaderCell>Onay İşlemi</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
-            <Table.Body>
-              {updateContents.map((updateContent) => (
-                <Table.Row key={updateContent.id}>
+
+            <Table.Body >
+              {employers.map((employer) => (
+                <Table.Row key={employer.userId} 
+                >
                   <Table.Cell>
-                    {updateContent.employerId}
+                    {employer.employerUpdate?.companyName}
                   </Table.Cell>
-                  <Table.Cell>{`{${updateContent.content.companyName} , ${updateContent.content.email} ,
-                  ${updateContent.content.phoneNumber} , ${updateContent.content.website}
-              }`}</Table.Cell>
+                  <Table.Cell>{employer.employerUpdate?.phoneNumber} </Table.Cell>
+                  <Table.Cell>{employer.employerUpdate?.website}</Table.Cell>
+                  <Table.Cell>{employer.employerUpdate?.email}</Table.Cell>
+                  <Table.Cell>{employer.employerUpdate?.password}</Table.Cell>
+                  <Table.Cell>{employer.employerUpdate?.confirmStatus === false
+                      ? "Onaylanmadı"
+                      : " "}
+                  </Table.Cell>
                   <Table.Cell>
+                     
                     <Button
-                      icon="check"
-                      positive
-                      onClick={() => {
-                        setOpen(true);
-                        setId(updateContent.employerId);
-                      }}
-                    ></Button>
-                  </Table.Cell>
-                  <Table.Cell>
-                    <Popup
-                      trigger={
-                        <Button
-                          onClick={() => ""}
-                          negative
-                          icon="remove"
-                        />
-                      }
-                      content="Delete this job advertisement"
+                      animated
                       basic
-                    />
+                      color="green"
+                      onClick={(e) =>
+                        confirmStatusTrue(employer.employerUpdate?.userId)
+                      }
+                    >
+                      <Button.Content visible>Onayla</Button.Content>
+                      <Button.Content hidden>
+                        <Icon name="check" />
+                      </Button.Content>
+                    </Button>
                   </Table.Cell>
                 </Table.Row>
               ))}
             </Table.Body>
           </Table>
-        }
-      </div>
-    );
-  }
+        </Card.Content>
+      </Card>
+    </Container>
+  </Segment>
+    </div>
+)
+}

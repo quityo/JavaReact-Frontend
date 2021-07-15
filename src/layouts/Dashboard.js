@@ -45,11 +45,7 @@ export default function Dashboard() {
               <Icon name="hand spock" />
           Jobseekers
           </List.Item>
-          <List.Item as={Link} to="/employees" 
-            name="sticker mule" >
-              <Icon name="sticker mule" />
-          Employees
-          </List.Item>
+         
           <List.Item as={Link} to="/users" 
             name="paw" >
               <Icon name="paw" />

@@ -1,5 +1,6 @@
 .App {
   text-align: center; 
+  margin: auto;
 }
 .ui.main.container{
   margin-top: 8em;

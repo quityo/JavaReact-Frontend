@@ -42,18 +42,18 @@ export default function Section() {
       <Grid>
         <Grid.Row>
           <GridColumn position="right"size={16}>
+          
           <Route exact path="/" component={HomeDetail} />
             <Route exact path="/jobseekers" component={JobseekerList} />
-            <Route exact path="/employers" component={EmployerList} />
-            <Route exact path="/employers/:userId" component={EmployerDetail} />
+           
             
             <Route exact path="/aboutus" component={AboutUs} />
             <Route exact path="/employees" component={EmployeeList} />
             <Route exact path="/users" component={UserList} />
             <Route exact path ="/filter" component={Filter}/>
+            <Route exact path="/employerupdateconfirm" component={EmployerUpdateConfirm} />
             </GridColumn>
             
-            <Route exact path="/registeremployer" component={RegisterEmployer}></Route>
             <Route exact path="/registeremployee" component={RegisterEmployee}></Route>
             <Route exact path="/register" component={Register}></Route>         
             <Route exact path="/login" component={Login}/>
@@ -72,10 +72,14 @@ export default function Section() {
             <Route exact path="/employeeUpdate/:userId" component={EmployeeUpdate} />
             <Route exact path="/employeeUpdate" component={EmployeeUpdate} />
             <Route exact path="/employees/:userId" component={EmployeeDetail} />
-            <Route exact path="/employerupdateconfirm" component={EmployerUpdateConfirm} />
-            <Route exact path="/favorites" component={Favorite}/>
+            
 
-            <Route exact path="/list" component={EmployerUpdate}/>
+            <Route exact path="/employers" component={EmployerList} />
+            <Route exact path="/employers/:userId" component={EmployerDetail} />
+            <Route exact path="/employerUpdate" component={EmployerUpdate}/>
+             <Route exact path="/registeremployer" component={RegisterEmployer}></Route>
+            
+             <Route exact path="/favorites" component={Favorite}/>
           
         </Grid.Row>
       </Grid>

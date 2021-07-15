@@ -20,7 +20,9 @@ export default function EmployerDetail() {
  
 
   return(
-        <div>
+        <div style={{
+          margin: "auto"
+        }}>
            <Header as="h2" textAlign='center'>
         Employer Detail
       </Header>
@@ -44,7 +46,11 @@ export default function EmployerDetail() {
       </Card.Content>
       <Card.Content extra>
         <div className='ui two buttons'>
-          <Button as={Link} to={`/employers/${employer.jobAdvert?.jobAdvertId}`} basic color='green'>
+        <Button as={Link} to={"/employerUpdate"} inverted color='green'>
+           Şirket Bilgilerini Güncelleme
+          </Button></div>
+          <div className='ui two buttons'>
+          <Button as={Link} to={`/employers/${employer.jobAdvert?.jobAdvertId}`} inverted color='blue'>
             İş İlanları
           </Button>
           

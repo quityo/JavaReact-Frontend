@@ -5,32 +5,36 @@ import { Button, Card, Input, Form, Message } from "semantic-ui-react";
 import HrmsLabel from "../../../utilities/formControls/HrmsLabel";
 import * as Yup from "yup";
 
+import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom'
 export default function EmployeeUpdate() {
 
+  const {authItem} = useSelector(state => state.auth)
   let {userId} = useParams()
   const [employee, setEmployee] = useState({});
 
-  useEffect(() => {
+  useEffect((userId) => {
     let employeeService = new EmployeeService();
-    employeeService. getEmployeeId(userId).then((result) => {
+    employeeService.getEmployeeId(authItem[0].user.userId).then((result) => {
       setEmployee(result.data.data);
     });
-  }, []);
+  }, [userId]);
 
   const formik = useFormik({
     initialValues: {
-      userId:employee.userId,
-      firstName: employee.firstName,
-      lastName: employee.lastName,
-      email: employee.email,
-      password: employee.password,
+      userId:employee?.userId,
+      firstName: employee?.firstName,
+      lastName: employee?.lastName,
+      email: employee?.email,
+      password: employee?.password,
+      passwordAgain: employee?.passwordAgain,
     },
     validationSchema: Yup.object({
       firstName: Yup.string().required("First name is not null"),
       lastName: Yup.string().required("Last name is not null"),
       email: Yup.string().required("Email is not null"),
       password: Yup.string().required("Password is not null"),
+      passwordAgain: Yup.string().required("Password is not null"),
     }),
     onSubmit: (userId) => {
         let employeeService = new EmployeeService();
@@ -108,6 +112,21 @@ export default function EmployeeUpdate() {
           {formik.errors.password && formik.touched.password ? (
             <Message pointing color="red">
               {formik.errors.password}
+            </Message>
+          ) : null}
+          <br />
+          <HrmsLabel name="Password Again" /> <br />
+          <Input
+            fluid
+            name="passwordAgain"
+            onChange={(e) => {
+              formik.handleChange(e);
+            }}
+            value={formik.values.passwordAgain}
+          />
+          {formik.errors.passwordAgain && formik.touched.passwordAgain ? (
+            <Message pointing color="red">
+              {formik.errors.passwordAgain}
             </Message>
           ) : null}
           <br /></Form>

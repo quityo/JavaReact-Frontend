@@ -9,9 +9,10 @@ function App() {
   return (
     <div className="App">
      <Navi/>
-     <br/><br/><br/>
-     <h2 style={{fontSize:"50px",marginLeft:"3%", fontFamily:"Star Jedi"}}>Funky Sun</h2>
-       <p2 style={{fontSize:"18px",marginLeft:"3%"}}><i>Human Resource Management</i></p2>
+     <br/><br/>
+     <h2 style={{fontSize:"50px",margin:"auto", fontFamily:"Star Jedi"}}>Funky Sun</h2>
+     <br/>
+       <p2 style={{fontSize:"18px",margin:"auto",}}><i>Human Resource Management System</i></p2>
       <Divider/>
       <Container className="main">
          <Dashboard/>

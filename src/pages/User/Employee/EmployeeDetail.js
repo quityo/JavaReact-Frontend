@@ -44,7 +44,7 @@ export default function EmployeeDetail() {
   </Table>
 
   <Modal 
-      trigger={<Button color = "green" icon = 'edit'></Button>}
+      trigger={<Button fluid color='green'>Güncelle</Button>}
       header='Employee Update Form' 
       content={<EmployeeUpdate employee={employee}></EmployeeUpdate>}
       ></Modal>

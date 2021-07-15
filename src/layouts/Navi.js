@@ -49,8 +49,6 @@ const font = {
         <Menu.Item  active={activeItem === "CvDetail"} onClick={handleItemClick} as={NavLink} to="/cvDetail">
                     <h2 style={font} >Cv Detail</h2></Menu.Item>
         
-                    <Menu.Item  active={activeItem === "list"} onClick={handleItemClick} as={NavLink} to="/list">
-                    <h2 style={font} >list</h2></Menu.Item>
         
         <Menu.Menu position="right">
         <Menu.Item active={activeItem === "/"} onClick={handleItemClick} as={NavLink} to="/" name="Home" />
@@ -60,32 +58,36 @@ const font = {
                 <h2 style={font} >Cv List</h2>
             </Menu.Item>
           
-                 
-
-          
-             <Dropdown item style={font} text="İş Veren">
-              <Dropdown.Menu>
-                <Dropdown.Item as={NavLink} to="/login">
-                  Giriş
-                </Dropdown.Item>
-                <DropdownItem
-                as={NavLink} to="/employerupdateconfirm">
-                  Request List
-                </DropdownItem>
-                <Dropdown.Item as={NavLink} to="/registeremployer">
-                Kayıt
-                  </Dropdown.Item>
-                <Dropdown.Item>Sizi Arayalım</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown> 
 
             <div style={{margin:"auto"}}> {authItem[0].loggedIn && authItem[0].user.userType===1 &&  <Button color="red" as={Link} to={`/favorites`}>
               <Icon name='heart' />
-              Favori İlanlar
-             
-            </Button >}
-           
+              Favori İlanlar </Button >}
             </div>
+
+            <div style={{margin:"auto"}}>
+           
+             {authItem[0].loggedIn && authItem[0].user.userType===3 && 
+              <Dropdown item style={font} text="Admin">
+              <Dropdown.Menu>
+                <Dropdown.Item as={Link} to="/registeremployee">Employee Add</Dropdown.Item>
+                <Dropdown.Item as={Link} to={`/employees/${authItem[0].user.userId}`}>Employee Details</Dropdown.Item>
+                <Dropdown.Item as={Link} to={"/employerupdateconfirm"}>Employer Confirm</Dropdown.Item>
+                <Dropdown.Item as={Link} to={"/employers"}>Employer List</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>}
+            </div>
+
+            <div style={{margin:"auto"}}>
+           
+           {authItem[0].loggedIn && authItem[0].user.userType===2 && 
+            <Dropdown item style={font} text="Employers">
+            <Dropdown.Menu>
+            <Dropdown.Item as={Link} to={`/employers/${authItem[0].user.userId}`}>Employer Detail</Dropdown.Item>
+            <Dropdown.Item as={Link} to={"/employerUpdate"}>Employer Update</Dropdown.Item>
+            <Dropdown.Item as={Link} to={"/employers"}>Employer List</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>}
+          </div>
 <div>
  {authItem[0].loggedIn?<SignedIn/>
             :<SignedOut/>}</div>

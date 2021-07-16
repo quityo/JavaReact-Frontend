@@ -25,8 +25,8 @@ export default function EmployerList() {
           <Table.HeaderCell></Table.HeaderCell>
             <Table.HeaderCell>Company Name</Table.HeaderCell>
             <Table.HeaderCell>Website</Table.HeaderCell>
-            <Table.HeaderCell>Detail</Table.HeaderCell>
-            <Table.HeaderCell>Confirmation</Table.HeaderCell>
+            <Table.HeaderCell>Detail</Table.HeaderCell>{/* 
+            <Table.HeaderCell>Confirmation</Table.HeaderCell> */}
           </Table.Row>
         </Table.Header>
 
@@ -41,7 +41,7 @@ export default function EmployerList() {
               <Table.Cell>
               <Button fluid  size='small' color='green'as={Link} to={`/employers/${employer.userId}`}>View</Button>
               </Table.Cell>
-              <Table.Cell>{employer.registrationVerification===true?"Yes":"No"}</Table.Cell>
+              {/* <Table.Cell>{employer.registrationVerification===true?"Yes":"No"}</Table.Cell> */}
             </Table.Row>
           ))}
         </Table.Body>

@@ -43,9 +43,7 @@ const font = {
             Bildirimler
           </Menu.Item> */}
         <Menu.Item active={activeItem === "jobadvert/add"} onClick={handleItemClick} as={NavLink} to="/jobadverts/add" name="İlan Ver" />
-        <Menu.Item style={{ marginRight: 20 }} active={activeItem === "confirmjobadvert"} onClick={handleItemClick} as={NavLink} to="/confirmjobadvert">
-                    
-                    <h2 style={font}>İlan Onayı</h2></Menu.Item> 
+        
         <Menu.Item  active={activeItem === "CvDetail"} onClick={handleItemClick} as={NavLink} to="/cvDetail">
                     <h2 style={font} >Cv Detail</h2></Menu.Item>
         
@@ -67,12 +65,13 @@ const font = {
             <div style={{margin:"auto"}}>
            
              {authItem[0].loggedIn && authItem[0].user.userType===3 && 
-              <Dropdown item style={font} text="Admin">
+              <Dropdown item style={font} text="Admin List">
               <Dropdown.Menu>
                 <Dropdown.Item as={Link} to="/registeremployee">Employee Add</Dropdown.Item>
                 <Dropdown.Item as={Link} to={`/employees/${authItem[0].user.userId}`}>Employee Details</Dropdown.Item>
                 <Dropdown.Item as={Link} to={"/employerupdateconfirm"}>Employer Confirm</Dropdown.Item>
                 <Dropdown.Item as={Link} to={"/employers"}>Employer List</Dropdown.Item>
+                <Dropdown.Item as={Link} to={"/confirmjobadvert"}>Job Confirm</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>}
             </div>
@@ -85,6 +84,7 @@ const font = {
             <Dropdown.Item as={Link} to={`/employers/${authItem[0].user.userId}`}>Employer Detail</Dropdown.Item>
             <Dropdown.Item as={Link} to={"/employerUpdate"}>Employer Update</Dropdown.Item>
             <Dropdown.Item as={Link} to={"/employers"}>Employer List</Dropdown.Item>
+            <Dropdown.Item as={Link} to={"/jobadverts/add"}>Job Add</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>}
           </div>

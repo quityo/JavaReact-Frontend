@@ -54,13 +54,14 @@ export default function Section() {
             <Route exact path="/employerupdateconfirm" component={EmployerUpdateConfirm} />
             </GridColumn>
             
+            <Route exact path="/jobadverts/add" component={JobAdvertAdd}/>
             <Route exact path="/registeremployee" component={RegisterEmployee}></Route>
             <Route exact path="/register" component={Register}></Route>         
             <Route exact path="/login" component={Login}/>
 
             <Route exact path="/jobadverts" component={JobAdvertList} />
             
-            <Route exact path="/jobadverts/add" component={JobAdvertAdd}/>
+            
             <Route exact path="/confirmjobadvert" component={ConfirmJobAdvert}/>
             <Route exact path="/jobadverts/:jobAdvertId" component={JobAdvertDetail} />
             <Route exact path="/jobadverts/:employerId" component={JobAdvertDetail} />

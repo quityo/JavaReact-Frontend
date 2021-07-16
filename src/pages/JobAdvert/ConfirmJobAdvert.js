@@ -31,7 +31,7 @@ return(
       
 
 <Card.Content style={{backgroundColor:"#F2F4F4"}}>
-  <Card.Header style={{marginLeft:"9.5%"}} >{j.jobPosition.jobTitle}</Card.Header>
+  <Card.Header >{j.jobPosition.jobTitle}</Card.Header>
   <Image floated="left" size="tiny" circular src={j.employer?.image?.imageUrl}></Image>
   <Card.Meta style={{marginRight:"13%"}}>{j.employer?.companyName}</Card.Meta>
   <Card.Meta style={{marginRight:"13%"}}>{j.city?.name}</Card.Meta>

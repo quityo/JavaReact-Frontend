@@ -80,13 +80,13 @@ import EmployerService from '../../../services/employerService';
                 size="massive"
                 style={{ marginBottom: "1em" }}
               >
-                <Button.Content visible>Şirken Bilgilerinizi Güncelleyin</Button.Content>
+                <Button.Content visible>Update For Company</Button.Content>
                 <Button.Content hidden>
                 </Button.Content>
               </Button>
         }
       >
-        <Modal.Header>Şirket Bilgi Güncelleme</Modal.Header>
+        <Modal.Header>Update Form For Company</Modal.Header>
         <Modal.Description>
         <Container>
             <Segment circle="true" vertical style={{ padding: "3em 0em" }}>
@@ -116,11 +116,11 @@ import EmployerService from '../../../services/employerService';
                         </Form.Field>
                         <Form.Field style={{ marginBottom: "1rem" }}>
                         <Label basic color="orange">
-                            Mail:
+                            E-Mail:
                           </Label>
                           <Input
                             style={{ marginRight: "1em", marginTop: "1em" }}
-                            placeholder="EMail..."
+                            placeholder="Company E-Mail..."
                             value={formik.values.email}
                             name="email"
                             onChange={formik.handleChange}
@@ -134,11 +134,11 @@ import EmployerService from '../../../services/employerService';
                         </Form.Field>
                         <Form.Field style={{ marginBottom: "1rem" }}>
                         <Label basic color="orange">
-                             Şifre:
+                             Password:
                           </Label>
                           <Input
                             style={{ marginRight: "1em", marginTop: "1em" }}
-                            placeholder="Şifre..."
+                            placeholder="Password..."
                             value={formik.values.password}
                             name="password"
                             onChange={formik.handleChange}
@@ -152,11 +152,11 @@ import EmployerService from '../../../services/employerService';
                         </Form.Field>
                         <Form.Field style={{ marginBottom: "1rem" }}>
                         <Label basic color="orange">
-                             Telefon Numarası:
+                             Telephone:
                           </Label>
                           <Input
                             style={{ marginRight: "1em", marginTop: "1em" }}
-                            placeholder="Telefon..."
+                            placeholder="Telephone Number..."
                             value={formik.values.phoneNumber}
                             name="phoneNumber"
                             onChange={formik.handleChange}
@@ -170,11 +170,11 @@ import EmployerService from '../../../services/employerService';
                         </Form.Field>
                         <Form.Field style={{ marginBottom: "1rem" }}>
                         <Label basic color="orange">
-                             Web Adresi:
+                             Website:
                           </Label>
                           <Input
                             style={{ marginRight: "1em", marginTop: "1em" }}
-                            placeholder="Web..."
+                            placeholder="Website..."
                             value={formik.values.website}
                             name="website"
                             onChange={formik.handleChange}
@@ -199,7 +199,7 @@ import EmployerService from '../../../services/employerService';
                               marginLeft: "19.8em",
                             }}
                           >
-                            <Button.Content visible>Vazgeç</Button.Content>
+                            <Button.Content visible>Cancel</Button.Content>
                             <Button.Content hidden>
                               <Icon name="delete" />
                             </Button.Content>
@@ -215,7 +215,7 @@ import EmployerService from '../../../services/employerService';
                               marginRigth: "10em",
                             }}
                           >
-                            <Button.Content visible>Kaydet</Button.Content>
+                            <Button.Content visible>Save</Button.Content>
                             <Button.Content hidden>
                               <Icon name="check" />
                             </Button.Content>

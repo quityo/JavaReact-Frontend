@@ -34,6 +34,9 @@ import EmployerDetail from "../pages/User/Employer/EmployerDetail";
 import EmployeeDetail from "../pages/User/Employee/EmployeeDetail";
 import EmployerUpdateConfirm from "../pages/User/Employer/EmployerUpdateConfirm";
 
+import CvList from "../pages/Cv/CvList"
+import CvDetail from "../pages/Cv/CvDetail";
+import ImageUpdate from "../pages/Image/ImageUpdate";
 export default function Section() {
 
  
@@ -43,6 +46,7 @@ export default function Section() {
         <Grid.Row>
           <GridColumn position="right"size={16}>
           
+          <Route exact path="/cvlist/:userId" component={CvDetail}/>
           <Route exact path="/" component={HomeDetail} />
             <Route exact path="/jobseekers" component={JobseekerList} />
            
@@ -78,10 +82,13 @@ export default function Section() {
             <Route exact path="/employers" component={EmployerList} />
             <Route exact path="/employers/:userId" component={EmployerDetail} />
             <Route exact path="/employerUpdate" component={EmployerUpdate}/>
-             <Route exact path="/registeremployer" component={RegisterEmployer}></Route>
+            <Route exact path="/registeremployer" component={RegisterEmployer}></Route>
             
-             <Route exact path="/favorites" component={Favorite}/>
-          
+            <Route exact path="/favorites" component={Favorite}/>
+
+            <Route exact path="/cvlist" component={CvList}/>
+            <Route exact path="/cvdetail" component={CvDetail}/>
+            <Route exact path="/image" component={ImageUpdate}/>
         </Grid.Row>
       </Grid>
     </div>

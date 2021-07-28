@@ -21,7 +21,7 @@ export default function SignedIn() {
       },[])
       useEffect((userId)=>{
         let imageService = new ImageService()
-        imageService.getByUserId(userId).then(result=>setImages(result.data.data))
+        imageService.getById(userId).then(result=>setImages(result.data.data))
       },[])
      
     const handleLogout=(user)=>{
@@ -34,10 +34,10 @@ export default function SignedIn() {
             
             <Menu.Item >
                
-          <Image avatar spaced ="right"  src={authItem[0].user.image}/>
+          <Image avatar spaced ="right"  src={authItem[0].user.image?.imageUrl}/>
           <Dropdown pointing="top right" text={authItem[0].user.name}>
                     <Dropdown.Menu>
-                        {authItem[0].user.userType===1 &&<Dropdown.Item as={Link} to={`/cvs/${authItem[0].user.userId}`}>Cv Güncelle</Dropdown.Item>}
+                        {authItem[0].user.userType===1 &&<Dropdown.Item as={Link} to={`/cvlist/${authItem[0].user.userId}`}>Cv Güncelle</Dropdown.Item>}
                         {authItem[0].user.userType===2 &&<Dropdown.Item as={Link} to={`/employers/${authItem[0].user.userId}`}>Şirket bilgilerini güncelle</Dropdown.Item>}
                         <Dropdown.Item onClick={()=>handleLogout(authItem[0].user)}> Çıkış yap</Dropdown.Item>
                     </Dropdown.Menu>

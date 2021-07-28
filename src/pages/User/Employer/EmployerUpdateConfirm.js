@@ -53,11 +53,11 @@ return (
           <Table color="black">
             <Table.Header>
               <Table.Row>
-                <Table.HeaderCell>Firma Adı</Table.HeaderCell>
-                <Table.HeaderCell>Telefon Numarası</Table.HeaderCell>
-                <Table.HeaderCell>Web Adresi</Table.HeaderCell>
-                <Table.HeaderCell>Mail Adresi</Table.HeaderCell>
-                <Table.HeaderCell>Şifre</Table.HeaderCell>
+                <Table.HeaderCell>Company Name</Table.HeaderCell>
+                <Table.HeaderCell>Tel No</Table.HeaderCell>
+                <Table.HeaderCell>Website</Table.HeaderCell>
+                <Table.HeaderCell>E-Mail</Table.HeaderCell>
+                <Table.HeaderCell>Password</Table.HeaderCell>
                 <Table.HeaderCell>Onay Durumu</Table.HeaderCell>
                 <Table.HeaderCell>Onay İşlemi</Table.HeaderCell>
               </Table.Row>

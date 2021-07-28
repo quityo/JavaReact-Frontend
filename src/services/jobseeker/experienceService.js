@@ -1,13 +1,17 @@
 import axios from "axios"
 
 export default class ExperienceService{
-    getExperiences(){
-        return axios.get("http://localhost:8080/api/experiences/getall")
+    
+  
+    add(experience){
+        return axios.post("http://localhost:8080/api/experiences/add",experience)
     }
-    getExperienceByJobseekerId(jobseekerId){
-        return axios.get("http://localhost:8080/api/jobExperiences/getAllByJobseekerId?id=" +jobseekerId)
+
+    delete(experienceId){
+        return axios.delete(`http://localhost:8080/api/experiences/delete?experianceId=${experienceId}`)
     }
-    getExperienceListsByJobseekerDESC(jobseekerId){
-        return axios.get("http://localhost:8080/api/jobExperiences/getAllByJobseekerIdOrderByEndAtDesc?id="+jobseekerId)
+
+    getByCvId(cvId){
+        return axios.get(`http://localhost:8080/api/experiences/getByCvId?cvId=${cvId}`)
     }
 }

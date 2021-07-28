@@ -2,21 +2,20 @@ import axios from "axios";
 
 export default class ImageService {
     upload(file, userId) {
-        const data = new FormData();
-        data.append('file', file);
-        return axios.post("http://localhost:8080/api/images/upload", data, { headers: { 'Content-Type': 'multipart/form-data' }, params: { userId } });
+        return axios.post("http://localhost:8080/api/images/add?userId=" + userId ,file);
     }
-    getByUserId(userId) {
-        return axios.get("http://localhost:8080/api/images/getbyid?id=" + userId);
+    getById(userId) {
+        return axios.get("http://localhost:8080/api/images/getByUserId?userId=" + userId);
     }
-    getById(imageId) {
-        return axios.get("http://localhost:8080/api/images/getbyid?imageId=" + imageId);
+    getByImageId(imageId) {
+        return axios.get("http://localhost:8080/api/images/getByImageId?imageId=" + imageId);
     }
-    getJobImages(){
-        return axios.get("http://localhost:8080/api/images/getall")
-    }
+   
     getAll(){
         return axios.get("http://localhost:8080/api/images/getall")
+    }
+    getByCvId(cvId){
+        return axios.get(`http://localhost:8080/api/images/getByCvId?cvId=${cvId}`)
     }
  
 }

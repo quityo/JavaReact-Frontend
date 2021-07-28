@@ -34,7 +34,7 @@ export default function EmployeeUpdate() {
       lastName: Yup.string().required("Last name is not null"),
       email: Yup.string().required("Email is not null"),
       password: Yup.string().required("Password is not null"),
-      passwordAgain: Yup.string().required("Password is not null"),
+      passwordAgain: Yup.string().required("Password Again is not null"),
     }),
     onSubmit: (userId) => {
         let employeeService = new EmployeeService();

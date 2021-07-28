@@ -44,20 +44,18 @@ const font = {
           </Menu.Item> */}
         <Menu.Item active={activeItem === "jobadvert/add"} onClick={handleItemClick} as={NavLink} to="/jobadverts/add" name="İlan Ver" />
         
-        <Menu.Item  active={activeItem === "CvDetail"} onClick={handleItemClick} as={NavLink} to="/cvDetail">
+        <Menu.Item  active={activeItem === "CvDetail"} onClick={handleItemClick} as={NavLink} to="/cvdetail">
                     <h2 style={font} >Cv Detail</h2></Menu.Item>
         
         
         <Menu.Menu position="right">
         <Menu.Item active={activeItem === "/"} onClick={handleItemClick} as={NavLink} to="/" name="Home" />
-        <Menu.Item active={activeItem === "CvList"} onClick={handleItemClick} as={NavLink} to="/cvList">
-            
-          
-                <h2 style={font} >Cv List</h2>
+        <Menu.Item active={activeItem === "CvList"} onClick={handleItemClick} as={NavLink} to="/cvlist"> <h2 style={font} >Cv List</h2></Menu.Item>
+        
+        <Menu.Item active={activeItem === "CvDetail"} onClick={handleItemClick} as={NavLink} to="/cvdetail"> <h2 style={font} >Cv Detail</h2>
             </Menu.Item>
-          
-
-            <div style={{margin:"auto"}}> {authItem[0].loggedIn && authItem[0].user.userType===1 &&  <Button color="red" as={Link} to={`/favorites`}>
+           
+            <div style={{margin:"auto"}}> {authItem[0].loggedIn && authItem[0].user.userType===1 &&  <Button color="orange" as={Link} to={`/favorites`}>
               <Icon name='heart' />
               Favori İlanlar </Button >}
             </div>
@@ -88,7 +86,9 @@ const font = {
             </Dropdown.Menu>
           </Dropdown>}
           </div>
-<div>
+<div style={{
+          margin: "auto"
+        }}>
  {authItem[0].loggedIn?<SignedIn/>
             :<SignedOut/>}</div>
           

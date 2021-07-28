@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Table, Header, Icon, Button } from "semantic-ui-react";
 import JobseekerService from "../../../services/jobseeker/jobseekerService";
-
+import { Link } from "react-router-dom";
 export default function JobseekerList() {
   const [jobseekers, setJobseekers] = useState([]);
   useEffect(() => {
@@ -15,7 +15,7 @@ export default function JobseekerList() {
     <div>
       <Header as="h2" textAlign='center'>
         <Icon name="hand spock" color='teal'></Icon>
-        Jobseeker List
+        Jobseekers List
       </Header>
       <Table color="blue" key="blue">
         <Table.Header>
@@ -34,7 +34,14 @@ export default function JobseekerList() {
               <Table.Cell>{jobseeker.lastName}</Table.Cell>
               <Table.Cell>{jobseeker.email}</Table.Cell>
               <Table.Cell>
-                <Button>View</Button>
+              <Button
+              color={"green"}
+                  animated="fade"
+                  as={Link}
+                  to={`/cvlist/${jobseeker.userId}`}
+                >
+                  <Button.Content visible>Wiew</Button.Content>
+                  </Button>
               </Table.Cell>
             </Table.Row>
           ))}

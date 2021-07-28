@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { Button, Dropdown, Input, TextArea, Card, Form, Grid } from "semantic-ui-react";
+import { Button, Dropdown, Input, TextArea, Card, Form, Grid, Message } from "semantic-ui-react";
 import CityService from "../../services/cityService"
 import WorkTimeService from "../../services/workTimeService";
 import WorkTypeService from "../../services/workTypeService";
 import JobPositionService from "../../services/jobPositionService";
 import JobAdvertService from "../../services/jobAdvertService";
 import EmployerService from "../../services/employerService";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
-
+import SignedIn from "../../layouts/SignedIn";
+import SignedOut from "../../layouts/SignedOut";
 export default function JobAdvertAdd() {
 
     const {authItem} = useSelector(state => state.auth)
@@ -76,7 +77,7 @@ export default function JobAdvertAdd() {
 
       employerService.getEmployers().then(result => setEmployer(result.data.data))
       cityService.getCities().then(result => setCity(result.data.data))
-      jobPositionService.getJobPositions().then(result => setPosition(result.data.data))
+      jobPositionService.getByAsc().then(result => setPosition(result.data.data))
       workTypeService.getWorkTypes().then(result => setWorkTypes(result.data.data))
       workTimeService.getWorkTimes().then(result => setWorkTimes(result.data.data))
   }, [])
@@ -122,6 +123,11 @@ export default function JobAdvertAdd() {
           </div>
           <br/>
           <p>Giriş yapmayı yada bir iş veren hesabı oluşturmayı deneyebilirsiniz</p>
+        
+          <div>{authItem[0].loggedIn?<SignedIn/>
+            :<SignedOut />}
+        </div>
+        <Message info><Link to={"/registerEmployer"}><b>İşveren olarak kaydolmak için buraya tıkla</b></Link></Message>
         </div>
       }
       {authItem[0].user.userType ===2 && 

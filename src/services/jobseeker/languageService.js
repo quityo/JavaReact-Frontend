@@ -1,10 +1,17 @@
 import axios from "axios"
 
 export default class LanguageService{
-    getLanguages(){
-        return axios.get("http://localhost:8080/api/languages/getall")
+  
+    getByCvId(cvId){
+        return axios.get(`http://localhost:8080/api/languages/getByCvId?cvId=${cvId}`)
     }
-    getLanguagesByJobSeeker(jobSeekerId){
-        return axios.get("http://localhost:8080/api/languages/getAllByJobseekerId?id="+jobSeekerId)
+
+    delete(languageId){
+        return axios.delete(`http://localhost:8080/api/languages/delete?languageId=${languageId}`)
     }
+
+    add(language){
+        return axios.post("http://localhost:8080/api/languages/add",language)
+    }
+
 }

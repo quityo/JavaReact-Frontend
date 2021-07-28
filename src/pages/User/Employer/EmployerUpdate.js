@@ -1,11 +1,14 @@
 
-import { Button, Card, Input, Form, Modal, Label, Icon, Container, Segment, Grid, Dropdown} from "semantic-ui-react";
+import { Button, Card, Input, Form, Modal, Label, Icon, Container, Segment, Grid,
+  Message} from "semantic-ui-react";
 import * as Yup from "yup";
-
+import SignedIn from "../../../layouts/SignedIn";
+import SignedOut from "../../../layouts/SignedOut";
 import swal from "sweetalert";
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom'
+import { Link,useParams } from 'react-router-dom'
 import { useFormik } from "formik";
+
 import React, { useEffect, useState } from "react";
 import EmployerService from '../../../services/employerService';
 
@@ -68,6 +71,19 @@ import EmployerService from '../../../services/employerService';
         <div style={{
           margin: "auto"
         }}>
+          {authItem[0].user.userType !==2 &&
+        <div className="ui negative message">
+          <div className="header">
+            Bu sayfayı görüntülemeye yetkiniz yok
+          </div>
+          <br/>
+          <p>Giriş yapmayı yada bir iş veren hesabı oluşturmayı deneyebilirsiniz</p>
+          <div>{authItem[0].loggedIn?<SignedIn/>
+            :<SignedOut />}</div>
+            <Message info><Link to={"/registerEmployer"}><b>İşveren olarak kaydolmak için buraya tıkla</b></Link></Message>
+        </div>
+      }
+{authItem[0].user.userType ===2 && 
              <Modal
         onClose={() => setOpen(false)}
         onOpen={() => setOpen(true)}
@@ -80,13 +96,13 @@ import EmployerService from '../../../services/employerService';
                 size="massive"
                 style={{ marginBottom: "1em" }}
               >
-                <Button.Content visible>Update For Company</Button.Content>
+                <Button.Content visible>Update For "{employer.companyName}"</Button.Content>
                 <Button.Content hidden>
                 </Button.Content>
               </Button>
         }
       >
-        <Modal.Header>Update Form For Company</Modal.Header>
+        <Modal.Header>Update Form For "{employer.companyName}"</Modal.Header>
         <Modal.Description>
         <Container>
             <Segment circle="true" vertical style={{ padding: "3em 0em" }}>
@@ -230,7 +246,7 @@ import EmployerService from '../../../services/employerService';
           </Container>
 
         </Modal.Description>
-      </Modal>
+      </Modal>}
         </div>
     )
 }

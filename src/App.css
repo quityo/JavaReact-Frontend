@@ -1,18 +1,15 @@
 .App {
-  text-align: center; 
+  text-align: center;
   margin: auto;
 }
-.ui.main.container{
+.ui.main.container {
   margin-top: 8em;
 }
-.p{
+.p {
   color: blue;
-  text-indent:50px; 
+  text-indent: 50px;
 }
 
-
-  .p2{
-     font-size: 18px;
-  }
-
-
+.p2 {
+  font-size: 18px;
+}

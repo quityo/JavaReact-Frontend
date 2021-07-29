@@ -10,36 +10,51 @@ export default function EmployerList() {
     let employerService = new EmployerService();
     employerService
       .getEmployers()
-      .then((result) => setEmployers(result.data.data))
+      .then((result) => setEmployers(result.data.data));
   }, []);
 
   return (
     <div>
-      <Header as="h2" textAlign='center'>
-        <Icon name="earlybirds"  />
+      <Header as="h2" textAlign="center">
+        <Icon name="earlybirds" />
         Employer List
       </Header>
       <Table color="blue" key="blue">
-        <Table.Header >
-          <Table.Row textAlign='center'>
-          <Table.HeaderCell></Table.HeaderCell>
+        <Table.Header>
+          <Table.Row textAlign="center">
+            <Table.HeaderCell></Table.HeaderCell>
             <Table.HeaderCell>Company Name</Table.HeaderCell>
             <Table.HeaderCell>Website</Table.HeaderCell>
-            <Table.HeaderCell>Detail</Table.HeaderCell>{/* 
+            <Table.HeaderCell>Detail</Table.HeaderCell>
+            {/* 
             <Table.HeaderCell>Confirmation</Table.HeaderCell> */}
           </Table.Row>
         </Table.Header>
 
-        <Table.Body >
+        <Table.Body>
           {employers.map((employer) => (
-            <Table.Row textAlign='center' key = {employer.userId}>
-              <Table.Cell><Image floated="left" size="tiny" src={employer.image?.imageUrl} circular></Image></Table.Cell>
+            <Table.Row textAlign="center" key={employer.userId}>
+              <Table.Cell>
+                <Image
+                  floated="left"
+                  size="tiny"
+                  src={employer.image?.imageUrl}
+                  circular
+                ></Image>
+              </Table.Cell>
               <Table.Cell>{employer.companyName}</Table.Cell>
               <Table.Cell>{employer.website}</Table.Cell>
-              
-              
+
               <Table.Cell>
-              <Button fluid  size='small' color='green'as={Link} to={`/employers/${employer.userId}`}>View</Button>
+                <Button
+                  fluid
+                  size="small"
+                  color="green"
+                  as={Link}
+                  to={`/employers/${employer.userId}`}
+                >
+                  View
+                </Button>
               </Table.Cell>
               {/* <Table.Cell>{employer.registrationVerification===true?"Yes":"No"}</Table.Cell> */}
             </Table.Row>

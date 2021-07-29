@@ -5,24 +5,26 @@ import { Button, Card, Input, Form, Message } from "semantic-ui-react";
 import HrmsLabel from "../../../utilities/formControls/HrmsLabel";
 import * as Yup from "yup";
 
-import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom'
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 export default function EmployeeUpdate() {
-
-  const {authItem} = useSelector(state => state.auth)
-  let {userId} = useParams()
+  const { authItem } = useSelector((state) => state.auth);
+  let { userId } = useParams();
   const [employee, setEmployee] = useState({});
 
-  useEffect((userId) => {
-    let employeeService = new EmployeeService();
-    employeeService.getEmployeeId(authItem[0].user.userId).then((result) => {
-      setEmployee(result.data.data);
-    });
-  }, [userId]);
+  useEffect(
+    (userId) => {
+      let employeeService = new EmployeeService();
+      employeeService.getEmployeeId(authItem[0].user.userId).then((result) => {
+        setEmployee(result.data.data);
+      });
+    },
+    [userId]
+  );
 
   const formik = useFormik({
     initialValues: {
-      userId:employee?.userId,
+      userId: employee?.userId,
       firstName: employee?.firstName,
       lastName: employee?.lastName,
       email: employee?.email,
@@ -37,22 +39,22 @@ export default function EmployeeUpdate() {
       passwordAgain: Yup.string().required("Password Again is not null"),
     }),
     onSubmit: (userId) => {
-        let employeeService = new EmployeeService();
-       employeeService.update(userId).then((result)=>{window.location.reload()})
+      let employeeService = new EmployeeService();
+      employeeService.update(userId).then((result) => {
+        window.location.reload();
+      });
     },
     enableReinitialize: true,
   });
   return (
-    <div  >
+    <div>
       <Card fluid>
-        
         <Form
           style={{
             marginLeft: "15px",
             marginRight: "15px",
             marginTop: "15px",
             marginBottom: "15px",
-            
           }}
         >
           <HrmsLabel name="First Name" /> <br />
@@ -129,11 +131,16 @@ export default function EmployeeUpdate() {
               {formik.errors.passwordAgain}
             </Message>
           ) : null}
-          <br /></Form>
-          <Button textAlign="center"   positive onClick={formik.handleSubmit} type="submit">
-            Update 
-          </Button>
-        
+          <br />
+        </Form>
+        <Button
+          textAlign="center"
+          positive
+          onClick={formik.handleSubmit}
+          type="submit"
+        >
+          Update
+        </Button>
       </Card>
     </div>
   );

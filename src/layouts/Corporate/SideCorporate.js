@@ -1,55 +1,43 @@
-import React from 'react'
-import {NavLink, Link } from 'react-router-dom';
-import {  List, Container,Divider} from 'semantic-ui-react';
+import React from "react";
+import { NavLink, Link } from "react-router-dom";
+import { List, Container, Divider } from "semantic-ui-react";
 
 export default function SideCorporate() {
-    return (
+  return (
     <div>
-    <Container textAlign='left'>
+      <Container textAlign="left">
+        <List link aling="right" size="big">
+          <List.Item as={NavLink} to="/" name="hand spock">
+            Hakkımıza
+          </List.Item>
 
-     <List link aling= "right" size='big'>
-      <List.Item as={NavLink} to="/" 
-        name="hand spock"          >
-         
-        Hakkımıza
-      </List.Item>
+          <Divider />
 
-      <Divider />
+          <List.Item as={Link} to="/employers" name="earlybirds">
+            Basında "Funky Sun"
+          </List.Item>
 
-      <List.Item 
-        as={Link} to="/employers" 
-        name="earlybirds"          >
-        Basında "Funky Sun"
-      </List.Item>
+          <Divider />
 
-      <Divider />
+          <List.Item as={Link} to="/jobpositions" name="paw">
+            Yayınlarımız
+          </List.Item>
 
-      <List.Item as={Link} to="/jobpositions" 
-        name="paw"
-      >
-        Yayınlarımız
-      </List.Item>
+          <Divider />
 
-      <Divider />
+          <List.Item as={Link} to="/jobadverts" name="angellist">
+            Gizlilik ve Kullanım
+          </List.Item>
 
-      <List.Item as={Link} to="/jobadverts" 
-        name="angellist"          >
-        Gizlilik ve Kullanım
-      </List.Item>
+          <Divider />
 
-      <Divider />
+          <List.Item as={Link} to="/employees" name="sticker mule">
+            Üyelik Silme
+          </List.Item>
 
-      <List.Item as={Link} to="/employees" 
-        name="sticker mule"          >
-        Üyelik Silme
-      </List.Item>
-
-      <Divider />
-
-      
-
-    </List>
-    </Container>
-  </div>
-);
+          <Divider />
+        </List>
+      </Container>
+    </div>
+  );
 }

@@ -3,8 +3,8 @@ import EmployerReducer from "./reducers/EmployerReducer";
 import { combineReducers } from "redux";
 
 const rootReducer = combineReducers({
-    auth : authReducer,
-    employer: EmployerReducer,
-})
+  auth: authReducer,
+  employer: EmployerReducer,
+});
 
 export default rootReducer;

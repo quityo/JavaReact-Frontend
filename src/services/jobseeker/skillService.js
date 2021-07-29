@@ -1,23 +1,27 @@
-import axios from "axios"
+import axios from "axios";
 
-export default class SkillService{
-    getSkills(){
-        return axios.get("http://localhost:8080/api/skills/getall")
-    }
-    
-    getSkillsByJobseeker(jobseekerId){
-        return axios.get("http://localhost:8080/api/skills/getByJobseekerId?id="+jobseekerId)
-    }
+export default class SkillService {
+  getSkills() {
+    return axios.get("http://localhost:8080/api/skills/getall");
+  }
 
-    getByCvId(cvId){
-        return axios.get(`http://localhost:8080/api/skills/getById?cvId=${cvId}`)
-    }
+  getSkillsByJobseeker(jobseekerId) {
+    return axios.get(
+      "http://localhost:8080/api/skills/getByJobseekerId?id=" + jobseekerId
+    );
+  }
 
-    add(skill){
-        return axios.post("http://localhost:8080/api/skills/add",skill)
-    }
+  getByCvId(cvId) {
+    return axios.get(`http://localhost:8080/api/skills/getById?cvId=${cvId}`);
+  }
 
-    delete(skillId){
-        return axios.delete(`http://localhost:8080/api/skills/delete?skillId=${skillId}`)
-    }
+  add(skill) {
+    return axios.post("http://localhost:8080/api/skills/add", skill);
+  }
+
+  delete(skillId) {
+    return axios.delete(
+      `http://localhost:8080/api/skills/delete?skillId=${skillId}`
+    );
+  }
 }

@@ -13,34 +13,34 @@ export default function EmployeeList() {
   }, []);
 
   return (
-    <div  >
-      <Header as="h2" textAlign='center'>
-        <Icon name="sticker mule" color='teal' />
+    <div>
+      <Header as="h2" textAlign="center">
+        <Icon name="sticker mule" color="teal" />
         Employee List
       </Header>
       <Table color="blue" key="blue">
         <Table.Header>
-          <Table.Row textAlign='center'>
+          <Table.Row textAlign="center">
             <Table.HeaderCell>First Name</Table.HeaderCell>
             <Table.HeaderCell>Last Name</Table.HeaderCell>
-            <Table.HeaderCell/>
+            <Table.HeaderCell />
           </Table.Row>
         </Table.Header>
 
         <Table.Body>
           {employees.map((employee) => (
-            <Table.Row textAlign='center' key={employee.employeeId}>
+            <Table.Row textAlign="center" key={employee.employeeId}>
               <Table.Cell>{employee.firstName}</Table.Cell>
               <Table.Cell>{employee.lastName}</Table.Cell>
               <Table.Cell>
-              <Button
-              color={"green"}
+                <Button
+                  color={"green"}
                   animated="fade"
                   as={Link}
                   to={`/employees/${employee.userId}`}
                 >
                   <Button.Content visible>Wiew</Button.Content>
-                  </Button>
+                </Button>
               </Table.Cell>
             </Table.Row>
           ))}

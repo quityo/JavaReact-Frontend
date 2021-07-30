@@ -88,7 +88,7 @@ export default function EducationUpdate({ cvId, updateCvValues }) {
                 <Table.Cell>{education.schoolName}</Table.Cell>
                 <Table.Cell>{education.department}</Table.Cell>
                 <Table.Cell>{education.startYearOfSchool}</Table.Cell>
-                <Table.Cell>{education.endYearOfSchool}</Table.Cell>
+                <Table.Cell>{education.endYearOfSchool ? (education.endYearOfSchool) :(<p>Devam Ediyor</p>)}</Table.Cell>
                 <Table.Cell>
                   <Button
                     color="red"
@@ -108,6 +108,7 @@ export default function EducationUpdate({ cvId, updateCvValues }) {
           <Form onSubmit={formik.handleSubmit}>
             <Grid stackable>
               <Grid.Column width={8}>
+              <div>
                 <label>
                   <b>Okul Adı</b>
                 </label>
@@ -120,6 +121,12 @@ export default function EducationUpdate({ cvId, updateCvValues }) {
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                 />
+                   {formik.errors.schoolName && formik.touched.schoolName && (
+                    <div className={"ui pointing red basic label"}>
+                      {formik.errors.schoolName}
+                    </div>
+                  )}
+                </div>
                 <label>
                   <b>Başlangıç Tarihi</b>
                 </label>

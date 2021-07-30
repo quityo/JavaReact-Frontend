@@ -12,7 +12,7 @@ export default class SkillService {
   }
 
   getByCvId(cvId) {
-    return axios.get(`http://localhost:8080/api/skills/getById?cvId=${cvId}`);
+    return axios.get("http://localhost:8080/api/skills/getByCvId?cvId="+ cvId);
   }
 
   add(skill) {

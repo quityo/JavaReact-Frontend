@@ -13,7 +13,7 @@ export default class LanguageService {
     );
   }
 
-  add(language) {
-    return axios.post("http://localhost:8080/api/languages/add", language);
+  add(values) {
+    return axios.post("http://localhost:8080/api/languages/add", values);
   }
 }

@@ -6,10 +6,12 @@ import LanguageUpdate from "./Language/LanguageUpdate";
 import SkillUpdate from "./Skill/SkillUpdate";
 import ExperienceUpdate from "./Experience/ExperienceUpdate";
 import GitHubUpdate from "./Links/GitHubUpdate";
+import PositionUpdate from "./Links/PositionUpdate"
 import LinkedinUpdate from "./Links/LinkedinUpdate";
 import BiographyUpdate from "./Links/BiographyUpdate";
 import ImageUpdate from "../Image/ImageUpdate";
 import ImageService from "../../services/imageService";
+import ExperienceService from "../../services/jobseeker/experienceService"
 import { Card, Image, Table, Header, Button, Icon } from "semantic-ui-react";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
@@ -26,6 +28,7 @@ export default function CvDetail() {
 
   let imageService = new ImageService();
   let cvService = new CvService();
+  let experienceService = new ExperienceService();
 
   useEffect(() => {
     imageService
@@ -44,6 +47,17 @@ export default function CvDetail() {
   const handleGithubDelete = (cvId) => {
     cvService
       .deleteGithub(cvId)
+      .then((result) => {
+        toast.success(result.data.message);
+        updateCvValues();
+      })
+      .catch((result) => {
+        toast.error(result.response.data.message);
+      });
+  };
+  const handlePositionDelete = (experienceId) => {
+    experienceService
+      .deletePosition(experienceId)
       .then((result) => {
         toast.success(result.data.message);
         updateCvValues();
@@ -163,7 +177,6 @@ export default function CvDetail() {
                       {cv.jobseeker?.email}
                     </Table.Cell>
                   </Table.Row>
-
                   <Table.Row>
                     <Table.Cell>
                       <Header as="h4" image>
@@ -294,10 +307,10 @@ export default function CvDetail() {
 
           <Table.Body>
             {cv.educations?.map((education) => (
-              <Table.Row key={education.educationId} textAlign="center">
-                <Table.Cell>{education.schoolName}</Table.Cell>
-                <Table.Cell>{education.department}</Table.Cell>
-                <Table.Cell>{education.startYearOfSchool}</Table.Cell>
+              <Table.Row key={education.educationId}>
+              <Table.Cell>{education.schoolName}</Table.Cell>
+              <Table.Cell>{education.department}</Table.Cell>
+              <Table.Cell>{education.startYearOfSchool}</Table.Cell>
                 <Table.Cell>
                   {education.endYearOfSchool ? (
                     education.endYearOfSchool
@@ -345,7 +358,30 @@ export default function CvDetail() {
             {cv.experiences?.map((experience) => (
               <Table.Row key={experience.experienceId}>
                 <Table.Cell>{experience.workingPlace}</Table.Cell>
-                <Table.Cell>{experience.position}</Table.Cell>
+                
+                <Table.Cell>{experience.position}  {myProfile && (
+                            <Popup
+                              trigger={
+                                <button className="ui button"> Update </button>
+                              }
+                              modal
+                            >
+                              <PositionUpdate
+                                cvId={cv.cvId}
+                                updateCvValues={updateCvValues}
+                              />
+                            </Popup>
+                          )}
+                          {myProfile && (
+                            <Button
+                              color="red"
+                              circular
+                              icon="x"
+                              onClick={() => handlePositionDelete(cv.experience?.experienceId)}
+                              disabled={!cv.experience?.position}
+                            ></Button>
+                          )}
+                    </Table.Cell>
                 <Table.Cell>{experience.startYearOfWork}</Table.Cell>
                 <Table.Cell>
                   {experience.endYearOfWork ? (
@@ -429,7 +465,7 @@ export default function CvDetail() {
 
           <Table.Body>
             {cv.skills?.map((skill) => (
-              <Table.Row key={skill.skillId}>
+              <Table.Row key={cv.skill?.skillId}>
                 <Table.Cell textAlign="center">{skill.skillName}</Table.Cell>
               </Table.Row>
             ))}

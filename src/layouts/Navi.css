@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css?family=Sacramento&display=swap");
 
 h1 {
-  font-size: calc(20px + 0.8vh);
-  line-height: calc(20px + 1vh);
+  font-size: calc(25px + 0.8vh);
+  line-height: calc(40px + 1vh);
   /*   text-shadow: 0 0 5px #f562ff, 0 0 15px #f562ff, 0 0 25px #f562ff,
     0 0 20px #f562ff, 0 0 30px #890092, 0 0 80px #890092, 0 0 80px #890092;
   color: #fccaff; */
@@ -16,7 +16,7 @@ h1 {
 }
 
 body {
-  padding: 2vw;
+  padding: 1.55vw;
   justify-content: center;
   align-items: center;
 }

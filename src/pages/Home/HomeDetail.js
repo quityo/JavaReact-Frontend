@@ -6,7 +6,7 @@ import "./HomeDetail.css";
 export default function HomeDetail() {
   return (
     <div className="home">
-      <Container>
+      <Container >
         <p>
           Human resource managers are the overseers of the H.R. department and
           insurers of the functions and tasks being carried out by the H.R.

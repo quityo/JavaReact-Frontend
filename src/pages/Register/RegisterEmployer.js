@@ -162,7 +162,7 @@ export default function RegisterEmployer() {
   });
 
   return (
-    <div>
+    <div style={{ margin: "auto" , marginLeft:"50px"}}>
       <Header as="h2" color="teal" textAlign="center">
         Register For Company
       </Header>

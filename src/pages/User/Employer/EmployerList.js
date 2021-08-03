@@ -14,14 +14,17 @@ export default function EmployerList() {
   }, []);
 
   return (
-    <div>
-      <Header as="h2" textAlign="center">
+    <div 
+    style={{
+      margin: "auto",
+    }} className="app">
+      <Header  as="h2" textAlign="center">
         <Icon name="earlybirds" />
         Employer List
       </Header>
       <Table color="blue" key="blue">
         <Table.Header>
-          <Table.Row textAlign="center">
+          <Table.Row >
             <Table.HeaderCell></Table.HeaderCell>
             <Table.HeaderCell>Company Name</Table.HeaderCell>
             <Table.HeaderCell>Website</Table.HeaderCell>

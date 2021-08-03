@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Header, Image, Table, Button, Icon } from "semantic-ui-react";
+import { Header, Table, Button, Icon } from "semantic-ui-react";
 import CvService from "../../services/cvService";
 
 export default function CvList() {
@@ -24,7 +24,7 @@ export default function CvList() {
       <Table celled color={"black"}>
         <Table.Header>
           <Table.Row textAlign="center">
-            <Table.HeaderCell>Name</Table.HeaderCell>
+            <Table.HeaderCell>Jobseeker Name</Table.HeaderCell>
             {/*<Table.HeaderCell>Skills</Table.HeaderCell> 
             <Table.HeaderCell>Language</Table.HeaderCell> */}
             <Table.HeaderCell>Github</Table.HeaderCell>
@@ -36,15 +36,18 @@ export default function CvList() {
         <Table.Body>
           {cvs.map((cv) => (
             <Table.Row key={cv.cvId}>
-              <Table.Cell>
-                <Header as="h4" image>
-                  <Header.Content>
-                    {cv.jobseeker.firstName + " " + cv.jobseeker.lastName}
+              <Table.Cell style={{
+          fontSize: "20px",
+          textAlign:"center"
+        }} >
+                
+                  <Header.Content >
+                  <b><i> {cv.jobseeker.firstName + " " + cv.jobseeker.lastName }</i></b>
                     {/*  <Header.Subheader>
                       {cv.jobseeker.dateOfBirth}
                     </Header.Subheader> */}
                   </Header.Content>
-                </Header>
+                
               </Table.Cell>
               {/*   <Table.Cell>
                 {cv.skills.map((skill) => (

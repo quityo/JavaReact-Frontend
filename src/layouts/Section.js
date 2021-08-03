@@ -1,8 +1,5 @@
 import React from "react";
 import { Route } from "react-router";
-
-import Filter from "../layouts/Filter";
-
 import { Grid, GridColumn } from "semantic-ui-react";
 import JobPositionList from "../pages/JobPosition/JobPositionList";
 import JobseekerList from "../pages/User/Jobseeker/JobseekerList";
@@ -45,28 +42,31 @@ export default function Section() {
             <Route exact path="/cvlist/:userId" component={CvDetail} />
             <Route exact path="/" component={HomeDetail} />
             <Route exact path="/jobseekers" component={JobseekerList} />
-
+            <Route exact path="/jobadverts" component={JobAdvertList} />
             <Route exact path="/aboutus" component={AboutUs} />
             <Route exact path="/employees" component={EmployeeList} />
             <Route exact path="/users" component={UserList} />
-            <Route exact path="/filter" component={Filter} />
+            <Route exact path="/register" component={Register}></Route>
+            
             <Route
               exact
               path="/employerupdateconfirm"
               component={EmployerUpdateConfirm}
             />
           </GridColumn>
-
+          
+            <Route exact path="/login" component={Login} />
+            
           <Route exact path="/jobadverts/add" component={JobAdvertAdd} />
           <Route
             exact
             path="/registeremployee"
             component={RegisterEmployee}
           ></Route>
-          <Route exact path="/register" component={Register}></Route>
-          <Route exact path="/login" component={Login} />
+          
+          
 
-          <Route exact path="/jobadverts" component={JobAdvertList} />
+          
 
           <Route exact path="/confirmjobadvert" component={ConfirmJobAdvert} />
           <Route
@@ -113,6 +113,7 @@ export default function Section() {
 
           <Route exact path="/cvlist" component={CvList} />
           <Route exact path="/cvdetail" component={CvDetail} />
+
           <Route exact path="/image" component={ImageUpdate} />
         </Grid.Row>
       </Grid>

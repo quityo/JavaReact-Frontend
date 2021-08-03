@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Grid, Divider, Icon, List, Container } from "semantic-ui-react";
-import Footer from "./Footer";
+
 import Section from "./Section";
 import { ToastContainer } from "react-toastify";
 export default function Dashboard() {
@@ -43,7 +43,7 @@ export default function Dashboard() {
           <Divider />
         </Container>
         <Grid.Column fluid width={16}>
-          <Footer />
+          
         </Grid.Column>
       </Grid>
     </div>

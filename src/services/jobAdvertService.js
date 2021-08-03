@@ -39,4 +39,8 @@ export default class JobAdvertService {
   getAll() {
     return axios.get("http://localhost:8080/api/jobadverts/getall");
   }
+
+  getPageableAndFilterJobPostings(pageNo, pageSize, filterOption){
+    return axios.post(`http://localhost:8080/api/jobadverts/getByActiveAndFilter?pageNo=${pageNo}&pageSize=${pageSize}`,filterOption);
+}
 }

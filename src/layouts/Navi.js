@@ -31,6 +31,7 @@ export default function Navi() {
   return (
     <div>
       <Menu inverted fixed="top">
+      
         <Container margin="auto">
           <Menu.Menu position="center" />
           <Menu.Item
@@ -140,7 +141,11 @@ export default function Navi() {
             </div>
           </Menu.Menu>
         </Container>
+        
       </Menu>
+      <br/>
+     
     </div>
+   
   );
 }

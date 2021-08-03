@@ -143,19 +143,17 @@ export default function JobAdvertAdd() {
         <div className="ui negative message">
           <div className="header">Bu sayfayı görüntülemeye yetkiniz yok</div>
           <br />
-          <p>
-            Giriş yapmayı yada bir iş veren hesabı oluşturmayı deneyebilirsiniz
-          </p>
+          <Message info>
+            <Link to={"/login"}>
+              <b>Giriş yapmak için buraya tıkla</b>
+            </Link>
+          </Message>
           <Message info>
             <Link to={"/registerEmployer"}>
               <b>İşveren olarak kaydolmak için buraya tıkla</b>
             </Link>
           </Message>
-          <Message info>
-            <Link to={"/login"}>
-              <b>Sistem Çalışanı olarak giriş yapmak için buraya tıkla</b>
-            </Link>
-          </Message>
+          
         </div>
       )}
       {authItem[0].user.userType === 2 && (

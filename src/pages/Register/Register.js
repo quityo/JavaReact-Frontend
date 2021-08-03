@@ -64,10 +64,10 @@ export default function Register() {
   };
 
   return (
-    <div style={{ margin: "auto" }}>
+    <div style={{ margin: "auto" , marginLeft:"50px"}}>
       <Header as="h2" color="teal" textAlign="center">
         {" "}
-        Kayıt Ol
+        Register Form
       </Header>
       <Form size="large" onSubmit={formik.handleSubmit}>
         <Segment stacked>
@@ -75,12 +75,12 @@ export default function Register() {
             <Grid.Column width={8}>
               <div style={{ marginTop: "1em" }}>
                 <label>
-                  <b>İsim</b>
+                  <b>First Name</b>
                 </label>
 
                 <Form.Input
                   fluid
-                  placeholder="İsim"
+                  placeholder="First Name"
                   type="text"
                   value={formik.values.firstName}
                   name="firstName"
@@ -95,11 +95,11 @@ export default function Register() {
               </div>
               <div style={{ marginTop: "1em" }}>
                 <label>
-                  <b>Email</b>
+                  <b>E-Mail </b>
                 </label>
                 <Form.Input
                   fluid
-                  placeholder="E-mail adresi"
+                  placeholder="E-Mail "
                   type="email"
                   value={formik.values.email}
                   onChange={formik.handleChange}
@@ -115,11 +115,11 @@ export default function Register() {
 
               <div style={{ marginTop: "1em" }}>
                 <label>
-                  <b>Şifre</b>
+                  <b>Password</b>
                 </label>
                 <Form.Input
                   fluid
-                  placeholder="Şifre"
+                  placeholder="Password"
                   type="password"
                   value={formik.values.password}
                   onChange={formik.handleChange}
@@ -134,11 +134,11 @@ export default function Register() {
               </div>
               <div style={{ marginTop: "1em" }}>
                 <label>
-                  <b>Kimlik Numarası</b>
+                  <b>Identity Number</b>
                 </label>
                 <Form.Input
                   fluid
-                  placeholder="Kimlik numarası"
+                  placeholder="Identity No"
                   type="text"
                   value={formik.values.nationalId}
                   name="nationalId"
@@ -156,11 +156,11 @@ export default function Register() {
             <Grid.Column width={8}>
               <div style={{ marginTop: "1em" }}>
                 <label>
-                  <b>Soy İsim</b>
+                  <b>Last Name</b>
                 </label>
                 <Form.Input
                   fluid
-                  placeholder="Soy isim"
+                  placeholder="Last Name"
                   type="text"
                   value={formik.values.lastName}
                   name="lastName"
@@ -176,11 +176,11 @@ export default function Register() {
 
               <div style={{ marginTop: "1em" }}>
                 <label>
-                  <b>Email Tekrar</b>
+                  <b>Re-Email</b>
                 </label>
                 <Form.Input
                   fluid
-                  placeholder="E-mail adresi tekrar"
+                  placeholder="Re-Email"
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   name="reEmail"
@@ -194,11 +194,11 @@ export default function Register() {
 
               <div style={{ marginTop: "1em" }}>
                 <label>
-                  <b>Şifre Tekrar</b>
+                  <b>Re-Password</b>
                 </label>
                 <Form.Input
                   fluid
-                  placeholder="Şifre tekrar"
+                  placeholder="Re-Password"
                   type="password"
                   value={formik.values.passwordAgain}
                   onChange={formik.handleChange}
@@ -214,11 +214,11 @@ export default function Register() {
               </div>
               <div style={{ marginTop: "1em" }}>
                 <label>
-                  <b>Doğum Tarihi</b>
+                  <b>Birth Day</b>
                 </label>
                 <Form.Input
                   fluid
-                  placeholder="Dogum tarihi"
+                  placeholder="Birth Day"
                   type="date"
                   error={Boolean(formik.errors.dateOfBirth)}
                   onChange={(event, data) =>
@@ -239,13 +239,13 @@ export default function Register() {
 
           <br />
           <Button color="teal" fluid size="large" type="submit">
-            Kayıt Ol
+            Register
           </Button>
         </Segment>
       </Form>
       <Message info>
         <Link to={"/registerEmployer"}>
-          <b>İşveren olarak kaydolmak için buraya tıkla</b>
+          <b>Click for Employer Register</b>
         </Link>
       </Message>
     </div>

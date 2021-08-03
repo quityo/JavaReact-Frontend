@@ -1,17 +1,25 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { Container, Grid, Header, List, Segment } from "semantic-ui-react";
-
+import "../../src/layouts/Footer.css"
 function Footer() {
   return (
     <div className="main-footer">
+      
       <div className="container">
+      <div className="row">
+          <p className="col-sm" style={{ fontSize: "16px", margin: "auto" }}>
+            &copy;{new Date().getFullYear()} Funky Sun | All rights reserved |
+            Terms Of Service | Privacy
+          </p>
+        </div>
+        <br/>
         <div className="row">
-          <Segment inverted vertical style={{ padding: "1.5em 0em" }}>
+          <Segment inverted  vertical style={{ padding: "1.5em 0em" }}>
             <Container>
               <Grid inverted position="left">
                 <Grid.Row>
-                  <Grid.Column width={1}></Grid.Column>
+                  <Grid.Column></Grid.Column>
 
                   <Grid.Column style={{ textAlign: "left", flex: 1 }} width={3}>
                     <div className="col">
@@ -77,12 +85,7 @@ function Footer() {
             </Container>
           </Segment>
         </div>
-        <div className="row">
-          <p className="col-sm">
-            &copy;{new Date().getFullYear()} Funky Sun | All rights reserved |
-            Terms Of Service | Privacy
-          </p>
-        </div>
+        
       </div>
     </div>
   );

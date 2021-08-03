@@ -6,12 +6,12 @@ import LanguageUpdate from "./Language/LanguageUpdate";
 import SkillUpdate from "./Skill/SkillUpdate";
 import ExperienceUpdate from "./Experience/ExperienceUpdate";
 import GitHubUpdate from "./Links/GitHubUpdate";
-import PositionUpdate from "./Links/PositionUpdate"
+import PositionUpdate from "./Links/PositionUpdate";
 import LinkedinUpdate from "./Links/LinkedinUpdate";
 import BiographyUpdate from "./Links/BiographyUpdate";
 import ImageUpdate from "../Image/ImageUpdate";
 import ImageService from "../../services/imageService";
-import ExperienceService from "../../services/jobseeker/experienceService"
+import ExperienceService from "../../services/jobseeker/experienceService";
 import { Card, Image, Table, Header, Button, Icon } from "semantic-ui-react";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
@@ -91,12 +91,26 @@ export default function CvDetail() {
       style={{
         margin: "auto",
         alignItems: "center",
+        marginLeft:"50px"
       }}
     >
+      <Header as="h2" textAlign="center">
+      Curriculum Vitae / RESUME
+      </Header>
+      <br />
       <Card.Group>
         <Card fluid color={"black"}>
           <Card.Content>
             <Image
+              style={{
+                padding: "10px",
+                background: " #fff",
+                margin: "0 0 15px 20px",
+                transform: "rotate(-4deg)",
+                boxShadow: "0 0 4px rgba(0, 0, 0, .3)",
+                width: "30%",
+                maxWidth: "220px",
+              }}
               size="small"
               floated="left"
               src={cv.jobseeker?.image?.imageUrl}
@@ -125,11 +139,26 @@ export default function CvDetail() {
               <strong>{cv.jobseeker?.email}</strong>
             </Card.Meta>
             <Card.Description>
+              
               <Table celled color={"black"}>
                 <Table.Header>
                   <Table.Row textAlign="center" backGroundColor="grey">
-                    <Table.HeaderCell>Joobseker</Table.HeaderCell>
-                    <Table.HeaderCell>Details</Table.HeaderCell>
+                    <Table.HeaderCell
+                      style={{
+                        background: "#ddd",
+                        textAlign: "center",
+                      }}
+                    >
+                      Joobseker
+                    </Table.HeaderCell>
+                    <Table.HeaderCell
+                      style={{
+                        background: "#ddd",
+                        textAlign: "center",
+                      }}
+                    >
+                      Details
+                    </Table.HeaderCell>
                   </Table.Row>
                 </Table.Header>
 
@@ -159,7 +188,7 @@ export default function CvDetail() {
                   <Table.Row>
                     <Table.Cell>
                       <Header as="h4" image>
-                        <Header.Content>Birth Day</Header.Content>
+                        <Header.Content>BirthDay</Header.Content>
                       </Header>
                     </Table.Cell>
                     <Table.Cell textAlign="center">
@@ -170,7 +199,7 @@ export default function CvDetail() {
                   <Table.Row>
                     <Table.Cell>
                       <Header as="h4" image>
-                        <Header.Content>E-mail</Header.Content>
+                        <Header.Content>E-Mail</Header.Content>
                       </Header>
                     </Table.Cell>
                     <Table.Cell textAlign="center">
@@ -273,9 +302,17 @@ export default function CvDetail() {
         </Card>
       </Card.Group>
 
-      <Card fluid color={"black"}>
-        <Card.Content>
-          <Card.Header>
+      <Card fluid color={"black"} 
+          style={{
+            background: "#6d7f8c"
+          }}>
+        <Card.Content
+        >
+                        
+          <Card.Header  style={{
+            color:"white",
+            margin: "18px 0 0 0"
+          }}>
             Education
             {myProfile && (
               <Popup
@@ -297,20 +334,52 @@ export default function CvDetail() {
         </Card.Content>
         <Table celled color={"black"}>
           <Table.Header>
-            <Table.Row textAlign="center">
-              <Table.HeaderCell>School Name</Table.HeaderCell>
-              <Table.HeaderCell>Department</Table.HeaderCell>
-              <Table.HeaderCell>Start Year</Table.HeaderCell>
-              <Table.HeaderCell>End Year</Table.HeaderCell>
+            <Table.Row
+              style={{
+                textAlign: "center",
+              }}
+            >
+              <Table.HeaderCell
+                style={{
+                  background: "#ddd",
+                  textAlign: "center",
+                }}
+              >
+                School Name
+              </Table.HeaderCell>
+              <Table.HeaderCell
+                style={{
+                  background: "#ddd",
+                  textAlign: "center",
+                }}
+              >
+                Department
+              </Table.HeaderCell>
+              <Table.HeaderCell
+                style={{
+                  background: "#ddd",
+                  textAlign: "center",
+                }}
+              >
+                Start Year
+              </Table.HeaderCell>
+              <Table.HeaderCell
+                style={{
+                  background: "#ddd",
+                  textAlign: "center",
+                }}
+              >
+                End Year
+              </Table.HeaderCell>
             </Table.Row>
           </Table.Header>
 
           <Table.Body>
             {cv.educations?.map((education) => (
-              <Table.Row key={education.educationId}>
-              <Table.Cell>{education.schoolName}</Table.Cell>
-              <Table.Cell>{education.department}</Table.Cell>
-              <Table.Cell>{education.startYearOfSchool}</Table.Cell>
+              <Table.Row textAlign="center" key={education.educationId}>
+                <Table.Cell>{education.schoolName}</Table.Cell>
+                <Table.Cell>{education.department}</Table.Cell>
+                <Table.Cell>{education.startYearOfSchool}</Table.Cell>
                 <Table.Cell>
                   {education.endYearOfSchool ? (
                     education.endYearOfSchool
@@ -323,9 +392,17 @@ export default function CvDetail() {
           </Table.Body>
         </Table>
       </Card>
-      <Card fluid>
-        <Card.Content>
-          <Card.Header>
+      <Card fluid style={{
+            background: "#6d7f8c"
+          }}>
+      <Card.Content
+          
+        >
+                        
+          <Card.Header style={{
+            color:"white",
+            margin: "18px 0 0 0"
+          }}>
             Experiences
             {myProfile && (
               <Popup
@@ -348,40 +425,70 @@ export default function CvDetail() {
         <Table celled color={"black"} textAlign="center">
           <Table.Header>
             <Table.Row>
-              <Table.HeaderCell>Company</Table.HeaderCell>
-              <Table.HeaderCell>Position</Table.HeaderCell>
-              <Table.HeaderCell>Start Year</Table.HeaderCell>
-              <Table.HeaderCell>End Year</Table.HeaderCell>
+              <Table.HeaderCell
+                style={{
+                  background: "#ddd",
+                  textAlign: "center",
+                }}
+              >
+                Company
+              </Table.HeaderCell>
+              <Table.HeaderCell
+                style={{
+                  background: "#ddd",
+                  textAlign: "center",
+                }}
+              >
+                Position
+              </Table.HeaderCell>
+              <Table.HeaderCell
+                style={{
+                  background: "#ddd",
+                  textAlign: "center",
+                }}
+              >
+                Start Year
+              </Table.HeaderCell>
+              <Table.HeaderCell
+                style={{
+                  background: "#ddd",
+                  textAlign: "center",
+                }}
+              >
+                End Year
+              </Table.HeaderCell>
             </Table.Row>
           </Table.Header>
           <Table.Body>
             {cv.experiences?.map((experience) => (
               <Table.Row key={experience.experienceId}>
                 <Table.Cell>{experience.workingPlace}</Table.Cell>
-                
-                <Table.Cell>{experience.position}  {myProfile && (
-                            <Popup
-                              trigger={
-                                <button className="ui button"> Update </button>
-                              }
-                              modal
-                            >
-                              <PositionUpdate
-                                cvId={cv.cvId}
-                                updateCvValues={updateCvValues}
-                              />
-                            </Popup>
-                          )}
-                          {myProfile && (
-                            <Button
-                              color="red"
-                              circular
-                              icon="x"
-                              onClick={() => handlePositionDelete(cv.experience?.experienceId)}
-                              disabled={!cv.experience?.position}
-                            ></Button>
-                          )}
-                    </Table.Cell>
+
+                <Table.Cell>
+                  {experience.position}{" "}
+                  {myProfile && (
+                    <Popup
+                      trigger={<button className="ui button"> Update </button>}
+                      modal
+                    >
+                      <PositionUpdate
+                        cvId={cv.cvId}
+                        updateCvValues={updateCvValues}
+                      />
+                    </Popup>
+                  )}
+                  {myProfile && (
+                    <Button
+                      color="red"
+                      circular
+                      icon="x"
+                      onClick={() =>
+                        handlePositionDelete(cv.experience?.experienceId)
+                      }
+                      disabled={!cv.experience?.position}
+                    ></Button>
+                  )}
+                </Table.Cell>
                 <Table.Cell>{experience.startYearOfWork}</Table.Cell>
                 <Table.Cell>
                   {experience.endYearOfWork ? (
@@ -396,9 +503,17 @@ export default function CvDetail() {
         </Table>
       </Card>
 
-      <Card fluid color={"black"}>
-        <Card.Content>
-          <Card.Header>
+      <Card fluid color={"black"} 
+          style={{
+            background: "#6d7f8c"
+          }}>
+      <Card.Content
+        >
+                        
+          <Card.Header style={{
+            color:"white",
+            margin: "18px 0 0 0"
+          }}>
             Languages
             {myProfile && (
               <Popup
@@ -421,8 +536,22 @@ export default function CvDetail() {
         <Table celled color={"black"}>
           <Table.Header>
             <Table.Row>
-              <Table.HeaderCell textAlign="center">Language</Table.HeaderCell>
-              <Table.HeaderCell textAlign="center">Level</Table.HeaderCell>
+              <Table.HeaderCell
+                style={{
+                  background: "#ddd",
+                  textAlign: "center",
+                }}
+              >
+                Language
+              </Table.HeaderCell>
+              <Table.HeaderCell
+                style={{
+                  background: "#ddd",
+                  textAlign: "center",
+                }}
+              >
+                Level
+              </Table.HeaderCell>
             </Table.Row>
           </Table.Header>
 
@@ -437,9 +566,17 @@ export default function CvDetail() {
         </Table>
       </Card>
 
-      <Card fluid color={"black"}>
-        <Card.Content>
-          <Card.Header>
+      <Card  style={{
+           background: "#6d7f8c"
+         }}fluid color={"black"}>
+        
+         <Card.Content
+        
+       >
+                       
+         <Card.Header style={{
+            color:"white",
+          }}>
             Skills
             {myProfile && (
               <Popup
@@ -459,7 +596,14 @@ export default function CvDetail() {
         <Table celled color={"black"}>
           <Table.Header>
             <Table.Row>
-              <Table.HeaderCell textAlign="center">Skills</Table.HeaderCell>
+              <Table.HeaderCell
+                style={{
+                  background: "#ddd",
+                  textAlign: "center",
+                }}
+              >
+                Skills
+              </Table.HeaderCell>
             </Table.Row>
           </Table.Header>
 
@@ -473,8 +617,15 @@ export default function CvDetail() {
         </Table>
       </Card>
       <Card fluid color={"black"}>
-        <Card.Content>
-          <Card.Header>
+        <Card.Content
+          style={{
+            background: "#6d7f8c",
+          }}
+        >
+          <Card.Header style={{
+            color:"white",
+            margin: "10px 0 0 0"
+          }}>
             Personal Info
             {myProfile && (
               <Popup

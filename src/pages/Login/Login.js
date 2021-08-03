@@ -46,11 +46,11 @@ export default function Login() {
         <Segment stacked>
           <div>
             <label>
-              <b>Email</b>
+              <b>E-Mail</b>
             </label>
             <Form.Input
               fluid
-              placeholder="E-mail adresi"
+              placeholder="E-mail address"
               type="email"
               name="email"
               value={formik.values.email}
@@ -65,11 +65,11 @@ export default function Login() {
           </div>
           <div style={{ marginTop: "1em" }}>
             <label>
-              <b>Şifre</b>
+              <b>Password</b>
             </label>
             <Form.Input
               fluid
-              placeholder="Şifre"
+              placeholder="Password"
               type="password"
               name="password"
               value={formik.values.password}
@@ -90,7 +90,7 @@ export default function Login() {
             type="submit"
             style={{ marginTop: "1em" }}
           >
-            Giriş Yap
+            Enter
           </Button>
         </Segment>
       </Form>

@@ -164,7 +164,7 @@ export default function RegisterEmployer() {
   return (
     <div style={{ margin: "auto" , marginLeft:"50px"}}>
       <Header as="h2" color="teal" textAlign="center">
-        Register For Company
+        Register For Employer
       </Header>
       <Form size="large" onSubmit={formik.handleSubmit}>
         <Segment stacked>
@@ -191,7 +191,7 @@ export default function RegisterEmployer() {
             <Grid.Column width={8}>
               <div style={{ marginTop: "1em" }}>
                 <label>
-                  <b>Telephone</b>
+                  <b>Tel no..</b>
                 </label>
                 <Form.Input
                   fluid
@@ -211,7 +211,7 @@ export default function RegisterEmployer() {
 
               <div style={{ marginTop: "1em" }}>
                 <label>
-                  <b>Email</b> (domain)
+                  <b>Email</b> 
                 </label>
                 <Form.Input
                   fluid
@@ -230,7 +230,7 @@ export default function RegisterEmployer() {
               </div>
               <div style={{ marginTop: "1em" }}>
                 <label>
-                  <b>Şifre</b>
+                  <b>Password</b>
                 </label>
                 <Form.Input
                   fluid
@@ -317,8 +317,7 @@ export default function RegisterEmployer() {
         </Segment>
       </Form>
       <Message warning>
-        İşveren kayıtları sistem çalışanları tarafından onaylandıktan sonra
-        aktif hale gelmektedir!
+      Employer Registrations become active after they are approved by System Employees!
       </Message>
     </div>
   );

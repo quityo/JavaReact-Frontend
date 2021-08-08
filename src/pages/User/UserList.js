@@ -27,7 +27,7 @@ export default function UserList() {
   useEffect(() => {
     let employerService = new EmployerService();
     employerService
-      .getEmployers()
+      .getByAsc()
       .then((result) => setEmployers(result.data.data))
       .catch((err) => console.log(err));
   }, []);

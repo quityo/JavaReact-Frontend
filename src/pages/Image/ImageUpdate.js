@@ -19,10 +19,10 @@ export default class ImageUpdate extends Component {
     fd.append("multipartFile", this.state.selectedFile);
     let imageService = new ImageService();
     imageService
-      .upload(this.props.userId, fd)
+      .upload(this.props.cvId, fd)
       .then((res) => {
         toast.success(res.data.message);
-        this.props.upload();
+        this.props.updateCvValues();
       })
       .catch((result) => {
         toast.error("olmadı");

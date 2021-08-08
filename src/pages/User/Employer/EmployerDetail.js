@@ -4,6 +4,7 @@ import EmployerService from "../../../services/employerService";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
+import EmployerFilter from "./EmployerFilter";
 
 export default function EmployerDetail() {
   let { userId } = useParams();
@@ -24,7 +25,8 @@ export default function EmployerDetail() {
       }}
     >
       <Header as="h2" textAlign="center">
-        Employer Details
+        Employer Details{/* 
+        <EmployerFilter/> */}
       </Header>
       <br />
       <Card.Group>
@@ -59,7 +61,7 @@ export default function EmployerDetail() {
             <div className="ui two buttons">
               <Button
                 as={Link}
-                to={`/employers/${employer.jobAdvert?.jobAdvertId}`}
+                to={`/employerList/${employer.userId}`}
                 inverted
                 color="blue"
               >

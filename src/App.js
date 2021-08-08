@@ -4,7 +4,7 @@ import "semantic-ui-css/semantic.min.css";
 import { Container, Divider } from "semantic-ui-react";
 import Navi from "./layouts/Navi";
 import Footer from "./layouts/Footer";
-import Filter from "./layouts/Filter";
+
 function App() {
   return (
     
@@ -20,7 +20,7 @@ function App() {
         style={{
           fontSize: "60px",
           margin: "0 auto",
-          marginLeft: "50px",
+          marginLeft: "40px",
           fontFamily: "Star Jedi",
         }}
       >

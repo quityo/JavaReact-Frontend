@@ -95,9 +95,9 @@ export default function Login() {
         </Segment>
       </Form>
       <Message info>
-        Kayıtlı değilmisin?{" "}
+      You're not registered?{" "}
         <b>
-          <Link to={"/register"}>Şimdi Kaydol</Link>
+          <Link to={"/register"}>Register Now</Link>
         </b>
       </Message>
     </div>

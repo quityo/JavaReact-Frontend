@@ -6,9 +6,7 @@ import {
   Dropdown,
   Image,
   Button,
-  Icon,
-  DropdownItem,
-} from "semantic-ui-react";
+  Icon} from "semantic-ui-react";
 import SignedIn from "./SignedIn";
 import SignedOut from "./SignedOut";
 import { useSelector } from "react-redux";

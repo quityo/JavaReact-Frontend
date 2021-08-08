@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import ExperienceService from "../../../services/jobseeker/experienceService";
 
 export default function PositionUpdate({ cvId, updateCvValues,experienceId }) {
-    let [experiences, setExperiences] = useState([]);
+    let [ setExperiences] = useState([]);
     let experienceService = new ExperienceService();
     useEffect(() => {
         let experienceService = new ExperienceService();

@@ -24,7 +24,7 @@ export default function CvDetail() {
   let { userId, imageId } = useParams();
 
   let [cv, setCv] = useState({});
-  let [image, setImage] = useState({});
+  let [setImage] = useState({});
 
   let imageService = new ImageService();
   let cvService = new CvService();
@@ -135,9 +135,9 @@ export default function CvDetail() {
               {cv.jobseeker?.firstName + " " + cv.jobseeker?.lastName}
             </Card.Header>
             <br />
-            <Card.Meta>
-              <strong>{cv.jobseeker?.email}</strong>
-            </Card.Meta>
+            
+            <br />
+            
             <Card.Description>
               
               <Table celled color={"black"}>

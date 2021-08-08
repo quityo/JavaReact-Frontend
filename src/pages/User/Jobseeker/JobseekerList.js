@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Table, Header, Icon, Button } from "semantic-ui-react";
+import { Table, Header, Icon, Button, Image } from "semantic-ui-react";
 import JobseekerService from "../../../services/jobseeker/jobseekerService";
 import { Link } from "react-router-dom";
 export default function JobseekerList() {
@@ -12,7 +12,10 @@ export default function JobseekerList() {
   }, []);
 
   return (
-    <div>
+    <div 
+    style={{
+      margin: "auto",
+    }} className="app">
       <Header as="h2" textAlign="center">
         <Icon name="hand spock" color="teal"></Icon>
         Jobseekers List
@@ -20,8 +23,9 @@ export default function JobseekerList() {
       <Table color="blue" key="blue">
         <Table.Header>
           <Table.Row textAlign="center">
-            <Table.HeaderCell>First Name</Table.HeaderCell>
-            <Table.HeaderCell>Last Name</Table.HeaderCell>
+            
+          <Table.HeaderCell></Table.HeaderCell>
+            <Table.HeaderCell>Full Name</Table.HeaderCell>
             <Table.HeaderCell>Email</Table.HeaderCell>
             <Table.HeaderCell>Detail</Table.HeaderCell>
           </Table.Row>
@@ -30,8 +34,15 @@ export default function JobseekerList() {
         <Table.Body>
           {jobseekers.map((jobseeker) => (
             <Table.Row textAlign="center" key={jobseeker.id}>
-              <Table.Cell>{jobseeker.firstName}</Table.Cell>
-              <Table.Cell>{jobseeker.lastName}</Table.Cell>
+              <Table.Cell>
+                <Image
+                  floated="left"
+                  size="tiny"
+                  src={jobseeker.image?.imageUrl}
+                  circular
+                ></Image>
+              </Table.Cell>
+              <Table.Cell>{jobseeker.firstName + " " + jobseeker.lastName}</Table.Cell>
               <Table.Cell>{jobseeker.email}</Table.Cell>
               <Table.Cell>
                 <Button

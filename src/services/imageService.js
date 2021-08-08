@@ -1,9 +1,9 @@
 import axios from "axios";
 
 export default class ImageService {
-  upload(file, userId) {
+  upload(userId, file) {
     return axios.post(
-      "http://localhost:8080/api/images/add?userId=" + userId,
+      `http://localhost:8080/api/images/add?userId=${userId}`,
       file
     );
   }
@@ -23,5 +23,9 @@ export default class ImageService {
   }
   getByCvId(cvId) {
     return axios.get(`http://localhost:8080/api/images/getByCvId?cvId=${cvId}`);
+  }
+  update(file, imageId) {
+    return axios.post(`http://localhost:8080/api/images/update/imageId=`  + imageId,
+    file);
   }
 }

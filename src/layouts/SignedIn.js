@@ -8,26 +8,28 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { useParams } from "react-router";
 export default function SignedIn() {
-  let { imageId } = useParams();
+  let { userId } = useParams();
   const { authItem } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   const history = useHistory();
-  const [users, setUsers] = useState({});
-  const [image, setImages] = useState({});
+  const [ setUsers] = useState({});
+  const [ setImages] = useState({});
   useEffect(() => {
     let userService = new UserService();
     userService.getUsers().then((result) => setUsers(result.data.data));
   }, []);
   useEffect(
-    (imageId) => {
+    (userId) => {
       let imageService = new ImageService();
       imageService
-        .getByImageId(imageId)
+        .getById(userId)
         .then((result) => setImages(result.data.data));
     },
-    [imageId]
+    [userId]
   );
+
+
 
   const handleLogout = (user) => {
     dispatch(userLogout(user));
@@ -37,7 +39,8 @@ export default function SignedIn() {
   return (
     <div>
       <Menu.Item>
-        <Image avatar spaced="right" src={authItem[0].user.image?.imageUrl} />
+        <Image avatar spaced="right" src={authItem[0].image?.imageUrl} />
+        
         <Dropdown pointing="top right" text={authItem[0].user.name}>
           <Dropdown.Menu>
             {authItem[0].user.userType === 1 && (

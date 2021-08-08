@@ -9,7 +9,7 @@ export default function EmployerList() {
   useEffect(() => {
     let employerService = new EmployerService();
     employerService
-      .getEmployers()
+      .getByAsc()
       .then((result) => setEmployers(result.data.data));
   }, []);
 
@@ -24,9 +24,9 @@ export default function EmployerList() {
       </Header>
       <Table color="blue" key="blue">
         <Table.Header>
-          <Table.Row >
+          <Table.Row textAlign="center">
             <Table.HeaderCell></Table.HeaderCell>
-            <Table.HeaderCell>Company Name</Table.HeaderCell>
+            <Table.HeaderCell >Company Name</Table.HeaderCell>
             <Table.HeaderCell>Website</Table.HeaderCell>
             <Table.HeaderCell>Detail</Table.HeaderCell>
             {/* 
@@ -45,8 +45,8 @@ export default function EmployerList() {
                   circular
                 ></Image>
               </Table.Cell>
-              <Table.Cell>{employer.companyName}</Table.Cell>
-              <Table.Cell>{employer.website}</Table.Cell>
+              <Table.Cell textAlign="center">{employer.companyName}</Table.Cell>
+              <Table.Cell textAlign="center">{employer.website}</Table.Cell>
 
               <Table.Cell>
                 <Button

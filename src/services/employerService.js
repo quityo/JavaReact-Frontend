@@ -23,4 +23,8 @@ export default class EmployerService {
       "http://localhost:8080/api/employers/getByConfirmStatusFalse"
     );
   }
+  getByAsc() {
+    return axios.get("http://localhost:8080/api/employers/getallasc");
+  }
+
 }

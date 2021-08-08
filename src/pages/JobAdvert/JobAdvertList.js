@@ -7,16 +7,16 @@ import {
   Header,
   Divider,
   Button,
+  Grid
 } from "semantic-ui-react";
 import JobAdvertService from "../../services/jobAdvertService";
-import {  Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Filter from "../../layouts/Filter";
 import ImageService from "../../services/imageService";
 import { useParams } from "react-router-dom";
 export default function JobAdvertList() {
   let [jobAdverts, setJobAdverts] = useState([]);
   let { userId, imageId } = useParams();
-
   let [activePage, setActivePage] = useState(1);
   let [filterOption, setFilterOption] = useState({});
   let [pageSize, setPageSize] = useState(2);
@@ -25,13 +25,22 @@ export default function JobAdvertList() {
   useEffect(() => {
     let jobAdvertService = new JobAdvertService();
     jobAdvertService
-      .getPageableAndFilterJobPostings(activePage, pageSize, filterOption)
+      .getPageableAndFilterJobAdverts(activePage, pageSize, filterOption)
       .then((result) => {
         setJobAdverts(result.data.data);
         setTotalPageSize(parseInt(result.data.message));
       });
   }, [filterOption, activePage, pageSize]);
 
+  useEffect(() => {
+    let jobAdvertService = new JobAdvertService();
+    jobAdvertService
+      .getPageableAndEmployerFilter(activePage, pageSize, filterOption)
+      .then((result) => {
+        setJobAdverts(result.data.data);
+        setTotalPageSize(parseInt(result.data.message));
+      });
+  }, [filterOption, activePage, pageSize]);
   let imageService = new ImageService();
   useEffect(() => {
     imageService
@@ -41,6 +50,9 @@ export default function JobAdvertList() {
   const handleFilterClick = (filterOption) => {
     if (filterOption.cityId.length === 0) {
       filterOption.cityId = null;
+    }
+    if (filterOption.userId.length === 0) {
+      filterOption.userId = null;
     }
     if (filterOption.jobPositionId.length === 0) {
       filterOption.jobPositionId = null;
@@ -71,16 +83,23 @@ export default function JobAdvertList() {
     { key: 100, text: "100 İlan", value: 100 },
   ];
   return (
+    
     <div
       style={{
         margin: "auto",
         alignItems: "center",
+        marginLeft: "5%",
       }}
     >
+      <Grid>
+        <Grid.Row>
+          <Grid.Column width={4}><Filter inverted clickEvent={handleFilterClick} /></Grid.Column>
+          
+          <Grid.Column width={1}></Grid.Column>
+          <Grid.Column width={11}>
       <Card.Group>
+        
         <Card fluid color={"black"}>
-          <Filter clickEvent={handleFilterClick} />
-
           {jobAdverts.map((jobAdvert) => (
             <Card.Content>
               {" "}
@@ -219,7 +238,7 @@ export default function JobAdvertList() {
           ))}
         </Card>
       </Card.Group>
-
+      
       <Pagination
         style={{ marginTop: "25pt" }}
         firstItem={null}
@@ -228,6 +247,9 @@ export default function JobAdvertList() {
         onPageChange={handlePaginationChange}
         totalPages={Math.ceil(totalPageSize / pageSize)}
       />
+      </Grid.Column>
+      </Grid.Row>
+      </Grid>
     </div>
   );
 }

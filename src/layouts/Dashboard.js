@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Grid, Divider, Icon, List, Container } from "semantic-ui-react";
-
 import Section from "./Section";
 import { ToastContainer } from "react-toastify";
 export default function Dashboard() {
@@ -13,6 +12,7 @@ export default function Dashboard() {
           <Grid.Column width={3}></Grid.Column>
           <Grid.Column width={10}>
             <Section />
+            
           </Grid.Column>
         </Grid.Row>
         <Divider />

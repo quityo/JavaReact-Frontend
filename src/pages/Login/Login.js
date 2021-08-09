@@ -94,10 +94,10 @@ export default function Login() {
           </Button>
         </Segment>
       </Form>
-      <Message info>
-      You're not registered?{" "}
+      <Message info color="black">
+      You're not registered? - 
         <b>
-          <Link to={"/register"}>Register Now</Link>
+          <Link to={"/register"} > Register Now</Link>
         </b>
       </Message>
     </div>

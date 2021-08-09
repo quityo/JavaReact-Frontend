@@ -243,7 +243,7 @@ export default function Register() {
           </Button>
         </Segment>
       </Form>
-      <Message info>
+      <Message info color="black">
         <Link to={"/registerEmployer"}>
           <b>Click for Employer Register</b>
         </Link>

@@ -207,7 +207,7 @@ export default function EmployerFilterList() {
                 size="small"
                 color="green"
                 as={Link}
-                to={`/employers/${jobAdvert.employer.userId}`}
+                to={`/jobadverts/${jobAdvert.jobAdvertId}`}
               >
                 View Job Details
               </Button>

@@ -37,7 +37,7 @@ export default function Favorite() {
       }}
     >
       <Segment color="green" textAlign="center">
-        FAVORİTES
+        FAVORITES
       </Segment>
 
       <Table textAlign="center" color={"black"}>

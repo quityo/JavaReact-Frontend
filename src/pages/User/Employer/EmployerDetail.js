@@ -25,7 +25,7 @@ export default function EmployerDetail() {
       }}
     >
       <Header as="h2" textAlign="center">
-        Employer Details{/* 
+        "{employer.companyName}" Details{/* 
         <EmployerFilter/> */}
       </Header>
       <br />
@@ -61,7 +61,7 @@ export default function EmployerDetail() {
             <div className="ui two buttons">
               <Button
                 as={Link}
-                to={`/employerList/${employer.userId}`}
+                to={`/employerList`}
                 inverted
                 color="blue"
               >

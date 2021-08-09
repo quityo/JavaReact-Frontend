@@ -316,7 +316,7 @@ export default function RegisterEmployer() {
           </Button>
         </Segment>
       </Form>
-      <Message warning>
+      <Message warning  color='black'>
       Employer Registrations become active after they are approved by System Employees!
       </Message>
     </div>

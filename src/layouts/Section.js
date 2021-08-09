@@ -42,11 +42,13 @@ export default function Section() {
             <Route exact path="/cvlist/:userId" component={CvDetail} />
             <Route exact path="/" component={HomeDetail} />
             <Route exact path="/jobadverts" component={JobAdvertList} />
+            
+
+          <Route exact path="/employerList" component={EmployerFilterList} />
             <Route exact path="/aboutus" component={AboutUs} />
             <Route exact path="/employees" component={EmployeeList} />
             <Route exact path="/users" component={UserList} />
             <Route exact path="/register" component={Register}></Route>
-
             <Route
               exact
               path="/employerupdateconfirm"
@@ -94,8 +96,6 @@ export default function Section() {
           />
           <Route exact path="/employeeUpdate" component={EmployeeUpdate} />
           <Route exact path="/employees/:userId" component={EmployeeDetail} />
-
-          <Route exact path="/employerList/:userId" component={EmployerFilterList} />
           <Route exact path="/jobseekers" component={JobseekerList} />
           <Route exact path="/employers" component={EmployerList} />
           <Route exact path="/employers/:userId" component={EmployerDetail} />

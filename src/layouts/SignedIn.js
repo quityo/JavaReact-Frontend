@@ -13,7 +13,7 @@ export default function SignedIn() {
   const dispatch = useDispatch();
 
   const history = useHistory();
-  const [ setUsers] = useState({});
+  const [ users, setUsers] = useState({});
   const [ setImages] = useState({});
   useEffect(() => {
     let userService = new UserService();

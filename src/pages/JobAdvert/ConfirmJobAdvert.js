@@ -53,7 +53,7 @@ export default function ConfirmJobAdvert() {
                   inverted
                   color="green"
                 >
-                  ONAYLA
+                  CONFRIM
                 </Button>
                 <Button
                   as={NavLink}
@@ -61,7 +61,7 @@ export default function ConfirmJobAdvert() {
                   inverted
                   color="blue"
                 >
-                  İNCELE
+                  DETAILS
                 </Button>
               </div>
             </Card.Content>

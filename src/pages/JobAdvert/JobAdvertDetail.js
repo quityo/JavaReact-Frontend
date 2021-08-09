@@ -77,7 +77,7 @@ export default function JobAdvertDetail() {
       {jobAdverts.map((jobAdvert) => (
         <div>
           <Segment color="green" textAlign="center">
-            İLAN DETAYI
+            Job Advert Details
           </Segment>
           <Image
             centered
@@ -90,14 +90,14 @@ export default function JobAdvertDetail() {
             <Table.Header>
               <Table.Row>
                 <Table.HeaderCell textAlign="center" colSpan="2">
-                  ŞİRKET BİLGİLERİ
+                  Company Details
                 </Table.HeaderCell>
               </Table.Row>
             </Table.Header>
             <Table.Body>
               <Table.Row>
                 <Table.Cell>
-                  <Icon name="warehouse" /> Şirket
+                  <Icon name="warehouse" /> Company
                 </Table.Cell>
                 <Table.Cell textAlign="center" key={employer.userId}>
                   <Link to={`/employers/${jobAdvert.employer?.userId}`}>
@@ -108,7 +108,7 @@ export default function JobAdvertDetail() {
               <Table.Row>
                 <Table.Cell>
                   <Icon name="world" />
-                  Web Sitesi
+                  Website
                 </Table.Cell>
                 <Table.Cell textAlign="center">
                   <a
@@ -122,7 +122,7 @@ export default function JobAdvertDetail() {
               <Table.Row>
                 <Table.Cell collapsing>
                   <Icon name="phone" />
-                  Telefon Numarası
+                  Tel-No
                 </Table.Cell>
                 <Table.Cell textAlign="center">
                   {jobAdvert.employer?.phoneNumber}
@@ -131,7 +131,7 @@ export default function JobAdvertDetail() {
               <Table.Row>
                 <Table.Cell>
                   <Icon name="map marker alternate" />
-                  Şehir
+                  City
                 </Table.Cell>
                 <Table.Cell textAlign="center">
                   {jobAdvert.city?.name}
@@ -143,13 +143,13 @@ export default function JobAdvertDetail() {
             <Table.Header>
               <Table.Row>
                 <Table.HeaderCell textAlign="center" colSpan="2">
-                  İŞ BİLGİLERİ
+                  Work Details
                 </Table.HeaderCell>
               </Table.Row>
             </Table.Header>
             <Table.Body>
               <Table.Row>
-                <Table.Cell>Pozisyon</Table.Cell>
+                <Table.Cell>Position</Table.Cell>
                 <Table.Cell textAlign="center" key={jobPosition.jobPositionId}>
                   <Link
                     to={`/jobpositions/${jobAdvert.jobPosition?.jobPositionId}`}
@@ -165,13 +165,13 @@ export default function JobAdvertDetail() {
                 </Table.Cell>
               </Table.Row>
               <Table.Row>
-                <Table.Cell>Çalışma Türü</Table.Cell>
+                <Table.Cell>Work Type</Table.Cell>
                 <Table.Cell textAlign="center">
                   {jobAdvert.workType?.type}
                 </Table.Cell>
               </Table.Row>
               <Table.Row>
-                <Table.Cell>Çalışma Zamanı</Table.Cell>
+                <Table.Cell>Work Time</Table.Cell>
                 <Table.Cell textAlign="center">
                   {jobAdvert.workTime?.title}
                 </Table.Cell>
@@ -182,15 +182,15 @@ export default function JobAdvertDetail() {
             <Table.Header>
               <Table.Row>
                 <Table.HeaderCell textAlign="center" colSpan="4">
-                  ÜCRET BİLGİLERİ
+                  Price Details
                 </Table.HeaderCell>
               </Table.Row>
             </Table.Header>
             <Table.Body>
               <Table.Row>
-                <Table.Cell>Min Ücret</Table.Cell>
+                <Table.Cell>Min Salary</Table.Cell>
                 <Table.Cell positive>{jobAdvert.salaryMin} TL</Table.Cell>
-                <Table.Cell>Max Ücret</Table.Cell>
+                <Table.Cell>Max Salary</Table.Cell>
                 <Table.Cell positive>{jobAdvert.salaryMax} TL</Table.Cell>
               </Table.Row>
             </Table.Body>
@@ -215,7 +215,7 @@ export default function JobAdvertDetail() {
             <Table.Header>
               <Table.Row>
                 <Table.HeaderCell textAlign="center" colSpan="4">
-                  Son Başvuru Tarihi
+                  DeadLine 
                 </Table.HeaderCell>
               </Table.Row>
             </Table.Header>

@@ -141,16 +141,16 @@ export default function JobAdvertAdd() {
     >
       {authItem[0].user.userType !== 2 && (
         <div className="ui negative message">
-          <div className="header">Bu sayfayı görüntülemeye yetkiniz yok</div>
+          <div className="header">You are not authorized to view this page</div>
           <br />
           <Message info>
             <Link to={"/login"}>
-              <b>Giriş yapmak için buraya tıkla</b>
+              <b>Click Here To Log-In</b>
             </Link>
           </Message>
           <Message info>
             <Link to={"/registerEmployer"}>
-              <b>İşveren olarak kaydolmak için buraya tıkla</b>
+              <b>Click Here To Register As An Employer</b>
             </Link>
           </Message>
           

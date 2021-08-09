@@ -26,7 +26,7 @@ export default function JobseekerList() {
             
           <Table.HeaderCell></Table.HeaderCell>
             <Table.HeaderCell>Full Name</Table.HeaderCell>
-            <Table.HeaderCell>Email</Table.HeaderCell>
+            <Table.HeaderCell>E-Mail</Table.HeaderCell>
             <Table.HeaderCell>Detail</Table.HeaderCell>
           </Table.Row>
         </Table.Header>

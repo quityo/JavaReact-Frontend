@@ -30,14 +30,6 @@ export default function EmployeeDetail() {
             Employee Detail
           </Table.HeaderCell>
           <Table.Row>
-            <Table.HeaderCell>Email</Table.HeaderCell>
-            <Table.Cell>{employee.email}</Table.Cell>
-          </Table.Row>
-          <Table.Row>
-            <Table.HeaderCell>Password</Table.HeaderCell>
-            <Table.Cell>{employee.password}</Table.Cell>
-          </Table.Row>
-          <Table.Row>
             <Table.HeaderCell>First Name</Table.HeaderCell>
             <Table.Cell>{employee.firstName}</Table.Cell>
           </Table.Row>
@@ -45,6 +37,16 @@ export default function EmployeeDetail() {
             <Table.HeaderCell>Last Name</Table.HeaderCell>
             <Table.Cell>{employee.lastName}</Table.Cell>
           </Table.Row>
+          <Table.Row>
+            <Table.HeaderCell>Email</Table.HeaderCell>
+            <Table.Cell>{employee.email}</Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.HeaderCell>Password</Table.HeaderCell>
+            <Table.Cell>{employee.password}</Table.Cell>
+          </Table.Row>
+         
+          
         </Table.Header>
       </Table>
 

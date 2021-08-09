@@ -50,7 +50,7 @@ export default function EmployerUpdateConfirm() {
               textAlign="center"
               style={{ fontSize: "2em", marginBottom: "1em", marginTop: "1em" }}
             >
-              Onay Bekleyen Şirketler
+              Companies Pending Approval
             </Card.Header>
             <Card.Content>
               <Table color="black">
@@ -61,8 +61,8 @@ export default function EmployerUpdateConfirm() {
                     <Table.HeaderCell>Website</Table.HeaderCell>
                     <Table.HeaderCell>E-Mail</Table.HeaderCell>
                     <Table.HeaderCell>Password</Table.HeaderCell>
-                    <Table.HeaderCell>Onay Durumu</Table.HeaderCell>
-                    <Table.HeaderCell>Onay İşlemi</Table.HeaderCell>
+                    <Table.HeaderCell>Situation</Table.HeaderCell>
+                    <Table.HeaderCell>Approval Process</Table.HeaderCell>
                   </Table.Row>
                 </Table.Header>
 
@@ -96,7 +96,7 @@ export default function EmployerUpdateConfirm() {
                             confirmStatusTrue(employer.employerUpdate?.userId)
                           }
                         >
-                          <Button.Content visible>Onayla</Button.Content>
+                          <Button.Content visible>Confirm</Button.Content>
                           <Button.Content hidden>
                             <Icon name="check" />
                           </Button.Content>
